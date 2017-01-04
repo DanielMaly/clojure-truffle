@@ -5,8 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.danielmaly</groupId>
-    <artifactId>clojure-truffle</artifactId>
+    <artifactId>scheme-truffle</artifactId>
     <version>1.0</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.java.dev.javacc</groupId>
+            <artifactId>javacc</artifactId>
+            <version>7.0.0</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

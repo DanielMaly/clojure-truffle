@@ -31,12 +31,15 @@ tokens {
     FORMALDEF;
     IDENTIFIER;
     COMMAND;
-    OPERATOR;
     PROCEDURECALL;
     SYNTAXRULE;
     LITERAL;
     QUOTATION;
     LIST;
+    EMPTYFORMALS;
+    FORMALS;
+    SEQUENCE;
+    CONDCLAUSE;
 }
 
 
@@ -79,10 +82,10 @@ simpleDefinition
   ;
 
 formalDefinition
-  : '(' DEFINE formalDefDecl body ')' -> ^(FORMALDEF formalDefDecl body)
+  : '('! DEFINE^ formals body ')'!
   ;
 
-formalDefDecl
+formals
   : '('! variable variable* ('.' variable)? ')'!
   ;
 
@@ -203,16 +206,18 @@ selfEvaluating
   ;
 
 lambdaExpression
-  :  '(' LAMBDA formals body ')'
+  :  '('! LAMBDA^ lambdaformals body ')'!
   ;
 
-formals
-  :  '(' (variable+ ('.' variable)?)? ')'
-  |  variable
+lambdaformals
+  : (variable) => variable
+  | (formals) => formals
+  | '()' -> ^(EMPTYFORMALS)
   ;
+
 
 conditional
-  :  '(' IF test consequent alternate? ')'
+  :  '('! IF^ test consequent alternate? ')'!
   ;
 
 test 
@@ -228,31 +233,39 @@ alternate
   ;
 
 assignment
-  :  '(' SET variable expression ')'
+  :  '('! SET^ variable expression ')'!
   ;
 
 derivedExpression
   :  quasiquotation
-  |  '(' ( COND ( '(' ELSE sequence ')'
-                | condClause+ ('(' ELSE sequence ')')? 
+  |  '('! ( COND^ ( '('! ELSE^ sequence ')'!
+                | condClause+ ('(' ELSE^ sequence ')')?
                 )
          | CASE expression ( '(' ELSE sequence ')'
                            | caseClause+ ('(' ELSE sequence ')')? 
                            )
-         | AND test*
-         | OR test*
+         | AND^ test*
+         | OR^ test*
          | LET variable? '(' bindingSpec* ')' body
          | LETSTAR '(' bindingSpec* ')' body
          | LETREC '(' bindingSpec* ')' body
-         | BEGIN sequence
+         | BEGIN^ sequence
          | DO '(' iterationSpec* ')' '(' test doResult? ')' command*
          | DELAY expression
          ) 
-     ')'
+     ')'!
   ;
 
+cond
+
+
 condClause
-  :  '(' test (sequence | ARROW recipient)? ')'
+  :  '(' test condrealize? ')' -> ^(CONDCLAUSE condrealize?)
+  ;
+
+condrealize
+  : sequence
+  | ARROW^ recipient
   ;
 
 recipient
@@ -288,7 +301,7 @@ procedureCall
   ;
 
 operator
-  :  expression -> ^(OPERATOR expression)
+  :  expression
   ;
 
 operand
@@ -311,12 +324,8 @@ body
   :  ((definition)=> definition)* sequence
   ;
 
-//sequence
-//  :  ((command)=> command)* expression
-//  ;
-
 sequence
-  :  expression+
+  :  expression+ -> ^(SEQUENCE expression+)
   ;
 
 datum

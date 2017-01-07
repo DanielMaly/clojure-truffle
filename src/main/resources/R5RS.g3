@@ -26,6 +26,20 @@ options {
    output=AST;
 }
 
+// output tokens
+tokens {
+    FORMALDEF;
+    IDENTIFIER;
+    COMMAND;
+    OPERATOR;
+    PROCEDURECALL;
+    SYNTAXRULE;
+    LITERAL;
+    QUOTATION;
+    LIST;
+}
+
+
 @parser::header {
 package parse;
 }
@@ -35,12 +49,8 @@ package parse;
 }
 
 @members {
-static class BeginCommandOrDefinitionNode extends CommonTree {public BeginCommandOrDefinitionNode(Token t) {super(t);}}
-static class DefinitionNode extends CommonTree {public DefinitionNode(Token t) {super(t);}}
-static class DefineSyntaxNode extends CommonTree {public DefineSyntaxNode(Token t) {super(t);}}
-static class DefFormalsNode extends CommonTree {public DefFormalsNode(Token t) {super(t);}}
+static class CommandDefinitionSequenceNode extends CommonTree {public CommandDefinitionSequenceNode(Token t) {super(t);}}
 static class VariableNode extends CommonTree {public VariableNode(Token t) {super(t);}}
-static class EllipsisNode extends CommonTree {public EllipsisNode(Token t) {super(t);}}
 }
 
 parse
@@ -50,23 +60,30 @@ parse
 commandOrDefinition
   :  (syntaxDefinition)=>              syntaxDefinition
   |  (definition)=>                    definition
-  |  ('(' BEGIN commandOrDefinition)=> '('! BEGIN<BeginCommandOrDefinitionNode>^ commandOrDefinition+ ')'!
+  |  ('(' BEGIN commandOrDefinition)=> '('! BEGIN<CommandDefinitionSequenceNode>^ commandOrDefinition+ ')'!
   |                                    command
   ;
 
 syntaxDefinition
-  :  '('! DEFINE_SYNTAX<DefineSyntaxNode>^ keyword transformerSpec ')'!
+  :  '('! DEFINE_SYNTAX^ keyword transformerSpec ')'!
   ;
 
 definition
-  :  '('! DEFINE<DefinitionNode>^ ( variable expression ')'!
-                | '('! variable defFormals ')'! body ')'!
-                )
-  |  '('! BEGIN^ definition* ')'!
+  : (simpleDefinition) => simpleDefinition
+  | (formalDefinition) => formalDefinition
+  | '('! BEGIN^ definition* ')'!
   ;
 
-defFormals
-  :  variable* ('.' variable)?
+simpleDefinition
+  :  '('! DEFINE^ variable expression ')'!
+  ;
+
+formalDefinition
+  : '(' DEFINE formalDefDecl body ')' -> ^(FORMALDEF formalDefDecl body)
+  ;
+
+formalDefDecl
+  : '('! variable variable* ('.' variable)? ')'!
   ;
 
 keyword
@@ -74,11 +91,11 @@ keyword
   ;
 
 transformerSpec
-  :  '(' SYNTAX_RULES '(' identifier* ')' syntaxRule* ')'
+  :  '('! SYNTAX_RULES^ '('! identifier* ')'! syntaxRule* ')'!
   ;
 
 syntaxRule
-  :  '(' pattern template ')'
+  :  '(' pattern template ')' -> ^(SYNTAXRULE pattern template)
   ;
 
 pattern
@@ -116,12 +133,12 @@ templateDatum
   ;
 
 command
-  :  expression
+  :  expression -> ^(COMMAND expression)
   ;
 
 identifier
-  :  syntacticKeyword
-  |  variable
+  :  syntacticKeyword -> ^(IDENTIFIER syntacticKeyword)
+  |  variable -> ^(IDENTIFIER variable)
   ;
 
 syntacticKeyword
@@ -153,7 +170,7 @@ expressionKeyword
 
 expression
   :  (variable)=>          variable
-  |  (literal)=>           literal
+  |  (literal)=>           literal -> ^(LITERAL literal)
   |  (lambdaExpression)=>  lambdaExpression
   |  (conditional)=>       conditional
   |  (assignment)=>        assignment
@@ -165,16 +182,16 @@ expression
 
 variable
   :  VARIABLE<VariableNode>^
-  |  ELLIPSIS<EllipsisNode>^
+  |  ELLIPSIS^
   ;
 
 literal
-  :  quotation
+  :  quotation -> ^(QUOTATION quotation)
   |  selfEvaluating
   ;
 
 quotation
-  :  '\'' datum
+  :  '\''! datum
   |  '(' QUOTE datum ')'
   ;
 
@@ -267,11 +284,11 @@ doResult
   ;
 
 procedureCall
-  :  '(' operator operand* ')'
+  :  '(' operator operand* ')' -> ^(PROCEDURECALL operator operand*)
   ;
 
 operator
-  :  expression
+  :  expression -> ^(OPERATOR expression)
   ;
 
 operand
@@ -316,7 +333,7 @@ simpleDatum
   ;
 
 compoundDatum
-  :  list
+  :  list -> ^(LIST list)
   |  vector
   ;
 

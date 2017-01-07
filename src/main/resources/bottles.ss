@@ -1,5 +1,7 @@
 ;;; Tim Goodwin (tim@pipex.net)
 
+(define (a b . c) '(1 2 3 4 5 6 7))
+
 (define bottles
   (lambda (n)
     (cond ((= n 0) (display "No more bottles"))

@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 R5RS.g3 2017-01-07 20:45:16
+// $ANTLR 3.5.2 R5RS.g3 2017-01-09 18:26:45
 
 package parse;
 
@@ -11,104 +11,123 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class R5RSLexer extends Lexer {
 	public static final int EOF=-1;
-	public static final int T__93=93;
-	public static final int T__94=94;
-	public static final int T__95=95;
-	public static final int T__96=96;
-	public static final int T__97=97;
-	public static final int T__98=98;
-	public static final int T__99=99;
-	public static final int T__100=100;
-	public static final int T__101=101;
-	public static final int AND=4;
-	public static final int ARROW=5;
-	public static final int BEGIN=6;
-	public static final int CASE=7;
-	public static final int CHARACTER=8;
-	public static final int CHARACTER_NAME=9;
-	public static final int COMMAND=10;
-	public static final int COMMENT=11;
-	public static final int COMPLEX_10=12;
-	public static final int COMPLEX_16=13;
-	public static final int COMPLEX_2=14;
-	public static final int COMPLEX_8=15;
-	public static final int COND=16;
-	public static final int CONDCLAUSE=17;
-	public static final int DECIMAL_10=18;
-	public static final int DEFINE=19;
-	public static final int DEFINE_SYNTAX=20;
-	public static final int DELAY=21;
-	public static final int DIGIT=22;
-	public static final int DIGIT_16=23;
-	public static final int DIGIT_2=24;
-	public static final int DIGIT_8=25;
-	public static final int DO=26;
-	public static final int ELLIPSIS=27;
-	public static final int ELSE=28;
-	public static final int EMPTYFORMALS=29;
-	public static final int EXACTNESS=30;
-	public static final int EXPONENT_MARKER=31;
-	public static final int FALSE=32;
-	public static final int FORMALDEF=33;
-	public static final int FORMALS=34;
-	public static final int IDENTIFIER=35;
-	public static final int IF=36;
-	public static final int INITIAL=37;
-	public static final int LAMBDA=38;
-	public static final int LET=39;
-	public static final int LETREC=40;
-	public static final int LETREC_SYNTAX=41;
-	public static final int LETSTAR=42;
-	public static final int LETTER=43;
-	public static final int LET_SYNTAX=44;
-	public static final int LIST=45;
-	public static final int LITERAL=46;
-	public static final int NUM_10=47;
-	public static final int NUM_16=48;
-	public static final int NUM_2=49;
-	public static final int NUM_8=50;
-	public static final int OR=51;
-	public static final int PECULIAR_IDENTIFIER=52;
-	public static final int PREFIX_10=53;
-	public static final int PREFIX_16=54;
-	public static final int PREFIX_2=55;
-	public static final int PREFIX_8=56;
-	public static final int PROCEDURECALL=57;
-	public static final int QUASIQUOTE=58;
-	public static final int QUOTATION=59;
-	public static final int QUOTE=60;
-	public static final int RADIX_10=61;
-	public static final int RADIX_16=62;
-	public static final int RADIX_2=63;
-	public static final int RADIX_8=64;
-	public static final int REAL_10=65;
-	public static final int REAL_16=66;
-	public static final int REAL_2=67;
-	public static final int REAL_8=68;
-	public static final int SEQUENCE=69;
-	public static final int SET=70;
-	public static final int SIGN=71;
-	public static final int SPACE=72;
-	public static final int SPECIAL_INITIAL=73;
-	public static final int SPECIAL_SUBSEQUENT=74;
-	public static final int STRING=75;
-	public static final int STRING_ELEMENT=76;
-	public static final int SUBSEQUENT=77;
-	public static final int SUFFIX=78;
-	public static final int SYNTAXRULE=79;
-	public static final int SYNTAX_RULES=80;
-	public static final int TRUE=81;
-	public static final int UINTEGER_10=82;
-	public static final int UINTEGER_16=83;
-	public static final int UINTEGER_2=84;
-	public static final int UINTEGER_8=85;
-	public static final int UNQUOTE=86;
-	public static final int UNQUOTE_SPLICING=87;
-	public static final int UREAL_10=88;
-	public static final int UREAL_16=89;
-	public static final int UREAL_2=90;
-	public static final int UREAL_8=91;
-	public static final int VARIABLE=92;
+	public static final int T__112=112;
+	public static final int T__113=113;
+	public static final int T__114=114;
+	public static final int T__115=115;
+	public static final int T__116=116;
+	public static final int T__117=117;
+	public static final int T__118=118;
+	public static final int T__119=119;
+	public static final int T__120=120;
+	public static final int ABBREVIATION=4;
+	public static final int AND=5;
+	public static final int ARROW=6;
+	public static final int BEGIN=7;
+	public static final int BINDINGSPEC=8;
+	public static final int BODY=9;
+	public static final int BOOL=10;
+	public static final int CASE=11;
+	public static final int CASECLAUSE=12;
+	public static final int CHAR=13;
+	public static final int CHARACTER=14;
+	public static final int CHARACTER_NAME=15;
+	public static final int COMMAND=16;
+	public static final int COMMENT=17;
+	public static final int COMPLEX_10=18;
+	public static final int COMPLEX_16=19;
+	public static final int COMPLEX_2=20;
+	public static final int COMPLEX_8=21;
+	public static final int COND=22;
+	public static final int CONDCLAUSE=23;
+	public static final int DECIMAL_10=24;
+	public static final int DEFINE=25;
+	public static final int DEFINE_SYNTAX=26;
+	public static final int DELAY=27;
+	public static final int DIGIT=28;
+	public static final int DIGIT_16=29;
+	public static final int DIGIT_2=30;
+	public static final int DIGIT_8=31;
+	public static final int DO=32;
+	public static final int DOCOMMANDS=33;
+	public static final int DORESULT=34;
+	public static final int ELLIPSIS=35;
+	public static final int ELSE=36;
+	public static final int EMPTYFORMALS=37;
+	public static final int EXACTNESS=38;
+	public static final int EXPONENT_MARKER=39;
+	public static final int FALSE=40;
+	public static final int FORMALDEF=41;
+	public static final int FORMALS=42;
+	public static final int IDENTIFIER=43;
+	public static final int IF=44;
+	public static final int INITIAL=45;
+	public static final int ITERATIONSPEC=46;
+	public static final int LAMBDA=47;
+	public static final int LET=48;
+	public static final int LETREC=49;
+	public static final int LETREC_SYNTAX=50;
+	public static final int LETSTAR=51;
+	public static final int LETTER=52;
+	public static final int LET_SYNTAX=53;
+	public static final int LIST=54;
+	public static final int LITERAL=55;
+	public static final int LOCALBINDING=56;
+	public static final int NUM10=57;
+	public static final int NUM16=58;
+	public static final int NUM2=59;
+	public static final int NUM8=60;
+	public static final int NUM_10=61;
+	public static final int NUM_16=62;
+	public static final int NUM_2=63;
+	public static final int NUM_8=64;
+	public static final int OR=65;
+	public static final int PECULIAR_IDENTIFIER=66;
+	public static final int PREFIX_10=67;
+	public static final int PREFIX_16=68;
+	public static final int PREFIX_2=69;
+	public static final int PREFIX_8=70;
+	public static final int PROCEDURECALL=71;
+	public static final int QUASIQUOTATION=72;
+	public static final int QUASIQUOTE=73;
+	public static final int QUOTATION=74;
+	public static final int QUOTE=75;
+	public static final int RADIX_10=76;
+	public static final int RADIX_16=77;
+	public static final int RADIX_2=78;
+	public static final int RADIX_8=79;
+	public static final int REAL_10=80;
+	public static final int REAL_16=81;
+	public static final int REAL_2=82;
+	public static final int REAL_8=83;
+	public static final int SELFEVALUATING=84;
+	public static final int SEQUENCE=85;
+	public static final int SET=86;
+	public static final int SIGN=87;
+	public static final int SPACE=88;
+	public static final int SPECIAL_INITIAL=89;
+	public static final int SPECIAL_SUBSEQUENT=90;
+	public static final int STR=91;
+	public static final int STRING=92;
+	public static final int STRING_ELEMENT=93;
+	public static final int SUBSEQUENT=94;
+	public static final int SUFFIX=95;
+	public static final int SYNTAXRULE=96;
+	public static final int SYNTAX_RULES=97;
+	public static final int TEST=98;
+	public static final int TRUE=99;
+	public static final int UINTEGER_10=100;
+	public static final int UINTEGER_16=101;
+	public static final int UINTEGER_2=102;
+	public static final int UINTEGER_8=103;
+	public static final int UNQUOTE=104;
+	public static final int UNQUOTE_SPLICING=105;
+	public static final int UREAL_10=106;
+	public static final int UREAL_16=107;
+	public static final int UREAL_2=108;
+	public static final int UREAL_8=109;
+	public static final int VARIABLE=110;
+	public static final int VECTOR=111;
 
 	// delegates
 	// delegators
@@ -125,13 +144,13 @@ public class R5RSLexer extends Lexer {
 	}
 	@Override public String getGrammarFileName() { return "R5RS.g3"; }
 
-	// $ANTLR start "T__93"
-	public final void mT__93() throws RecognitionException {
+	// $ANTLR start "T__112"
+	public final void mT__112() throws RecognitionException {
 		try {
-			int _type = T__93;
+			int _type = T__112;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:6:7: ( '#(' )
-			// R5RS.g3:6:9: '#('
+			// R5RS.g3:6:8: ( '#(' )
+			// R5RS.g3:6:10: '#('
 			{
 			match("#("); 
 
@@ -144,15 +163,15 @@ public class R5RSLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "T__93"
+	// $ANTLR end "T__112"
 
-	// $ANTLR start "T__94"
-	public final void mT__94() throws RecognitionException {
+	// $ANTLR start "T__113"
+	public final void mT__113() throws RecognitionException {
 		try {
-			int _type = T__94;
+			int _type = T__113;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:7:7: ( '(' )
-			// R5RS.g3:7:9: '('
+			// R5RS.g3:7:8: ( '(' )
+			// R5RS.g3:7:10: '('
 			{
 			match('('); 
 			}
@@ -164,15 +183,15 @@ public class R5RSLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "T__94"
+	// $ANTLR end "T__113"
 
-	// $ANTLR start "T__95"
-	public final void mT__95() throws RecognitionException {
+	// $ANTLR start "T__114"
+	public final void mT__114() throws RecognitionException {
 		try {
-			int _type = T__95;
+			int _type = T__114;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:8:7: ( '()' )
-			// R5RS.g3:8:9: '()'
+			// R5RS.g3:8:8: ( '()' )
+			// R5RS.g3:8:10: '()'
 			{
 			match("()"); 
 
@@ -185,15 +204,15 @@ public class R5RSLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "T__95"
+	// $ANTLR end "T__114"
 
-	// $ANTLR start "T__96"
-	public final void mT__96() throws RecognitionException {
+	// $ANTLR start "T__115"
+	public final void mT__115() throws RecognitionException {
 		try {
-			int _type = T__96;
+			int _type = T__115;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:9:7: ( ')' )
-			// R5RS.g3:9:9: ')'
+			// R5RS.g3:9:8: ( ')' )
+			// R5RS.g3:9:10: ')'
 			{
 			match(')'); 
 			}
@@ -205,15 +224,15 @@ public class R5RSLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "T__96"
+	// $ANTLR end "T__115"
 
-	// $ANTLR start "T__97"
-	public final void mT__97() throws RecognitionException {
+	// $ANTLR start "T__116"
+	public final void mT__116() throws RecognitionException {
 		try {
-			int _type = T__97;
+			int _type = T__116;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:10:7: ( ',' )
-			// R5RS.g3:10:9: ','
+			// R5RS.g3:10:8: ( ',' )
+			// R5RS.g3:10:10: ','
 			{
 			match(','); 
 			}
@@ -225,15 +244,15 @@ public class R5RSLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "T__97"
+	// $ANTLR end "T__116"
 
-	// $ANTLR start "T__98"
-	public final void mT__98() throws RecognitionException {
+	// $ANTLR start "T__117"
+	public final void mT__117() throws RecognitionException {
 		try {
-			int _type = T__98;
+			int _type = T__117;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:11:7: ( ',@' )
-			// R5RS.g3:11:9: ',@'
+			// R5RS.g3:11:8: ( ',@' )
+			// R5RS.g3:11:10: ',@'
 			{
 			match(",@"); 
 
@@ -246,15 +265,15 @@ public class R5RSLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "T__98"
+	// $ANTLR end "T__117"
 
-	// $ANTLR start "T__99"
-	public final void mT__99() throws RecognitionException {
+	// $ANTLR start "T__118"
+	public final void mT__118() throws RecognitionException {
 		try {
-			int _type = T__99;
+			int _type = T__118;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:12:7: ( '.' )
-			// R5RS.g3:12:9: '.'
+			// R5RS.g3:12:8: ( '.' )
+			// R5RS.g3:12:10: '.'
 			{
 			match('.'); 
 			}
@@ -266,12 +285,12 @@ public class R5RSLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "T__99"
+	// $ANTLR end "T__118"
 
-	// $ANTLR start "T__100"
-	public final void mT__100() throws RecognitionException {
+	// $ANTLR start "T__119"
+	public final void mT__119() throws RecognitionException {
 		try {
-			int _type = T__100;
+			int _type = T__119;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
 			// R5RS.g3:13:8: ( '\\'' )
 			// R5RS.g3:13:10: '\\''
@@ -286,12 +305,12 @@ public class R5RSLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "T__100"
+	// $ANTLR end "T__119"
 
-	// $ANTLR start "T__101"
-	public final void mT__101() throws RecognitionException {
+	// $ANTLR start "T__120"
+	public final void mT__120() throws RecognitionException {
 		try {
-			int _type = T__101;
+			int _type = T__120;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
 			// R5RS.g3:14:8: ( '`' )
 			// R5RS.g3:14:10: '`'
@@ -306,15 +325,15 @@ public class R5RSLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "T__101"
+	// $ANTLR end "T__120"
 
 	// $ANTLR start "LET_SYNTAX"
 	public final void mLET_SYNTAX() throws RecognitionException {
 		try {
 			int _type = LET_SYNTAX;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:418:18: ( 'let-syntax' )
-			// R5RS.g3:418:20: 'let-syntax'
+			// R5RS.g3:453:18: ( 'let-syntax' )
+			// R5RS.g3:453:20: 'let-syntax'
 			{
 			match("let-syntax"); 
 
@@ -334,8 +353,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = LETREC_SYNTAX;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:419:18: ( 'letrec-syntax' )
-			// R5RS.g3:419:20: 'letrec-syntax'
+			// R5RS.g3:454:18: ( 'letrec-syntax' )
+			// R5RS.g3:454:20: 'letrec-syntax'
 			{
 			match("letrec-syntax"); 
 
@@ -355,8 +374,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = SYNTAX_RULES;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:420:18: ( 'syntax-rules' )
-			// R5RS.g3:420:20: 'syntax-rules'
+			// R5RS.g3:455:18: ( 'syntax-rules' )
+			// R5RS.g3:455:20: 'syntax-rules'
 			{
 			match("syntax-rules"); 
 
@@ -376,8 +395,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = DEFINE_SYNTAX;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:421:18: ( 'define-syntax' )
-			// R5RS.g3:421:20: 'define-syntax'
+			// R5RS.g3:456:18: ( 'define-syntax' )
+			// R5RS.g3:456:20: 'define-syntax'
 			{
 			match("define-syntax"); 
 
@@ -397,8 +416,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = ELSE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:424:18: ( 'else' )
-			// R5RS.g3:424:20: 'else'
+			// R5RS.g3:459:18: ( 'else' )
+			// R5RS.g3:459:20: 'else'
 			{
 			match("else"); 
 
@@ -418,8 +437,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = ARROW;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:425:18: ( '=>' )
-			// R5RS.g3:425:20: '=>'
+			// R5RS.g3:460:18: ( '=>' )
+			// R5RS.g3:460:20: '=>'
 			{
 			match("=>"); 
 
@@ -439,8 +458,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = DEFINE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:426:18: ( 'define' )
-			// R5RS.g3:426:20: 'define'
+			// R5RS.g3:461:18: ( 'define' )
+			// R5RS.g3:461:20: 'define'
 			{
 			match("define"); 
 
@@ -460,8 +479,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = UNQUOTE_SPLICING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:427:18: ( 'unquote-splicing' )
-			// R5RS.g3:427:20: 'unquote-splicing'
+			// R5RS.g3:462:18: ( 'unquote-splicing' )
+			// R5RS.g3:462:20: 'unquote-splicing'
 			{
 			match("unquote-splicing"); 
 
@@ -481,8 +500,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = UNQUOTE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:428:18: ( 'unquote' )
-			// R5RS.g3:428:20: 'unquote'
+			// R5RS.g3:463:18: ( 'unquote' )
+			// R5RS.g3:463:20: 'unquote'
 			{
 			match("unquote"); 
 
@@ -502,8 +521,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = QUOTE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:431:18: ( 'quote' )
-			// R5RS.g3:431:20: 'quote'
+			// R5RS.g3:466:18: ( 'quote' )
+			// R5RS.g3:466:20: 'quote'
 			{
 			match("quote"); 
 
@@ -523,8 +542,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = LAMBDA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:432:18: ( 'lambda' )
-			// R5RS.g3:432:20: 'lambda'
+			// R5RS.g3:467:18: ( 'lambda' )
+			// R5RS.g3:467:20: 'lambda'
 			{
 			match("lambda"); 
 
@@ -544,8 +563,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = IF;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:433:18: ( 'if' )
-			// R5RS.g3:433:20: 'if'
+			// R5RS.g3:468:18: ( 'if' )
+			// R5RS.g3:468:20: 'if'
 			{
 			match("if"); 
 
@@ -565,8 +584,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = SET;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:434:18: ( 'set!' )
-			// R5RS.g3:434:20: 'set!'
+			// R5RS.g3:469:18: ( 'set!' )
+			// R5RS.g3:469:20: 'set!'
 			{
 			match("set!"); 
 
@@ -586,8 +605,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = BEGIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:435:18: ( 'begin' )
-			// R5RS.g3:435:20: 'begin'
+			// R5RS.g3:470:18: ( 'begin' )
+			// R5RS.g3:470:20: 'begin'
 			{
 			match("begin"); 
 
@@ -607,8 +626,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = COND;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:436:18: ( 'cond' )
-			// R5RS.g3:436:20: 'cond'
+			// R5RS.g3:471:18: ( 'cond' )
+			// R5RS.g3:471:20: 'cond'
 			{
 			match("cond"); 
 
@@ -628,8 +647,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = AND;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:437:18: ( 'and' )
-			// R5RS.g3:437:20: 'and'
+			// R5RS.g3:472:18: ( 'and' )
+			// R5RS.g3:472:20: 'and'
 			{
 			match("and"); 
 
@@ -649,8 +668,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = OR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:438:18: ( 'or' )
-			// R5RS.g3:438:20: 'or'
+			// R5RS.g3:473:18: ( 'or' )
+			// R5RS.g3:473:20: 'or'
 			{
 			match("or"); 
 
@@ -670,8 +689,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = CASE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:439:18: ( 'case' )
-			// R5RS.g3:439:20: 'case'
+			// R5RS.g3:474:18: ( 'case' )
+			// R5RS.g3:474:20: 'case'
 			{
 			match("case"); 
 
@@ -691,8 +710,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = LET;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:440:18: ( 'let' )
-			// R5RS.g3:440:20: 'let'
+			// R5RS.g3:475:18: ( 'let' )
+			// R5RS.g3:475:20: 'let'
 			{
 			match("let"); 
 
@@ -712,8 +731,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = LETSTAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:441:18: ( 'let*' )
-			// R5RS.g3:441:20: 'let*'
+			// R5RS.g3:476:18: ( 'let*' )
+			// R5RS.g3:476:20: 'let*'
 			{
 			match("let*"); 
 
@@ -733,8 +752,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = LETREC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:442:18: ( 'letrec' )
-			// R5RS.g3:442:20: 'letrec'
+			// R5RS.g3:477:18: ( 'letrec' )
+			// R5RS.g3:477:20: 'letrec'
 			{
 			match("letrec"); 
 
@@ -754,8 +773,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = DO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:443:18: ( 'do' )
-			// R5RS.g3:443:20: 'do'
+			// R5RS.g3:478:18: ( 'do' )
+			// R5RS.g3:478:20: 'do'
 			{
 			match("do"); 
 
@@ -775,8 +794,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = DELAY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:444:18: ( 'delay' )
-			// R5RS.g3:444:20: 'delay'
+			// R5RS.g3:479:18: ( 'delay' )
+			// R5RS.g3:479:20: 'delay'
 			{
 			match("delay"); 
 
@@ -796,8 +815,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = QUASIQUOTE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:445:18: ( 'quasiquote' )
-			// R5RS.g3:445:20: 'quasiquote'
+			// R5RS.g3:480:18: ( 'quasiquote' )
+			// R5RS.g3:480:20: 'quasiquote'
 			{
 			match("quasiquote"); 
 
@@ -817,8 +836,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = NUM_2;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:447:8: ( PREFIX_2 COMPLEX_2 )
-			// R5RS.g3:447:10: PREFIX_2 COMPLEX_2
+			// R5RS.g3:482:8: ( PREFIX_2 COMPLEX_2 )
+			// R5RS.g3:482:10: PREFIX_2 COMPLEX_2
 			{
 			mPREFIX_2(); 
 
@@ -840,8 +859,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = NUM_8;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:448:8: ( PREFIX_8 COMPLEX_8 )
-			// R5RS.g3:448:10: PREFIX_8 COMPLEX_8
+			// R5RS.g3:483:8: ( PREFIX_8 COMPLEX_8 )
+			// R5RS.g3:483:10: PREFIX_8 COMPLEX_8
 			{
 			mPREFIX_8(); 
 
@@ -863,10 +882,10 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = NUM_10;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:449:8: ( ( PREFIX_10 )? COMPLEX_10 )
-			// R5RS.g3:449:10: ( PREFIX_10 )? COMPLEX_10
+			// R5RS.g3:484:8: ( ( PREFIX_10 )? COMPLEX_10 )
+			// R5RS.g3:484:10: ( PREFIX_10 )? COMPLEX_10
 			{
-			// R5RS.g3:449:10: ( PREFIX_10 )?
+			// R5RS.g3:484:10: ( PREFIX_10 )?
 			int alt1=2;
 			int LA1_0 = input.LA(1);
 			if ( (LA1_0=='#') ) {
@@ -874,7 +893,7 @@ public class R5RSLexer extends Lexer {
 			}
 			switch (alt1) {
 				case 1 :
-					// R5RS.g3:449:10: PREFIX_10
+					// R5RS.g3:484:10: PREFIX_10
 					{
 					mPREFIX_10(); 
 
@@ -901,8 +920,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = NUM_16;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:450:8: ( PREFIX_16 COMPLEX_16 )
-			// R5RS.g3:450:10: PREFIX_16 COMPLEX_16
+			// R5RS.g3:485:8: ( PREFIX_16 COMPLEX_16 )
+			// R5RS.g3:485:10: PREFIX_16 COMPLEX_16
 			{
 			mPREFIX_16(); 
 
@@ -924,8 +943,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = ELLIPSIS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:452:10: ( '...' )
-			// R5RS.g3:452:12: '...'
+			// R5RS.g3:487:10: ( '...' )
+			// R5RS.g3:487:12: '...'
 			{
 			match("..."); 
 
@@ -945,7 +964,7 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = VARIABLE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:455:3: ( INITIAL ( SUBSEQUENT )* | PECULIAR_IDENTIFIER )
+			// R5RS.g3:490:3: ( INITIAL ( SUBSEQUENT )* | PECULIAR_IDENTIFIER )
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0=='!'||(LA3_0 >= '$' && LA3_0 <= '&')||LA3_0=='*'||LA3_0=='/'||LA3_0==':'||(LA3_0 >= '<' && LA3_0 <= '?')||(LA3_0 >= 'A' && LA3_0 <= 'Z')||(LA3_0 >= '^' && LA3_0 <= '_')||(LA3_0 >= 'a' && LA3_0 <= 'z')||LA3_0=='~') ) {
@@ -963,11 +982,11 @@ public class R5RSLexer extends Lexer {
 
 			switch (alt3) {
 				case 1 :
-					// R5RS.g3:455:6: INITIAL ( SUBSEQUENT )*
+					// R5RS.g3:490:6: INITIAL ( SUBSEQUENT )*
 					{
 					mINITIAL(); 
 
-					// R5RS.g3:455:14: ( SUBSEQUENT )*
+					// R5RS.g3:490:14: ( SUBSEQUENT )*
 					loop2:
 					while (true) {
 						int alt2=2;
@@ -999,7 +1018,7 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:456:6: PECULIAR_IDENTIFIER
+					// R5RS.g3:491:6: PECULIAR_IDENTIFIER
 					{
 					mPECULIAR_IDENTIFIER(); 
 
@@ -1021,11 +1040,11 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = STRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:459:8: ( '\"' ( STRING_ELEMENT )* '\"' )
-			// R5RS.g3:459:10: '\"' ( STRING_ELEMENT )* '\"'
+			// R5RS.g3:494:8: ( '\"' ( STRING_ELEMENT )* '\"' )
+			// R5RS.g3:494:10: '\"' ( STRING_ELEMENT )* '\"'
 			{
 			match('\"'); 
-			// R5RS.g3:459:14: ( STRING_ELEMENT )*
+			// R5RS.g3:494:14: ( STRING_ELEMENT )*
 			loop4:
 			while (true) {
 				int alt4=2;
@@ -1036,7 +1055,7 @@ public class R5RSLexer extends Lexer {
 
 				switch (alt4) {
 				case 1 :
-					// R5RS.g3:459:14: STRING_ELEMENT
+					// R5RS.g3:494:14: STRING_ELEMENT
 					{
 					mSTRING_ELEMENT(); 
 
@@ -1065,12 +1084,12 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = CHARACTER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:461:11: ( '#\\\\' (~ ( ' ' | '\\n' ) | CHARACTER_NAME ) )
-			// R5RS.g3:461:13: '#\\\\' (~ ( ' ' | '\\n' ) | CHARACTER_NAME )
+			// R5RS.g3:496:11: ( '#\\\\' (~ ( ' ' | '\\n' ) | CHARACTER_NAME ) )
+			// R5RS.g3:496:13: '#\\\\' (~ ( ' ' | '\\n' ) | CHARACTER_NAME )
 			{
 			match("#\\"); 
 
-			// R5RS.g3:461:19: (~ ( ' ' | '\\n' ) | CHARACTER_NAME )
+			// R5RS.g3:496:19: (~ ( ' ' | '\\n' ) | CHARACTER_NAME )
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0=='s') ) {
@@ -1107,7 +1126,7 @@ public class R5RSLexer extends Lexer {
 
 			switch (alt5) {
 				case 1 :
-					// R5RS.g3:461:20: ~ ( ' ' | '\\n' )
+					// R5RS.g3:496:20: ~ ( ' ' | '\\n' )
 					{
 					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\u001F')||(input.LA(1) >= '!' && input.LA(1) <= '\uFFFF') ) {
 						input.consume();
@@ -1120,7 +1139,7 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:461:36: CHARACTER_NAME
+					// R5RS.g3:496:36: CHARACTER_NAME
 					{
 					mCHARACTER_NAME(); 
 
@@ -1145,8 +1164,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = TRUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:463:7: ( '#' ( 't' | 'T' ) )
-			// R5RS.g3:463:9: '#' ( 't' | 'T' )
+			// R5RS.g3:498:7: ( '#' ( 't' | 'T' ) )
+			// R5RS.g3:498:9: '#' ( 't' | 'T' )
 			{
 			match('#'); 
 			if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
@@ -1173,8 +1192,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = FALSE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:464:7: ( '#' ( 'f' | 'F' ) )
-			// R5RS.g3:464:9: '#' ( 'f' | 'F' )
+			// R5RS.g3:499:7: ( '#' ( 'f' | 'F' ) )
+			// R5RS.g3:499:9: '#' ( 'f' | 'F' )
 			{
 			match('#'); 
 			if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
@@ -1201,8 +1220,8 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = SPACE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:467:9: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// R5RS.g3:467:11: ( ' ' | '\\t' | '\\r' | '\\n' )
+			// R5RS.g3:502:9: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// R5RS.g3:502:11: ( ' ' | '\\t' | '\\r' | '\\n' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -1229,11 +1248,11 @@ public class R5RSLexer extends Lexer {
 		try {
 			int _type = COMMENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// R5RS.g3:468:9: ( ';' (~ ( '\\r' | '\\n' ) )* )
-			// R5RS.g3:468:11: ';' (~ ( '\\r' | '\\n' ) )*
+			// R5RS.g3:503:9: ( ';' (~ ( '\\r' | '\\n' ) )* )
+			// R5RS.g3:503:11: ';' (~ ( '\\r' | '\\n' ) )*
 			{
 			match(';'); 
-			// R5RS.g3:468:15: (~ ( '\\r' | '\\n' ) )*
+			// R5RS.g3:503:15: (~ ( '\\r' | '\\n' ) )*
 			loop6:
 			while (true) {
 				int alt6=2;
@@ -1277,7 +1296,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "INITIAL"
 	public final void mINITIAL() throws RecognitionException {
 		try {
-			// R5RS.g3:471:18: ( LETTER | SPECIAL_INITIAL )
+			// R5RS.g3:506:18: ( LETTER | SPECIAL_INITIAL )
 			// R5RS.g3:
 			{
 			if ( input.LA(1)=='!'||(input.LA(1) >= '$' && input.LA(1) <= '&')||input.LA(1)=='*'||input.LA(1)=='/'||input.LA(1)==':'||(input.LA(1) >= '<' && input.LA(1) <= '?')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= '^' && input.LA(1) <= '_')||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='~' ) {
@@ -1300,7 +1319,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "LETTER"
 	public final void mLETTER() throws RecognitionException {
 		try {
-			// R5RS.g3:472:17: ( 'a' .. 'z' | 'A' .. 'Z' )
+			// R5RS.g3:507:17: ( 'a' .. 'z' | 'A' .. 'Z' )
 			// R5RS.g3:
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
@@ -1323,7 +1342,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "SPECIAL_INITIAL"
 	public final void mSPECIAL_INITIAL() throws RecognitionException {
 		try {
-			// R5RS.g3:473:26: ( '!' | '$' | '%' | '&' | '*' | '/' | ':' | '<' | '=' | '>' | '?' | '^' | '_' | '~' )
+			// R5RS.g3:508:26: ( '!' | '$' | '%' | '&' | '*' | '/' | ':' | '<' | '=' | '>' | '?' | '^' | '_' | '~' )
 			// R5RS.g3:
 			{
 			if ( input.LA(1)=='!'||(input.LA(1) >= '$' && input.LA(1) <= '&')||input.LA(1)=='*'||input.LA(1)=='/'||input.LA(1)==':'||(input.LA(1) >= '<' && input.LA(1) <= '?')||(input.LA(1) >= '^' && input.LA(1) <= '_')||input.LA(1)=='~' ) {
@@ -1346,7 +1365,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "SUBSEQUENT"
 	public final void mSUBSEQUENT() throws RecognitionException {
 		try {
-			// R5RS.g3:474:21: ( INITIAL | DIGIT | SPECIAL_SUBSEQUENT )
+			// R5RS.g3:509:21: ( INITIAL | DIGIT | SPECIAL_SUBSEQUENT )
 			// R5RS.g3:
 			{
 			if ( input.LA(1)=='!'||(input.LA(1) >= '$' && input.LA(1) <= '&')||(input.LA(1) >= '*' && input.LA(1) <= '+')||(input.LA(1) >= '-' && input.LA(1) <= ':')||(input.LA(1) >= '<' && input.LA(1) <= 'Z')||(input.LA(1) >= '^' && input.LA(1) <= '_')||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='~' ) {
@@ -1369,7 +1388,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "DIGIT"
 	public final void mDIGIT() throws RecognitionException {
 		try {
-			// R5RS.g3:475:16: ( '0' .. '9' )
+			// R5RS.g3:510:16: ( '0' .. '9' )
 			// R5RS.g3:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
@@ -1392,7 +1411,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "SPECIAL_SUBSEQUENT"
 	public final void mSPECIAL_SUBSEQUENT() throws RecognitionException {
 		try {
-			// R5RS.g3:476:29: ( '.' | '+' | '-' | '@' )
+			// R5RS.g3:511:29: ( '.' | '+' | '-' | '@' )
 			// R5RS.g3:
 			{
 			if ( input.LA(1)=='+'||(input.LA(1) >= '-' && input.LA(1) <= '.')||input.LA(1)=='@' ) {
@@ -1415,7 +1434,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "PECULIAR_IDENTIFIER"
 	public final void mPECULIAR_IDENTIFIER() throws RecognitionException {
 		try {
-			// R5RS.g3:477:30: ( '+' | '-' )
+			// R5RS.g3:512:30: ( '+' | '-' )
 			// R5RS.g3:
 			{
 			if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
@@ -1438,7 +1457,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "STRING_ELEMENT"
 	public final void mSTRING_ELEMENT() throws RecognitionException {
 		try {
-			// R5RS.g3:478:25: (~ ( '\"' | '\\\\' ) | '\\\\' ( '\"' | '\\\\' ) )
+			// R5RS.g3:513:25: (~ ( '\"' | '\\\\' ) | '\\\\' ( '\"' | '\\\\' ) )
 			int alt7=2;
 			int LA7_0 = input.LA(1);
 			if ( ((LA7_0 >= '\u0000' && LA7_0 <= '!')||(LA7_0 >= '#' && LA7_0 <= '[')||(LA7_0 >= ']' && LA7_0 <= '\uFFFF')) ) {
@@ -1456,7 +1475,7 @@ public class R5RSLexer extends Lexer {
 
 			switch (alt7) {
 				case 1 :
-					// R5RS.g3:478:27: ~ ( '\"' | '\\\\' )
+					// R5RS.g3:513:27: ~ ( '\"' | '\\\\' )
 					{
 					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
 						input.consume();
@@ -1469,7 +1488,7 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:478:43: '\\\\' ( '\"' | '\\\\' )
+					// R5RS.g3:513:43: '\\\\' ( '\"' | '\\\\' )
 					{
 					match('\\'); 
 					if ( input.LA(1)=='\"'||input.LA(1)=='\\' ) {
@@ -1494,7 +1513,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "CHARACTER_NAME"
 	public final void mCHARACTER_NAME() throws RecognitionException {
 		try {
-			// R5RS.g3:479:25: ( 'space' | 'newline' )
+			// R5RS.g3:514:25: ( 'space' | 'newline' )
 			int alt8=2;
 			int LA8_0 = input.LA(1);
 			if ( (LA8_0=='s') ) {
@@ -1512,14 +1531,14 @@ public class R5RSLexer extends Lexer {
 
 			switch (alt8) {
 				case 1 :
-					// R5RS.g3:479:27: 'space'
+					// R5RS.g3:514:27: 'space'
 					{
 					match("space"); 
 
 					}
 					break;
 				case 2 :
-					// R5RS.g3:479:37: 'newline'
+					// R5RS.g3:514:37: 'newline'
 					{
 					match("newline"); 
 
@@ -1537,16 +1556,16 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "COMPLEX_2"
 	public final void mCOMPLEX_2() throws RecognitionException {
 		try {
-			// R5RS.g3:482:3: ( REAL_2 ( '@' REAL_2 )? | ( REAL_2 )? SIGN ( UREAL_2 )? ( 'i' | 'I' ) )
+			// R5RS.g3:517:3: ( REAL_2 ( '@' REAL_2 )? | ( REAL_2 )? SIGN ( UREAL_2 )? ( 'i' | 'I' ) )
 			int alt12=2;
 			alt12 = dfa12.predict(input);
 			switch (alt12) {
 				case 1 :
-					// R5RS.g3:482:6: REAL_2 ( '@' REAL_2 )?
+					// R5RS.g3:517:6: REAL_2 ( '@' REAL_2 )?
 					{
 					mREAL_2(); 
 
-					// R5RS.g3:482:13: ( '@' REAL_2 )?
+					// R5RS.g3:517:13: ( '@' REAL_2 )?
 					int alt9=2;
 					int LA9_0 = input.LA(1);
 					if ( (LA9_0=='@') ) {
@@ -1554,7 +1573,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt9) {
 						case 1 :
-							// R5RS.g3:482:14: '@' REAL_2
+							// R5RS.g3:517:14: '@' REAL_2
 							{
 							match('@'); 
 							mREAL_2(); 
@@ -1567,14 +1586,14 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:483:6: ( REAL_2 )? SIGN ( UREAL_2 )? ( 'i' | 'I' )
+					// R5RS.g3:518:6: ( REAL_2 )? SIGN ( UREAL_2 )? ( 'i' | 'I' )
 					{
-					// R5RS.g3:483:6: ( REAL_2 )?
+					// R5RS.g3:518:6: ( REAL_2 )?
 					int alt10=2;
 					alt10 = dfa10.predict(input);
 					switch (alt10) {
 						case 1 :
-							// R5RS.g3:483:6: REAL_2
+							// R5RS.g3:518:6: REAL_2
 							{
 							mREAL_2(); 
 
@@ -1585,7 +1604,7 @@ public class R5RSLexer extends Lexer {
 
 					mSIGN(); 
 
-					// R5RS.g3:483:19: ( UREAL_2 )?
+					// R5RS.g3:518:19: ( UREAL_2 )?
 					int alt11=2;
 					int LA11_0 = input.LA(1);
 					if ( ((LA11_0 >= '0' && LA11_0 <= '1')) ) {
@@ -1593,7 +1612,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt11) {
 						case 1 :
-							// R5RS.g3:483:19: UREAL_2
+							// R5RS.g3:518:19: UREAL_2
 							{
 							mUREAL_2(); 
 
@@ -1624,16 +1643,16 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "COMPLEX_8"
 	public final void mCOMPLEX_8() throws RecognitionException {
 		try {
-			// R5RS.g3:487:3: ( REAL_8 ( '@' REAL_8 )? | ( REAL_8 )? SIGN ( UREAL_8 )? ( 'i' | 'I' ) )
+			// R5RS.g3:522:3: ( REAL_8 ( '@' REAL_8 )? | ( REAL_8 )? SIGN ( UREAL_8 )? ( 'i' | 'I' ) )
 			int alt16=2;
 			alt16 = dfa16.predict(input);
 			switch (alt16) {
 				case 1 :
-					// R5RS.g3:487:6: REAL_8 ( '@' REAL_8 )?
+					// R5RS.g3:522:6: REAL_8 ( '@' REAL_8 )?
 					{
 					mREAL_8(); 
 
-					// R5RS.g3:487:13: ( '@' REAL_8 )?
+					// R5RS.g3:522:13: ( '@' REAL_8 )?
 					int alt13=2;
 					int LA13_0 = input.LA(1);
 					if ( (LA13_0=='@') ) {
@@ -1641,7 +1660,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt13) {
 						case 1 :
-							// R5RS.g3:487:14: '@' REAL_8
+							// R5RS.g3:522:14: '@' REAL_8
 							{
 							match('@'); 
 							mREAL_8(); 
@@ -1654,14 +1673,14 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:488:6: ( REAL_8 )? SIGN ( UREAL_8 )? ( 'i' | 'I' )
+					// R5RS.g3:523:6: ( REAL_8 )? SIGN ( UREAL_8 )? ( 'i' | 'I' )
 					{
-					// R5RS.g3:488:6: ( REAL_8 )?
+					// R5RS.g3:523:6: ( REAL_8 )?
 					int alt14=2;
 					alt14 = dfa14.predict(input);
 					switch (alt14) {
 						case 1 :
-							// R5RS.g3:488:6: REAL_8
+							// R5RS.g3:523:6: REAL_8
 							{
 							mREAL_8(); 
 
@@ -1672,7 +1691,7 @@ public class R5RSLexer extends Lexer {
 
 					mSIGN(); 
 
-					// R5RS.g3:488:19: ( UREAL_8 )?
+					// R5RS.g3:523:19: ( UREAL_8 )?
 					int alt15=2;
 					int LA15_0 = input.LA(1);
 					if ( ((LA15_0 >= '0' && LA15_0 <= '7')) ) {
@@ -1680,7 +1699,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt15) {
 						case 1 :
-							// R5RS.g3:488:19: UREAL_8
+							// R5RS.g3:523:19: UREAL_8
 							{
 							mUREAL_8(); 
 
@@ -1711,16 +1730,16 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "COMPLEX_10"
 	public final void mCOMPLEX_10() throws RecognitionException {
 		try {
-			// R5RS.g3:492:3: ( REAL_10 ( '@' REAL_10 )? | ( REAL_10 )? SIGN ( UREAL_10 )? ( 'i' | 'I' ) )
+			// R5RS.g3:527:3: ( REAL_10 ( '@' REAL_10 )? | ( REAL_10 )? SIGN ( UREAL_10 )? ( 'i' | 'I' ) )
 			int alt20=2;
 			alt20 = dfa20.predict(input);
 			switch (alt20) {
 				case 1 :
-					// R5RS.g3:492:6: REAL_10 ( '@' REAL_10 )?
+					// R5RS.g3:527:6: REAL_10 ( '@' REAL_10 )?
 					{
 					mREAL_10(); 
 
-					// R5RS.g3:492:14: ( '@' REAL_10 )?
+					// R5RS.g3:527:14: ( '@' REAL_10 )?
 					int alt17=2;
 					int LA17_0 = input.LA(1);
 					if ( (LA17_0=='@') ) {
@@ -1728,7 +1747,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt17) {
 						case 1 :
-							// R5RS.g3:492:15: '@' REAL_10
+							// R5RS.g3:527:15: '@' REAL_10
 							{
 							match('@'); 
 							mREAL_10(); 
@@ -1741,14 +1760,14 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:493:6: ( REAL_10 )? SIGN ( UREAL_10 )? ( 'i' | 'I' )
+					// R5RS.g3:528:6: ( REAL_10 )? SIGN ( UREAL_10 )? ( 'i' | 'I' )
 					{
-					// R5RS.g3:493:6: ( REAL_10 )?
+					// R5RS.g3:528:6: ( REAL_10 )?
 					int alt18=2;
 					alt18 = dfa18.predict(input);
 					switch (alt18) {
 						case 1 :
-							// R5RS.g3:493:6: REAL_10
+							// R5RS.g3:528:6: REAL_10
 							{
 							mREAL_10(); 
 
@@ -1759,7 +1778,7 @@ public class R5RSLexer extends Lexer {
 
 					mSIGN(); 
 
-					// R5RS.g3:493:20: ( UREAL_10 )?
+					// R5RS.g3:528:20: ( UREAL_10 )?
 					int alt19=2;
 					int LA19_0 = input.LA(1);
 					if ( (LA19_0=='.'||(LA19_0 >= '0' && LA19_0 <= '9')) ) {
@@ -1767,7 +1786,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt19) {
 						case 1 :
-							// R5RS.g3:493:20: UREAL_10
+							// R5RS.g3:528:20: UREAL_10
 							{
 							mUREAL_10(); 
 
@@ -1798,16 +1817,16 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "COMPLEX_16"
 	public final void mCOMPLEX_16() throws RecognitionException {
 		try {
-			// R5RS.g3:497:3: ( REAL_16 ( '@' REAL_16 )? | ( REAL_16 )? SIGN ( UREAL_16 )? ( 'i' | 'I' ) )
+			// R5RS.g3:532:3: ( REAL_16 ( '@' REAL_16 )? | ( REAL_16 )? SIGN ( UREAL_16 )? ( 'i' | 'I' ) )
 			int alt24=2;
 			alt24 = dfa24.predict(input);
 			switch (alt24) {
 				case 1 :
-					// R5RS.g3:497:6: REAL_16 ( '@' REAL_16 )?
+					// R5RS.g3:532:6: REAL_16 ( '@' REAL_16 )?
 					{
 					mREAL_16(); 
 
-					// R5RS.g3:497:14: ( '@' REAL_16 )?
+					// R5RS.g3:532:14: ( '@' REAL_16 )?
 					int alt21=2;
 					int LA21_0 = input.LA(1);
 					if ( (LA21_0=='@') ) {
@@ -1815,7 +1834,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt21) {
 						case 1 :
-							// R5RS.g3:497:15: '@' REAL_16
+							// R5RS.g3:532:15: '@' REAL_16
 							{
 							match('@'); 
 							mREAL_16(); 
@@ -1828,14 +1847,14 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:498:6: ( REAL_16 )? SIGN ( UREAL_16 )? ( 'i' | 'I' )
+					// R5RS.g3:533:6: ( REAL_16 )? SIGN ( UREAL_16 )? ( 'i' | 'I' )
 					{
-					// R5RS.g3:498:6: ( REAL_16 )?
+					// R5RS.g3:533:6: ( REAL_16 )?
 					int alt22=2;
 					alt22 = dfa22.predict(input);
 					switch (alt22) {
 						case 1 :
-							// R5RS.g3:498:6: REAL_16
+							// R5RS.g3:533:6: REAL_16
 							{
 							mREAL_16(); 
 
@@ -1846,7 +1865,7 @@ public class R5RSLexer extends Lexer {
 
 					mSIGN(); 
 
-					// R5RS.g3:498:20: ( UREAL_16 )?
+					// R5RS.g3:533:20: ( UREAL_16 )?
 					int alt23=2;
 					int LA23_0 = input.LA(1);
 					if ( ((LA23_0 >= '0' && LA23_0 <= '9')||(LA23_0 >= 'A' && LA23_0 <= 'F')||(LA23_0 >= 'a' && LA23_0 <= 'f')) ) {
@@ -1854,7 +1873,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt23) {
 						case 1 :
-							// R5RS.g3:498:20: UREAL_16
+							// R5RS.g3:533:20: UREAL_16
 							{
 							mUREAL_16(); 
 
@@ -1885,10 +1904,10 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "REAL_2"
 	public final void mREAL_2() throws RecognitionException {
 		try {
-			// R5RS.g3:501:17: ( ( SIGN )? UREAL_2 )
-			// R5RS.g3:501:19: ( SIGN )? UREAL_2
+			// R5RS.g3:536:17: ( ( SIGN )? UREAL_2 )
+			// R5RS.g3:536:19: ( SIGN )? UREAL_2
 			{
-			// R5RS.g3:501:19: ( SIGN )?
+			// R5RS.g3:536:19: ( SIGN )?
 			int alt25=2;
 			int LA25_0 = input.LA(1);
 			if ( (LA25_0=='+'||LA25_0=='-') ) {
@@ -1925,10 +1944,10 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "REAL_8"
 	public final void mREAL_8() throws RecognitionException {
 		try {
-			// R5RS.g3:502:17: ( ( SIGN )? UREAL_8 )
-			// R5RS.g3:502:19: ( SIGN )? UREAL_8
+			// R5RS.g3:537:17: ( ( SIGN )? UREAL_8 )
+			// R5RS.g3:537:19: ( SIGN )? UREAL_8
 			{
-			// R5RS.g3:502:19: ( SIGN )?
+			// R5RS.g3:537:19: ( SIGN )?
 			int alt26=2;
 			int LA26_0 = input.LA(1);
 			if ( (LA26_0=='+'||LA26_0=='-') ) {
@@ -1965,10 +1984,10 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "REAL_10"
 	public final void mREAL_10() throws RecognitionException {
 		try {
-			// R5RS.g3:503:18: ( ( SIGN )? UREAL_10 )
-			// R5RS.g3:503:20: ( SIGN )? UREAL_10
+			// R5RS.g3:538:18: ( ( SIGN )? UREAL_10 )
+			// R5RS.g3:538:20: ( SIGN )? UREAL_10
 			{
-			// R5RS.g3:503:20: ( SIGN )?
+			// R5RS.g3:538:20: ( SIGN )?
 			int alt27=2;
 			int LA27_0 = input.LA(1);
 			if ( (LA27_0=='+'||LA27_0=='-') ) {
@@ -2005,10 +2024,10 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "REAL_16"
 	public final void mREAL_16() throws RecognitionException {
 		try {
-			// R5RS.g3:504:18: ( ( SIGN )? UREAL_16 )
-			// R5RS.g3:504:20: ( SIGN )? UREAL_16
+			// R5RS.g3:539:18: ( ( SIGN )? UREAL_16 )
+			// R5RS.g3:539:20: ( SIGN )? UREAL_16
 			{
-			// R5RS.g3:504:20: ( SIGN )?
+			// R5RS.g3:539:20: ( SIGN )?
 			int alt28=2;
 			int LA28_0 = input.LA(1);
 			if ( (LA28_0=='+'||LA28_0=='-') ) {
@@ -2045,12 +2064,12 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "UREAL_2"
 	public final void mUREAL_2() throws RecognitionException {
 		try {
-			// R5RS.g3:505:18: ( UINTEGER_2 ( '/' UINTEGER_2 )? )
-			// R5RS.g3:505:20: UINTEGER_2 ( '/' UINTEGER_2 )?
+			// R5RS.g3:540:18: ( UINTEGER_2 ( '/' UINTEGER_2 )? )
+			// R5RS.g3:540:20: UINTEGER_2 ( '/' UINTEGER_2 )?
 			{
 			mUINTEGER_2(); 
 
-			// R5RS.g3:505:31: ( '/' UINTEGER_2 )?
+			// R5RS.g3:540:31: ( '/' UINTEGER_2 )?
 			int alt29=2;
 			int LA29_0 = input.LA(1);
 			if ( (LA29_0=='/') ) {
@@ -2058,7 +2077,7 @@ public class R5RSLexer extends Lexer {
 			}
 			switch (alt29) {
 				case 1 :
-					// R5RS.g3:505:32: '/' UINTEGER_2
+					// R5RS.g3:540:32: '/' UINTEGER_2
 					{
 					match('/'); 
 					mUINTEGER_2(); 
@@ -2080,12 +2099,12 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "UREAL_8"
 	public final void mUREAL_8() throws RecognitionException {
 		try {
-			// R5RS.g3:506:18: ( UINTEGER_8 ( '/' UINTEGER_8 )? )
-			// R5RS.g3:506:20: UINTEGER_8 ( '/' UINTEGER_8 )?
+			// R5RS.g3:541:18: ( UINTEGER_8 ( '/' UINTEGER_8 )? )
+			// R5RS.g3:541:20: UINTEGER_8 ( '/' UINTEGER_8 )?
 			{
 			mUINTEGER_8(); 
 
-			// R5RS.g3:506:31: ( '/' UINTEGER_8 )?
+			// R5RS.g3:541:31: ( '/' UINTEGER_8 )?
 			int alt30=2;
 			int LA30_0 = input.LA(1);
 			if ( (LA30_0=='/') ) {
@@ -2093,7 +2112,7 @@ public class R5RSLexer extends Lexer {
 			}
 			switch (alt30) {
 				case 1 :
-					// R5RS.g3:506:32: '/' UINTEGER_8
+					// R5RS.g3:541:32: '/' UINTEGER_8
 					{
 					match('/'); 
 					mUINTEGER_8(); 
@@ -2115,16 +2134,16 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "UREAL_10"
 	public final void mUREAL_10() throws RecognitionException {
 		try {
-			// R5RS.g3:507:19: ( UINTEGER_10 ( '/' UINTEGER_10 )? | DECIMAL_10 )
+			// R5RS.g3:542:19: ( UINTEGER_10 ( '/' UINTEGER_10 )? | DECIMAL_10 )
 			int alt32=2;
 			alt32 = dfa32.predict(input);
 			switch (alt32) {
 				case 1 :
-					// R5RS.g3:507:21: UINTEGER_10 ( '/' UINTEGER_10 )?
+					// R5RS.g3:542:21: UINTEGER_10 ( '/' UINTEGER_10 )?
 					{
 					mUINTEGER_10(); 
 
-					// R5RS.g3:507:33: ( '/' UINTEGER_10 )?
+					// R5RS.g3:542:33: ( '/' UINTEGER_10 )?
 					int alt31=2;
 					int LA31_0 = input.LA(1);
 					if ( (LA31_0=='/') ) {
@@ -2132,7 +2151,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt31) {
 						case 1 :
-							// R5RS.g3:507:34: '/' UINTEGER_10
+							// R5RS.g3:542:34: '/' UINTEGER_10
 							{
 							match('/'); 
 							mUINTEGER_10(); 
@@ -2145,7 +2164,7 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:507:54: DECIMAL_10
+					// R5RS.g3:542:54: DECIMAL_10
 					{
 					mDECIMAL_10(); 
 
@@ -2163,12 +2182,12 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "UREAL_16"
 	public final void mUREAL_16() throws RecognitionException {
 		try {
-			// R5RS.g3:508:19: ( UINTEGER_16 ( '/' UINTEGER_16 )? )
-			// R5RS.g3:508:21: UINTEGER_16 ( '/' UINTEGER_16 )?
+			// R5RS.g3:543:19: ( UINTEGER_16 ( '/' UINTEGER_16 )? )
+			// R5RS.g3:543:21: UINTEGER_16 ( '/' UINTEGER_16 )?
 			{
 			mUINTEGER_16(); 
 
-			// R5RS.g3:508:33: ( '/' UINTEGER_16 )?
+			// R5RS.g3:543:33: ( '/' UINTEGER_16 )?
 			int alt33=2;
 			int LA33_0 = input.LA(1);
 			if ( (LA33_0=='/') ) {
@@ -2176,7 +2195,7 @@ public class R5RSLexer extends Lexer {
 			}
 			switch (alt33) {
 				case 1 :
-					// R5RS.g3:508:34: '/' UINTEGER_16
+					// R5RS.g3:543:34: '/' UINTEGER_16
 					{
 					match('/'); 
 					mUINTEGER_16(); 
@@ -2198,12 +2217,12 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "DECIMAL_10"
 	public final void mDECIMAL_10() throws RecognitionException {
 		try {
-			// R5RS.g3:511:3: ( UINTEGER_10 SUFFIX | '.' ( DIGIT )+ ( '#' )* ( SUFFIX )? | ( DIGIT )+ '.' ( DIGIT )* ( '#' )* ( SUFFIX )? | ( DIGIT )+ ( '#' )+ '.' ( '#' )* ( SUFFIX )? )
+			// R5RS.g3:546:3: ( UINTEGER_10 SUFFIX | '.' ( DIGIT )+ ( '#' )* ( SUFFIX )? | ( DIGIT )+ '.' ( DIGIT )* ( '#' )* ( SUFFIX )? | ( DIGIT )+ ( '#' )+ '.' ( '#' )* ( SUFFIX )? )
 			int alt45=4;
 			alt45 = dfa45.predict(input);
 			switch (alt45) {
 				case 1 :
-					// R5RS.g3:511:6: UINTEGER_10 SUFFIX
+					// R5RS.g3:546:6: UINTEGER_10 SUFFIX
 					{
 					mUINTEGER_10(); 
 
@@ -2212,10 +2231,10 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:512:6: '.' ( DIGIT )+ ( '#' )* ( SUFFIX )?
+					// R5RS.g3:547:6: '.' ( DIGIT )+ ( '#' )* ( SUFFIX )?
 					{
 					match('.'); 
-					// R5RS.g3:512:10: ( DIGIT )+
+					// R5RS.g3:547:10: ( DIGIT )+
 					int cnt34=0;
 					loop34:
 					while (true) {
@@ -2248,7 +2267,7 @@ public class R5RSLexer extends Lexer {
 						cnt34++;
 					}
 
-					// R5RS.g3:512:17: ( '#' )*
+					// R5RS.g3:547:17: ( '#' )*
 					loop35:
 					while (true) {
 						int alt35=2;
@@ -2259,7 +2278,7 @@ public class R5RSLexer extends Lexer {
 
 						switch (alt35) {
 						case 1 :
-							// R5RS.g3:512:17: '#'
+							// R5RS.g3:547:17: '#'
 							{
 							match('#'); 
 							}
@@ -2270,7 +2289,7 @@ public class R5RSLexer extends Lexer {
 						}
 					}
 
-					// R5RS.g3:512:22: ( SUFFIX )?
+					// R5RS.g3:547:22: ( SUFFIX )?
 					int alt36=2;
 					int LA36_0 = input.LA(1);
 					if ( ((LA36_0 >= 'D' && LA36_0 <= 'F')||LA36_0=='L'||LA36_0=='S'||(LA36_0 >= 'd' && LA36_0 <= 'f')||LA36_0=='l'||LA36_0=='s') ) {
@@ -2278,7 +2297,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt36) {
 						case 1 :
-							// R5RS.g3:512:22: SUFFIX
+							// R5RS.g3:547:22: SUFFIX
 							{
 							mSUFFIX(); 
 
@@ -2290,9 +2309,9 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// R5RS.g3:513:6: ( DIGIT )+ '.' ( DIGIT )* ( '#' )* ( SUFFIX )?
+					// R5RS.g3:548:6: ( DIGIT )+ '.' ( DIGIT )* ( '#' )* ( SUFFIX )?
 					{
-					// R5RS.g3:513:6: ( DIGIT )+
+					// R5RS.g3:548:6: ( DIGIT )+
 					int cnt37=0;
 					loop37:
 					while (true) {
@@ -2326,7 +2345,7 @@ public class R5RSLexer extends Lexer {
 					}
 
 					match('.'); 
-					// R5RS.g3:513:17: ( DIGIT )*
+					// R5RS.g3:548:17: ( DIGIT )*
 					loop38:
 					while (true) {
 						int alt38=2;
@@ -2355,7 +2374,7 @@ public class R5RSLexer extends Lexer {
 						}
 					}
 
-					// R5RS.g3:513:24: ( '#' )*
+					// R5RS.g3:548:24: ( '#' )*
 					loop39:
 					while (true) {
 						int alt39=2;
@@ -2366,7 +2385,7 @@ public class R5RSLexer extends Lexer {
 
 						switch (alt39) {
 						case 1 :
-							// R5RS.g3:513:24: '#'
+							// R5RS.g3:548:24: '#'
 							{
 							match('#'); 
 							}
@@ -2377,7 +2396,7 @@ public class R5RSLexer extends Lexer {
 						}
 					}
 
-					// R5RS.g3:513:29: ( SUFFIX )?
+					// R5RS.g3:548:29: ( SUFFIX )?
 					int alt40=2;
 					int LA40_0 = input.LA(1);
 					if ( ((LA40_0 >= 'D' && LA40_0 <= 'F')||LA40_0=='L'||LA40_0=='S'||(LA40_0 >= 'd' && LA40_0 <= 'f')||LA40_0=='l'||LA40_0=='s') ) {
@@ -2385,7 +2404,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt40) {
 						case 1 :
-							// R5RS.g3:513:29: SUFFIX
+							// R5RS.g3:548:29: SUFFIX
 							{
 							mSUFFIX(); 
 
@@ -2397,9 +2416,9 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 4 :
-					// R5RS.g3:514:6: ( DIGIT )+ ( '#' )+ '.' ( '#' )* ( SUFFIX )?
+					// R5RS.g3:549:6: ( DIGIT )+ ( '#' )+ '.' ( '#' )* ( SUFFIX )?
 					{
-					// R5RS.g3:514:6: ( DIGIT )+
+					// R5RS.g3:549:6: ( DIGIT )+
 					int cnt41=0;
 					loop41:
 					while (true) {
@@ -2432,7 +2451,7 @@ public class R5RSLexer extends Lexer {
 						cnt41++;
 					}
 
-					// R5RS.g3:514:13: ( '#' )+
+					// R5RS.g3:549:13: ( '#' )+
 					int cnt42=0;
 					loop42:
 					while (true) {
@@ -2444,7 +2463,7 @@ public class R5RSLexer extends Lexer {
 
 						switch (alt42) {
 						case 1 :
-							// R5RS.g3:514:13: '#'
+							// R5RS.g3:549:13: '#'
 							{
 							match('#'); 
 							}
@@ -2459,7 +2478,7 @@ public class R5RSLexer extends Lexer {
 					}
 
 					match('.'); 
-					// R5RS.g3:514:22: ( '#' )*
+					// R5RS.g3:549:22: ( '#' )*
 					loop43:
 					while (true) {
 						int alt43=2;
@@ -2470,7 +2489,7 @@ public class R5RSLexer extends Lexer {
 
 						switch (alt43) {
 						case 1 :
-							// R5RS.g3:514:22: '#'
+							// R5RS.g3:549:22: '#'
 							{
 							match('#'); 
 							}
@@ -2481,7 +2500,7 @@ public class R5RSLexer extends Lexer {
 						}
 					}
 
-					// R5RS.g3:514:27: ( SUFFIX )?
+					// R5RS.g3:549:27: ( SUFFIX )?
 					int alt44=2;
 					int LA44_0 = input.LA(1);
 					if ( ((LA44_0 >= 'D' && LA44_0 <= 'F')||LA44_0=='L'||LA44_0=='S'||(LA44_0 >= 'd' && LA44_0 <= 'f')||LA44_0=='l'||LA44_0=='s') ) {
@@ -2489,7 +2508,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt44) {
 						case 1 :
-							// R5RS.g3:514:27: SUFFIX
+							// R5RS.g3:549:27: SUFFIX
 							{
 							mSUFFIX(); 
 
@@ -2512,10 +2531,10 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "UINTEGER_2"
 	public final void mUINTEGER_2() throws RecognitionException {
 		try {
-			// R5RS.g3:517:21: ( ( DIGIT_2 )+ ( '#' )* )
-			// R5RS.g3:517:23: ( DIGIT_2 )+ ( '#' )*
+			// R5RS.g3:552:21: ( ( DIGIT_2 )+ ( '#' )* )
+			// R5RS.g3:552:23: ( DIGIT_2 )+ ( '#' )*
 			{
-			// R5RS.g3:517:23: ( DIGIT_2 )+
+			// R5RS.g3:552:23: ( DIGIT_2 )+
 			int cnt46=0;
 			loop46:
 			while (true) {
@@ -2548,7 +2567,7 @@ public class R5RSLexer extends Lexer {
 				cnt46++;
 			}
 
-			// R5RS.g3:517:32: ( '#' )*
+			// R5RS.g3:552:32: ( '#' )*
 			loop47:
 			while (true) {
 				int alt47=2;
@@ -2559,7 +2578,7 @@ public class R5RSLexer extends Lexer {
 
 				switch (alt47) {
 				case 1 :
-					// R5RS.g3:517:32: '#'
+					// R5RS.g3:552:32: '#'
 					{
 					match('#'); 
 					}
@@ -2582,10 +2601,10 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "UINTEGER_8"
 	public final void mUINTEGER_8() throws RecognitionException {
 		try {
-			// R5RS.g3:518:21: ( ( DIGIT_8 )+ ( '#' )* )
-			// R5RS.g3:518:23: ( DIGIT_8 )+ ( '#' )*
+			// R5RS.g3:553:21: ( ( DIGIT_8 )+ ( '#' )* )
+			// R5RS.g3:553:23: ( DIGIT_8 )+ ( '#' )*
 			{
-			// R5RS.g3:518:23: ( DIGIT_8 )+
+			// R5RS.g3:553:23: ( DIGIT_8 )+
 			int cnt48=0;
 			loop48:
 			while (true) {
@@ -2618,7 +2637,7 @@ public class R5RSLexer extends Lexer {
 				cnt48++;
 			}
 
-			// R5RS.g3:518:32: ( '#' )*
+			// R5RS.g3:553:32: ( '#' )*
 			loop49:
 			while (true) {
 				int alt49=2;
@@ -2629,7 +2648,7 @@ public class R5RSLexer extends Lexer {
 
 				switch (alt49) {
 				case 1 :
-					// R5RS.g3:518:32: '#'
+					// R5RS.g3:553:32: '#'
 					{
 					match('#'); 
 					}
@@ -2652,10 +2671,10 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "UINTEGER_10"
 	public final void mUINTEGER_10() throws RecognitionException {
 		try {
-			// R5RS.g3:519:22: ( ( DIGIT )+ ( '#' )* )
-			// R5RS.g3:519:24: ( DIGIT )+ ( '#' )*
+			// R5RS.g3:554:22: ( ( DIGIT )+ ( '#' )* )
+			// R5RS.g3:554:24: ( DIGIT )+ ( '#' )*
 			{
-			// R5RS.g3:519:24: ( DIGIT )+
+			// R5RS.g3:554:24: ( DIGIT )+
 			int cnt50=0;
 			loop50:
 			while (true) {
@@ -2688,7 +2707,7 @@ public class R5RSLexer extends Lexer {
 				cnt50++;
 			}
 
-			// R5RS.g3:519:31: ( '#' )*
+			// R5RS.g3:554:31: ( '#' )*
 			loop51:
 			while (true) {
 				int alt51=2;
@@ -2699,7 +2718,7 @@ public class R5RSLexer extends Lexer {
 
 				switch (alt51) {
 				case 1 :
-					// R5RS.g3:519:31: '#'
+					// R5RS.g3:554:31: '#'
 					{
 					match('#'); 
 					}
@@ -2722,10 +2741,10 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "UINTEGER_16"
 	public final void mUINTEGER_16() throws RecognitionException {
 		try {
-			// R5RS.g3:520:22: ( ( DIGIT_16 )+ ( '#' )* )
-			// R5RS.g3:520:24: ( DIGIT_16 )+ ( '#' )*
+			// R5RS.g3:555:22: ( ( DIGIT_16 )+ ( '#' )* )
+			// R5RS.g3:555:24: ( DIGIT_16 )+ ( '#' )*
 			{
-			// R5RS.g3:520:24: ( DIGIT_16 )+
+			// R5RS.g3:555:24: ( DIGIT_16 )+
 			int cnt52=0;
 			loop52:
 			while (true) {
@@ -2758,7 +2777,7 @@ public class R5RSLexer extends Lexer {
 				cnt52++;
 			}
 
-			// R5RS.g3:520:34: ( '#' )*
+			// R5RS.g3:555:34: ( '#' )*
 			loop53:
 			while (true) {
 				int alt53=2;
@@ -2769,7 +2788,7 @@ public class R5RSLexer extends Lexer {
 
 				switch (alt53) {
 				case 1 :
-					// R5RS.g3:520:34: '#'
+					// R5RS.g3:555:34: '#'
 					{
 					match('#'); 
 					}
@@ -2792,7 +2811,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "PREFIX_2"
 	public final void mPREFIX_2() throws RecognitionException {
 		try {
-			// R5RS.g3:521:19: ( RADIX_2 ( EXACTNESS )? | EXACTNESS RADIX_2 )
+			// R5RS.g3:556:19: ( RADIX_2 ( EXACTNESS )? | EXACTNESS RADIX_2 )
 			int alt55=2;
 			int LA55_0 = input.LA(1);
 			if ( (LA55_0=='#') ) {
@@ -2826,11 +2845,11 @@ public class R5RSLexer extends Lexer {
 
 			switch (alt55) {
 				case 1 :
-					// R5RS.g3:521:21: RADIX_2 ( EXACTNESS )?
+					// R5RS.g3:556:21: RADIX_2 ( EXACTNESS )?
 					{
 					mRADIX_2(); 
 
-					// R5RS.g3:521:29: ( EXACTNESS )?
+					// R5RS.g3:556:29: ( EXACTNESS )?
 					int alt54=2;
 					int LA54_0 = input.LA(1);
 					if ( (LA54_0=='#') ) {
@@ -2838,7 +2857,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt54) {
 						case 1 :
-							// R5RS.g3:521:29: EXACTNESS
+							// R5RS.g3:556:29: EXACTNESS
 							{
 							mEXACTNESS(); 
 
@@ -2850,7 +2869,7 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:521:42: EXACTNESS RADIX_2
+					// R5RS.g3:556:42: EXACTNESS RADIX_2
 					{
 					mEXACTNESS(); 
 
@@ -2870,7 +2889,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "PREFIX_8"
 	public final void mPREFIX_8() throws RecognitionException {
 		try {
-			// R5RS.g3:522:19: ( RADIX_8 ( EXACTNESS )? | EXACTNESS RADIX_8 )
+			// R5RS.g3:557:19: ( RADIX_8 ( EXACTNESS )? | EXACTNESS RADIX_8 )
 			int alt57=2;
 			int LA57_0 = input.LA(1);
 			if ( (LA57_0=='#') ) {
@@ -2904,11 +2923,11 @@ public class R5RSLexer extends Lexer {
 
 			switch (alt57) {
 				case 1 :
-					// R5RS.g3:522:21: RADIX_8 ( EXACTNESS )?
+					// R5RS.g3:557:21: RADIX_8 ( EXACTNESS )?
 					{
 					mRADIX_8(); 
 
-					// R5RS.g3:522:29: ( EXACTNESS )?
+					// R5RS.g3:557:29: ( EXACTNESS )?
 					int alt56=2;
 					int LA56_0 = input.LA(1);
 					if ( (LA56_0=='#') ) {
@@ -2916,7 +2935,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt56) {
 						case 1 :
-							// R5RS.g3:522:29: EXACTNESS
+							// R5RS.g3:557:29: EXACTNESS
 							{
 							mEXACTNESS(); 
 
@@ -2928,7 +2947,7 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:522:42: EXACTNESS RADIX_8
+					// R5RS.g3:557:42: EXACTNESS RADIX_8
 					{
 					mEXACTNESS(); 
 
@@ -2948,7 +2967,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "PREFIX_10"
 	public final void mPREFIX_10() throws RecognitionException {
 		try {
-			// R5RS.g3:523:20: ( RADIX_10 ( EXACTNESS )? | EXACTNESS RADIX_10 )
+			// R5RS.g3:558:20: ( RADIX_10 ( EXACTNESS )? | EXACTNESS RADIX_10 )
 			int alt59=2;
 			int LA59_0 = input.LA(1);
 			if ( (LA59_0=='#') ) {
@@ -2982,11 +3001,11 @@ public class R5RSLexer extends Lexer {
 
 			switch (alt59) {
 				case 1 :
-					// R5RS.g3:523:22: RADIX_10 ( EXACTNESS )?
+					// R5RS.g3:558:22: RADIX_10 ( EXACTNESS )?
 					{
 					mRADIX_10(); 
 
-					// R5RS.g3:523:31: ( EXACTNESS )?
+					// R5RS.g3:558:31: ( EXACTNESS )?
 					int alt58=2;
 					int LA58_0 = input.LA(1);
 					if ( (LA58_0=='#') ) {
@@ -2994,7 +3013,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt58) {
 						case 1 :
-							// R5RS.g3:523:31: EXACTNESS
+							// R5RS.g3:558:31: EXACTNESS
 							{
 							mEXACTNESS(); 
 
@@ -3006,7 +3025,7 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:523:44: EXACTNESS RADIX_10
+					// R5RS.g3:558:44: EXACTNESS RADIX_10
 					{
 					mEXACTNESS(); 
 
@@ -3026,7 +3045,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "PREFIX_16"
 	public final void mPREFIX_16() throws RecognitionException {
 		try {
-			// R5RS.g3:524:20: ( RADIX_16 ( EXACTNESS )? | EXACTNESS RADIX_16 )
+			// R5RS.g3:559:20: ( RADIX_16 ( EXACTNESS )? | EXACTNESS RADIX_16 )
 			int alt61=2;
 			int LA61_0 = input.LA(1);
 			if ( (LA61_0=='#') ) {
@@ -3060,11 +3079,11 @@ public class R5RSLexer extends Lexer {
 
 			switch (alt61) {
 				case 1 :
-					// R5RS.g3:524:22: RADIX_16 ( EXACTNESS )?
+					// R5RS.g3:559:22: RADIX_16 ( EXACTNESS )?
 					{
 					mRADIX_16(); 
 
-					// R5RS.g3:524:31: ( EXACTNESS )?
+					// R5RS.g3:559:31: ( EXACTNESS )?
 					int alt60=2;
 					int LA60_0 = input.LA(1);
 					if ( (LA60_0=='#') ) {
@@ -3072,7 +3091,7 @@ public class R5RSLexer extends Lexer {
 					}
 					switch (alt60) {
 						case 1 :
-							// R5RS.g3:524:31: EXACTNESS
+							// R5RS.g3:559:31: EXACTNESS
 							{
 							mEXACTNESS(); 
 
@@ -3084,7 +3103,7 @@ public class R5RSLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// R5RS.g3:524:44: EXACTNESS RADIX_16
+					// R5RS.g3:559:44: EXACTNESS RADIX_16
 					{
 					mEXACTNESS(); 
 
@@ -3104,12 +3123,12 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "SUFFIX"
 	public final void mSUFFIX() throws RecognitionException {
 		try {
-			// R5RS.g3:525:17: ( EXPONENT_MARKER ( SIGN )? ( DIGIT )+ )
-			// R5RS.g3:525:19: EXPONENT_MARKER ( SIGN )? ( DIGIT )+
+			// R5RS.g3:560:17: ( EXPONENT_MARKER ( SIGN )? ( DIGIT )+ )
+			// R5RS.g3:560:19: EXPONENT_MARKER ( SIGN )? ( DIGIT )+
 			{
 			mEXPONENT_MARKER(); 
 
-			// R5RS.g3:525:35: ( SIGN )?
+			// R5RS.g3:560:35: ( SIGN )?
 			int alt62=2;
 			int LA62_0 = input.LA(1);
 			if ( (LA62_0=='+'||LA62_0=='-') ) {
@@ -3132,7 +3151,7 @@ public class R5RSLexer extends Lexer {
 
 			}
 
-			// R5RS.g3:525:41: ( DIGIT )+
+			// R5RS.g3:560:41: ( DIGIT )+
 			int cnt63=0;
 			loop63:
 			while (true) {
@@ -3177,7 +3196,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "EXPONENT_MARKER"
 	public final void mEXPONENT_MARKER() throws RecognitionException {
 		try {
-			// R5RS.g3:526:26: ( 'e' | 's' | 'f' | 'd' | 'l' | 'E' | 'S' | 'F' | 'D' | 'L' )
+			// R5RS.g3:561:26: ( 'e' | 's' | 'f' | 'd' | 'l' | 'E' | 'S' | 'F' | 'D' | 'L' )
 			// R5RS.g3:
 			{
 			if ( (input.LA(1) >= 'D' && input.LA(1) <= 'F')||input.LA(1)=='L'||input.LA(1)=='S'||(input.LA(1) >= 'd' && input.LA(1) <= 'f')||input.LA(1)=='l'||input.LA(1)=='s' ) {
@@ -3200,7 +3219,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "SIGN"
 	public final void mSIGN() throws RecognitionException {
 		try {
-			// R5RS.g3:527:15: ( '+' | '-' )
+			// R5RS.g3:562:15: ( '+' | '-' )
 			// R5RS.g3:
 			{
 			if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
@@ -3223,8 +3242,8 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "EXACTNESS"
 	public final void mEXACTNESS() throws RecognitionException {
 		try {
-			// R5RS.g3:528:20: ( '#' ( 'i' | 'e' | 'I' | 'E' ) )
-			// R5RS.g3:528:22: '#' ( 'i' | 'e' | 'I' | 'E' )
+			// R5RS.g3:563:20: ( '#' ( 'i' | 'e' | 'I' | 'E' ) )
+			// R5RS.g3:563:22: '#' ( 'i' | 'e' | 'I' | 'E' )
 			{
 			match('#'); 
 			if ( input.LA(1)=='E'||input.LA(1)=='I'||input.LA(1)=='e'||input.LA(1)=='i' ) {
@@ -3247,8 +3266,8 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "RADIX_2"
 	public final void mRADIX_2() throws RecognitionException {
 		try {
-			// R5RS.g3:529:18: ( '#' ( 'b' | 'B' ) )
-			// R5RS.g3:529:20: '#' ( 'b' | 'B' )
+			// R5RS.g3:564:18: ( '#' ( 'b' | 'B' ) )
+			// R5RS.g3:564:20: '#' ( 'b' | 'B' )
 			{
 			match('#'); 
 			if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
@@ -3271,8 +3290,8 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "RADIX_8"
 	public final void mRADIX_8() throws RecognitionException {
 		try {
-			// R5RS.g3:530:18: ( '#' ( 'o' | 'O' ) )
-			// R5RS.g3:530:20: '#' ( 'o' | 'O' )
+			// R5RS.g3:565:18: ( '#' ( 'o' | 'O' ) )
+			// R5RS.g3:565:20: '#' ( 'o' | 'O' )
 			{
 			match('#'); 
 			if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
@@ -3295,8 +3314,8 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "RADIX_10"
 	public final void mRADIX_10() throws RecognitionException {
 		try {
-			// R5RS.g3:531:19: ( '#' ( 'd' | 'D' ) )
-			// R5RS.g3:531:21: '#' ( 'd' | 'D' )
+			// R5RS.g3:566:19: ( '#' ( 'd' | 'D' ) )
+			// R5RS.g3:566:21: '#' ( 'd' | 'D' )
 			{
 			match('#'); 
 			if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
@@ -3319,8 +3338,8 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "RADIX_16"
 	public final void mRADIX_16() throws RecognitionException {
 		try {
-			// R5RS.g3:532:19: ( '#' ( 'x' | 'X' ) )
-			// R5RS.g3:532:21: '#' ( 'x' | 'X' )
+			// R5RS.g3:567:19: ( '#' ( 'x' | 'X' ) )
+			// R5RS.g3:567:21: '#' ( 'x' | 'X' )
 			{
 			match('#'); 
 			if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
@@ -3343,7 +3362,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "DIGIT_2"
 	public final void mDIGIT_2() throws RecognitionException {
 		try {
-			// R5RS.g3:533:18: ( '0' | '1' )
+			// R5RS.g3:568:18: ( '0' | '1' )
 			// R5RS.g3:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '1') ) {
@@ -3366,7 +3385,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "DIGIT_8"
 	public final void mDIGIT_8() throws RecognitionException {
 		try {
-			// R5RS.g3:534:18: ( '0' .. '7' )
+			// R5RS.g3:569:18: ( '0' .. '7' )
 			// R5RS.g3:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '7') ) {
@@ -3389,7 +3408,7 @@ public class R5RSLexer extends Lexer {
 	// $ANTLR start "DIGIT_16"
 	public final void mDIGIT_16() throws RecognitionException {
 		try {
-			// R5RS.g3:535:19: ( DIGIT | 'a' .. 'f' | 'A' .. 'F' )
+			// R5RS.g3:570:19: ( DIGIT | 'a' .. 'f' | 'A' .. 'F' )
 			// R5RS.g3:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
@@ -3411,320 +3430,320 @@ public class R5RSLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// R5RS.g3:1:8: ( T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | LET_SYNTAX | LETREC_SYNTAX | SYNTAX_RULES | DEFINE_SYNTAX | ELSE | ARROW | DEFINE | UNQUOTE_SPLICING | UNQUOTE | QUOTE | LAMBDA | IF | SET | BEGIN | COND | AND | OR | CASE | LET | LETSTAR | LETREC | DO | DELAY | QUASIQUOTE | NUM_2 | NUM_8 | NUM_10 | NUM_16 | ELLIPSIS | VARIABLE | STRING | CHARACTER | TRUE | FALSE | SPACE | COMMENT )
+		// R5RS.g3:1:8: ( T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | LET_SYNTAX | LETREC_SYNTAX | SYNTAX_RULES | DEFINE_SYNTAX | ELSE | ARROW | DEFINE | UNQUOTE_SPLICING | UNQUOTE | QUOTE | LAMBDA | IF | SET | BEGIN | COND | AND | OR | CASE | LET | LETSTAR | LETREC | DO | DELAY | QUASIQUOTE | NUM_2 | NUM_8 | NUM_10 | NUM_16 | ELLIPSIS | VARIABLE | STRING | CHARACTER | TRUE | FALSE | SPACE | COMMENT )
 		int alt64=45;
 		alt64 = dfa64.predict(input);
 		switch (alt64) {
 			case 1 :
-				// R5RS.g3:1:10: T__93
+				// R5RS.g3:1:10: T__112
 				{
-				mT__93(); 
+				mT__112(); 
 
 				}
 				break;
 			case 2 :
-				// R5RS.g3:1:16: T__94
+				// R5RS.g3:1:17: T__113
 				{
-				mT__94(); 
+				mT__113(); 
 
 				}
 				break;
 			case 3 :
-				// R5RS.g3:1:22: T__95
+				// R5RS.g3:1:24: T__114
 				{
-				mT__95(); 
+				mT__114(); 
 
 				}
 				break;
 			case 4 :
-				// R5RS.g3:1:28: T__96
+				// R5RS.g3:1:31: T__115
 				{
-				mT__96(); 
+				mT__115(); 
 
 				}
 				break;
 			case 5 :
-				// R5RS.g3:1:34: T__97
+				// R5RS.g3:1:38: T__116
 				{
-				mT__97(); 
+				mT__116(); 
 
 				}
 				break;
 			case 6 :
-				// R5RS.g3:1:40: T__98
+				// R5RS.g3:1:45: T__117
 				{
-				mT__98(); 
+				mT__117(); 
 
 				}
 				break;
 			case 7 :
-				// R5RS.g3:1:46: T__99
+				// R5RS.g3:1:52: T__118
 				{
-				mT__99(); 
+				mT__118(); 
 
 				}
 				break;
 			case 8 :
-				// R5RS.g3:1:52: T__100
+				// R5RS.g3:1:59: T__119
 				{
-				mT__100(); 
+				mT__119(); 
 
 				}
 				break;
 			case 9 :
-				// R5RS.g3:1:59: T__101
+				// R5RS.g3:1:66: T__120
 				{
-				mT__101(); 
+				mT__120(); 
 
 				}
 				break;
 			case 10 :
-				// R5RS.g3:1:66: LET_SYNTAX
+				// R5RS.g3:1:73: LET_SYNTAX
 				{
 				mLET_SYNTAX(); 
 
 				}
 				break;
 			case 11 :
-				// R5RS.g3:1:77: LETREC_SYNTAX
+				// R5RS.g3:1:84: LETREC_SYNTAX
 				{
 				mLETREC_SYNTAX(); 
 
 				}
 				break;
 			case 12 :
-				// R5RS.g3:1:91: SYNTAX_RULES
+				// R5RS.g3:1:98: SYNTAX_RULES
 				{
 				mSYNTAX_RULES(); 
 
 				}
 				break;
 			case 13 :
-				// R5RS.g3:1:104: DEFINE_SYNTAX
+				// R5RS.g3:1:111: DEFINE_SYNTAX
 				{
 				mDEFINE_SYNTAX(); 
 
 				}
 				break;
 			case 14 :
-				// R5RS.g3:1:118: ELSE
+				// R5RS.g3:1:125: ELSE
 				{
 				mELSE(); 
 
 				}
 				break;
 			case 15 :
-				// R5RS.g3:1:123: ARROW
+				// R5RS.g3:1:130: ARROW
 				{
 				mARROW(); 
 
 				}
 				break;
 			case 16 :
-				// R5RS.g3:1:129: DEFINE
+				// R5RS.g3:1:136: DEFINE
 				{
 				mDEFINE(); 
 
 				}
 				break;
 			case 17 :
-				// R5RS.g3:1:136: UNQUOTE_SPLICING
+				// R5RS.g3:1:143: UNQUOTE_SPLICING
 				{
 				mUNQUOTE_SPLICING(); 
 
 				}
 				break;
 			case 18 :
-				// R5RS.g3:1:153: UNQUOTE
+				// R5RS.g3:1:160: UNQUOTE
 				{
 				mUNQUOTE(); 
 
 				}
 				break;
 			case 19 :
-				// R5RS.g3:1:161: QUOTE
+				// R5RS.g3:1:168: QUOTE
 				{
 				mQUOTE(); 
 
 				}
 				break;
 			case 20 :
-				// R5RS.g3:1:167: LAMBDA
+				// R5RS.g3:1:174: LAMBDA
 				{
 				mLAMBDA(); 
 
 				}
 				break;
 			case 21 :
-				// R5RS.g3:1:174: IF
+				// R5RS.g3:1:181: IF
 				{
 				mIF(); 
 
 				}
 				break;
 			case 22 :
-				// R5RS.g3:1:177: SET
+				// R5RS.g3:1:184: SET
 				{
 				mSET(); 
 
 				}
 				break;
 			case 23 :
-				// R5RS.g3:1:181: BEGIN
+				// R5RS.g3:1:188: BEGIN
 				{
 				mBEGIN(); 
 
 				}
 				break;
 			case 24 :
-				// R5RS.g3:1:187: COND
+				// R5RS.g3:1:194: COND
 				{
 				mCOND(); 
 
 				}
 				break;
 			case 25 :
-				// R5RS.g3:1:192: AND
+				// R5RS.g3:1:199: AND
 				{
 				mAND(); 
 
 				}
 				break;
 			case 26 :
-				// R5RS.g3:1:196: OR
+				// R5RS.g3:1:203: OR
 				{
 				mOR(); 
 
 				}
 				break;
 			case 27 :
-				// R5RS.g3:1:199: CASE
+				// R5RS.g3:1:206: CASE
 				{
 				mCASE(); 
 
 				}
 				break;
 			case 28 :
-				// R5RS.g3:1:204: LET
+				// R5RS.g3:1:211: LET
 				{
 				mLET(); 
 
 				}
 				break;
 			case 29 :
-				// R5RS.g3:1:208: LETSTAR
+				// R5RS.g3:1:215: LETSTAR
 				{
 				mLETSTAR(); 
 
 				}
 				break;
 			case 30 :
-				// R5RS.g3:1:216: LETREC
+				// R5RS.g3:1:223: LETREC
 				{
 				mLETREC(); 
 
 				}
 				break;
 			case 31 :
-				// R5RS.g3:1:223: DO
+				// R5RS.g3:1:230: DO
 				{
 				mDO(); 
 
 				}
 				break;
 			case 32 :
-				// R5RS.g3:1:226: DELAY
+				// R5RS.g3:1:233: DELAY
 				{
 				mDELAY(); 
 
 				}
 				break;
 			case 33 :
-				// R5RS.g3:1:232: QUASIQUOTE
+				// R5RS.g3:1:239: QUASIQUOTE
 				{
 				mQUASIQUOTE(); 
 
 				}
 				break;
 			case 34 :
-				// R5RS.g3:1:243: NUM_2
+				// R5RS.g3:1:250: NUM_2
 				{
 				mNUM_2(); 
 
 				}
 				break;
 			case 35 :
-				// R5RS.g3:1:249: NUM_8
+				// R5RS.g3:1:256: NUM_8
 				{
 				mNUM_8(); 
 
 				}
 				break;
 			case 36 :
-				// R5RS.g3:1:255: NUM_10
+				// R5RS.g3:1:262: NUM_10
 				{
 				mNUM_10(); 
 
 				}
 				break;
 			case 37 :
-				// R5RS.g3:1:262: NUM_16
+				// R5RS.g3:1:269: NUM_16
 				{
 				mNUM_16(); 
 
 				}
 				break;
 			case 38 :
-				// R5RS.g3:1:269: ELLIPSIS
+				// R5RS.g3:1:276: ELLIPSIS
 				{
 				mELLIPSIS(); 
 
 				}
 				break;
 			case 39 :
-				// R5RS.g3:1:278: VARIABLE
+				// R5RS.g3:1:285: VARIABLE
 				{
 				mVARIABLE(); 
 
 				}
 				break;
 			case 40 :
-				// R5RS.g3:1:287: STRING
+				// R5RS.g3:1:294: STRING
 				{
 				mSTRING(); 
 
 				}
 				break;
 			case 41 :
-				// R5RS.g3:1:294: CHARACTER
+				// R5RS.g3:1:301: CHARACTER
 				{
 				mCHARACTER(); 
 
 				}
 				break;
 			case 42 :
-				// R5RS.g3:1:304: TRUE
+				// R5RS.g3:1:311: TRUE
 				{
 				mTRUE(); 
 
 				}
 				break;
 			case 43 :
-				// R5RS.g3:1:309: FALSE
+				// R5RS.g3:1:316: FALSE
 				{
 				mFALSE(); 
 
 				}
 				break;
 			case 44 :
-				// R5RS.g3:1:315: SPACE
+				// R5RS.g3:1:322: SPACE
 				{
 				mSPACE(); 
 
 				}
 				break;
 			case 45 :
-				// R5RS.g3:1:321: COMMENT
+				// R5RS.g3:1:328: COMMENT
 				{
 				mCOMMENT(); 
 
@@ -3808,7 +3827,7 @@ public class R5RSLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "481:10: fragment COMPLEX_2 : ( REAL_2 ( '@' REAL_2 )? | ( REAL_2 )? SIGN ( UREAL_2 )? ( 'i' | 'I' ) );";
+			return "516:10: fragment COMPLEX_2 : ( REAL_2 ( '@' REAL_2 )? | ( REAL_2 )? SIGN ( UREAL_2 )? ( 'i' | 'I' ) );";
 		}
 	}
 
@@ -3868,7 +3887,7 @@ public class R5RSLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "483:6: ( REAL_2 )?";
+			return "518:6: ( REAL_2 )?";
 		}
 	}
 
@@ -3935,7 +3954,7 @@ public class R5RSLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "486:10: fragment COMPLEX_8 : ( REAL_8 ( '@' REAL_8 )? | ( REAL_8 )? SIGN ( UREAL_8 )? ( 'i' | 'I' ) );";
+			return "521:10: fragment COMPLEX_8 : ( REAL_8 ( '@' REAL_8 )? | ( REAL_8 )? SIGN ( UREAL_8 )? ( 'i' | 'I' ) );";
 		}
 	}
 
@@ -3995,7 +4014,7 @@ public class R5RSLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "488:6: ( REAL_8 )?";
+			return "523:6: ( REAL_8 )?";
 		}
 	}
 
@@ -4132,7 +4151,7 @@ public class R5RSLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "491:10: fragment COMPLEX_10 : ( REAL_10 ( '@' REAL_10 )? | ( REAL_10 )? SIGN ( UREAL_10 )? ( 'i' | 'I' ) );";
+			return "526:10: fragment COMPLEX_10 : ( REAL_10 ( '@' REAL_10 )? | ( REAL_10 )? SIGN ( UREAL_10 )? ( 'i' | 'I' ) );";
 		}
 	}
 
@@ -4227,7 +4246,7 @@ public class R5RSLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "493:6: ( REAL_10 )?";
+			return "528:6: ( REAL_10 )?";
 		}
 	}
 
@@ -4296,7 +4315,7 @@ public class R5RSLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "496:10: fragment COMPLEX_16 : ( REAL_16 ( '@' REAL_16 )? | ( REAL_16 )? SIGN ( UREAL_16 )? ( 'i' | 'I' ) );";
+			return "531:10: fragment COMPLEX_16 : ( REAL_16 ( '@' REAL_16 )? | ( REAL_16 )? SIGN ( UREAL_16 )? ( 'i' | 'I' ) );";
 		}
 	}
 
@@ -4357,7 +4376,7 @@ public class R5RSLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "498:6: ( REAL_16 )?";
+			return "533:6: ( REAL_16 )?";
 		}
 	}
 
@@ -4414,7 +4433,7 @@ public class R5RSLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "507:10: fragment UREAL_10 : ( UINTEGER_10 ( '/' UINTEGER_10 )? | DECIMAL_10 );";
+			return "542:10: fragment UREAL_10 : ( UINTEGER_10 ( '/' UINTEGER_10 )? | DECIMAL_10 );";
 		}
 	}
 
@@ -4473,7 +4492,7 @@ public class R5RSLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "510:10: fragment DECIMAL_10 : ( UINTEGER_10 SUFFIX | '.' ( DIGIT )+ ( '#' )* ( SUFFIX )? | ( DIGIT )+ '.' ( DIGIT )* ( '#' )* ( SUFFIX )? | ( DIGIT )+ ( '#' )+ '.' ( '#' )* ( SUFFIX )? );";
+			return "545:10: fragment DECIMAL_10 : ( UINTEGER_10 SUFFIX | '.' ( DIGIT )+ ( '#' )* ( SUFFIX )? | ( DIGIT )+ '.' ( DIGIT )* ( '#' )* ( SUFFIX )? | ( DIGIT )+ ( '#' )+ '.' ( '#' )* ( SUFFIX )? );";
 		}
 	}
 
@@ -4754,7 +4773,7 @@ public class R5RSLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "1:1: Tokens : ( T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | LET_SYNTAX | LETREC_SYNTAX | SYNTAX_RULES | DEFINE_SYNTAX | ELSE | ARROW | DEFINE | UNQUOTE_SPLICING | UNQUOTE | QUOTE | LAMBDA | IF | SET | BEGIN | COND | AND | OR | CASE | LET | LETSTAR | LETREC | DO | DELAY | QUASIQUOTE | NUM_2 | NUM_8 | NUM_10 | NUM_16 | ELLIPSIS | VARIABLE | STRING | CHARACTER | TRUE | FALSE | SPACE | COMMENT );";
+			return "1:1: Tokens : ( T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | LET_SYNTAX | LETREC_SYNTAX | SYNTAX_RULES | DEFINE_SYNTAX | ELSE | ARROW | DEFINE | UNQUOTE_SPLICING | UNQUOTE | QUOTE | LAMBDA | IF | SET | BEGIN | COND | AND | OR | CASE | LET | LETSTAR | LETREC | DO | DELAY | QUASIQUOTE | NUM_2 | NUM_8 | NUM_10 | NUM_16 | ELLIPSIS | VARIABLE | STRING | CHARACTER | TRUE | FALSE | SPACE | COMMENT );";
 		}
 	}
 

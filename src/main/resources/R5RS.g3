@@ -34,12 +34,31 @@ tokens {
     PROCEDURECALL;
     SYNTAXRULE;
     LITERAL;
+    SELFEVALUATING;
     QUOTATION;
     LIST;
+    VECTOR;
     EMPTYFORMALS;
     FORMALS;
     SEQUENCE;
     CONDCLAUSE;
+    TEST;
+    BODY;
+    CASECLAUSE;
+    ABBREVIATION;
+    QUASIQUOTATION;
+    LOCALBINDING;
+    BINDINGSPEC;
+    ITERATIONSPEC;
+    DOCOMMANDS;
+    DORESULT;
+    STR;
+    CHAR;
+    NUM2;
+    NUM8;
+    NUM10;
+    NUM16;
+    BOOL;
 }
 
 
@@ -93,6 +112,7 @@ keyword
   :  identifier
   ;
 
+/**** UNTESTED *****/
 transformerSpec
   :  '('! SYNTAX_RULES^ '('! identifier* ')'! syntaxRule* ')'!
   ;
@@ -114,10 +134,7 @@ patternIdentifier
   ;
 
 patternDatum
-  :  STRING
-  |  CHARACTER
-  |  bool
-  |  number
+  :  selfEvaluating
   ;
 
 template
@@ -134,6 +151,7 @@ templateElement
 templateDatum
   :  patternDatum
   ;
+/**** END UNTESTED ****/
 
 command
   :  expression -> ^(COMMAND expression)
@@ -190,7 +208,7 @@ variable
 
 literal
   :  quotation -> ^(QUOTATION quotation)
-  |  selfEvaluating
+  |  selfEvaluating -> ^(SELFEVALUATING selfEvaluating)
   ;
 
 quotation
@@ -201,8 +219,8 @@ quotation
 selfEvaluating
   :  bool
   |  number
-  |  CHARACTER
-  |  STRING
+  |  CHARACTER -> ^(CHAR CHARACTER)
+  |  STRING -> ^(STR STRING)
   ;
 
 lambdaExpression
@@ -221,7 +239,7 @@ conditional
   ;
 
 test 
-  :  expression
+  :  expression -> ^(TEST expression)
   ;
 
 consequent  
@@ -237,30 +255,34 @@ assignment
   ;
 
 derivedExpression
-  :  quasiquotation
-  |  '('! ( COND^ ( '('! ELSE^ sequence ')'!
-                | condClause+ ('(' ELSE^ sequence ')')?
-                )
-         | CASE expression ( '(' ELSE sequence ')'
-                           | caseClause+ ('(' ELSE sequence ')')? 
-                           )
+  :  quasiquotation -> ^(QUASIQUOTATION quasiquotation)
+  |  '('! ( COND^ ( '('! elseClause ')'!
+                  | condClause+ ('('! elseClause ')'!)?
+                  )
+         | CASE^ expression ( '('! elseClause ')'!
+                            | caseClause+ ('('! elseClause ')'!)?
+                            )
          | AND^ test*
          | OR^ test*
-         | LET variable? '(' bindingSpec* ')' body
-         | LETSTAR '(' bindingSpec* ')' body
-         | LETREC '(' bindingSpec* ')' body
+         | localBinding
          | BEGIN^ sequence
-         | DO '(' iterationSpec* ')' '(' test doResult? ')' command*
-         | DELAY expression
+         | DO^ '('! iterationSpec* ')'! '('! test doResult? ')'! doCommands
+         | DELAY^ expression
          ) 
      ')'!
   ;
 
-cond
 
+doCommands
+  : command* -> ^(DOCOMMANDS command*)
+  ;
 
 condClause
-  :  '(' test condrealize? ')' -> ^(CONDCLAUSE condrealize?)
+  :  '(' test condrealize? ')' -> ^(CONDCLAUSE test condrealize?)
+  ;
+
+elseClause
+  : ELSE^ sequence
   ;
 
 condrealize
@@ -273,15 +295,26 @@ recipient
   ;
 
 caseClause
-  :  '(' '(' datum* ')' sequence ')'
+  :  '(' '(' datum* ')' sequence ')' -> ^(CASECLAUSE datum* sequence)
+  ;
+
+
+localBinding
+  : localBindingDefinition -> ^(LOCALBINDING localBindingDefinition)
+  ;
+
+localBindingDefinition
+  : LET^ variable? '('! bindingSpec* ')'! body
+  | LETSTAR^ '('! bindingSpec* ')'! body
+  | LETREC^ '('! bindingSpec* ')'! body
   ;
 
 bindingSpec
-  :  '(' variable expression ')'
+  :  '(' variable expression ')' -> ^(BINDINGSPEC variable expression)
   ;
 
 iterationSpec
-  :  '(' variable init step? ')'
+  :  '(' variable init step? ')' -> ^(ITERATIONSPEC variable init step?)
   ;
 
 init
@@ -293,7 +326,7 @@ step
   ;
 
 doResult
-  :  sequence
+  :  sequence -> ^(DORESULT sequence)
   ;
 
 procedureCall
@@ -321,7 +354,7 @@ syntaxSpec
   ;
 
 body
-  :  ((definition)=> definition)* sequence
+  : ((definition)=> definition)* sequence -> ^(BODY definition* sequence)
   ;
 
 sequence
@@ -334,21 +367,18 @@ datum
   ;
 
 simpleDatum
-  :  bool
-  |  number
-  |  CHARACTER
-  |  STRING
+  :  selfEvaluating
   |  identifier
   ;
 
 compoundDatum
   :  list -> ^(LIST list)
-  |  vector
+  |  vector -> ^(VECTOR vector)
   ;
 
 list
-  :  '(' (datum+ ('.' datum)?)? ')'
-  |  abbreviation
+  :  '('! (datum+ ('.' datum)?)? ')'!
+  |  abbreviation -> ^(ABBREVIATION abbreviation)
   ;
 
 abbreviation
@@ -360,20 +390,22 @@ abbrevPrefix
   ;
 
 vector
-  :  '#(' datum* ')'
+  :  '#('! datum* ')'!
   ;
 
 number
-  :  NUM_2
-  |  NUM_8
-  |  NUM_10
-  |  NUM_16
+  :  NUM_2 -> ^(NUM2 NUM_2)
+  |  NUM_8 -> ^(NUM8 NUM_8)
+  |  NUM_10 -> ^(NUM10 NUM_10)
+  |  NUM_16 -> ^(NUM16 NUM_16)
   ;
 
 bool
-  :  TRUE
-  |  FALSE
+  :  TRUE -> ^(BOOL TRUE)
+  |  FALSE -> ^(BOOL FALSE)
   ;
+
+/* Unimplemented here on out) */
 
 quasiquotation
   :  quasiquotationD[1]

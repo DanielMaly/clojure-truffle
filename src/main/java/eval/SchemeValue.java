@@ -1,7 +1,8 @@
 package eval;
 
 public abstract class SchemeValue implements SchemeExpression {
-    public SchemeValue eval() throws SchemeException {
+
+    public SchemeValue eval(Environment environment) throws SchemeException {
         return this;
     }
 }

@@ -32,4 +32,9 @@ public class ConsCell extends SchemeValue {
     public void setCdr(SchemeValue cdr) {
         this.cdr = cdr;
     }
+
+    @Override
+    public String toSchemeString() {
+        return "(" + getCar().toSchemeString() + " " + getCdr().toSchemeString() + ")";
+    }
 }

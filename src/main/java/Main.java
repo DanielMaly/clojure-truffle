@@ -1,3 +1,4 @@
+import eval.SchemeProgram;
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -6,6 +7,7 @@ import org.antlr.runtime.tree.DOTTreeGenerator;
 import org.antlr.stringtemplate.StringTemplate;
 import parse.R5RSLexer;
 import parse.R5RSParser;
+import parse.SchemeExpressionFactory;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -20,6 +22,8 @@ public class Main {
         CommonTree tree = (CommonTree) parser.parse().getTree();
         DOTTreeGenerator gen = new DOTTreeGenerator();
         StringTemplate st = gen.toDOT(tree);
-        System.out.println(st);
+        SchemeExpressionFactory factory = new SchemeExpressionFactory();
+        SchemeProgram program = factory.getProgram(tree);
+        program.execute();
     }
 }

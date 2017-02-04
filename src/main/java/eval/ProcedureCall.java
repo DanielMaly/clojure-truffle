@@ -8,6 +8,11 @@ public class ProcedureCall implements SchemeExpression {
     private SchemeExpression operator;
     private List<SchemeExpression> operands;
 
+    public ProcedureCall(SchemeExpression operator, List<SchemeExpression> operands) {
+        this.operator = operator;
+        this.operands = operands;
+    }
+
     @Override
     public SchemeValue eval(Environment environment) throws SchemeException {
         SchemeValue operatorVal = operator.eval(environment);

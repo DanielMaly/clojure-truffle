@@ -1,17 +1,20 @@
 package eval;
 
-import org.antlr.runtime.tree.CommonTree;
+import builtin.GlobalEnvironment;
 
 public class SchemeProgram {
 
-    private Environment globalScope;
+    private GlobalEnvironment globalScope;
     private SchemeExpression expression;
 
     public SchemeProgram(SchemeExpression expression) {
-        globalScope = new Environment();
+        globalScope = new GlobalEnvironment();
+        globalScope.setup();
+        this.expression = expression;
     }
 
     public void execute() throws SchemeException {
-        expression.eval(globalScope);
+        Environment programScope = new Environment(globalScope);
+        expression.eval(programScope);
     }
 }

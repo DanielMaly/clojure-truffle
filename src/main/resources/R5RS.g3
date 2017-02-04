@@ -81,7 +81,7 @@ parse
 commandOrDefinition
   :  (syntaxDefinition)=>              syntaxDefinition
   |  (definition)=>                    definition
-  |  ('(' BEGIN commandOrDefinition)=> '('! BEGIN commandOrDefinition+ ')'!
+  |  ('(' BEGIN commandOrDefinition)=> '('! BEGIN<CommandDefinitionSequenceNode>^ commandOrDefinition+ ')'!
   |                                    command
   ;
 

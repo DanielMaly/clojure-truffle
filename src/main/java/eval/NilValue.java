@@ -8,4 +8,10 @@ public class NilValue extends SchemeValue {
     public boolean equals(Object obj) {
         return obj instanceof NilValue;
     }
+
+
+    @Override
+    public String toSchemeString() {
+        return "NIL";
+    }
 }

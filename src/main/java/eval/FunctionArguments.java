@@ -33,10 +33,6 @@ public class FunctionArguments {
         else if(currentValue instanceof ConsCell && afterDot != null) {
             environment.putValue(afterDot, currentValue);
         }
-        else if(currentValue instanceof ConsCell) {
-            // Too many arguments
-            throw new SchemeException("Too many arguments");
-        }
 
     }
 }

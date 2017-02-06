@@ -1,5 +1,6 @@
-package net.danielmaly.scheme;
+package net.danielmaly.scheme.lang;
 
+import net.danielmaly.scheme.Interpreter;
 import org.junit.Assert;
 import sun.misc.IOUtils;
 

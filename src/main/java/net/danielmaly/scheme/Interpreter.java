@@ -17,11 +17,16 @@ public class Interpreter {
     }
 
     public static void executeProgram(InputStream source) throws Exception {
+        SchemeProgram program = constructProgram(source);
+        program.execute();
+    }
+
+    public static SchemeProgram constructProgram(InputStream source) throws Exception {
         R5RSLexer lexer = new R5RSLexer(new ANTLRInputStream(source));
         R5RSParser parser = new R5RSParser(new CommonTokenStream(lexer));
         CommonTree tree = (CommonTree) parser.parse().getTree();
         SchemeExpressionFactory factory = new SchemeExpressionFactory();
         SchemeProgram program = factory.getProgram(tree);
-        program.execute();
+        return program;
     }
 }

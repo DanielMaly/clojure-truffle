@@ -1,4 +1,4 @@
-package net.danielmaly.scheme;
+package net.danielmaly.scheme.lang;
 
 import org.junit.Test;
 

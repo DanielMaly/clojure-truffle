@@ -13,6 +13,10 @@ public class SchemeProgram {
         this.expression = expression;
     }
 
+    public SchemeProgram clone() {
+        return new SchemeProgram(expression);
+    }
+
     public void execute() throws SchemeException {
         Environment programScope = new Environment(globalScope);
         expression.eval(programScope);

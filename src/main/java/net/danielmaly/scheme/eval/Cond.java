@@ -2,7 +2,7 @@ package net.danielmaly.scheme.eval;
 
 import java.util.List;
 
-public class Cond implements SchemeExpression {
+public class Cond extends SchemeExpression {
 
     private List<CondClause> clauseList;
     private SchemeExpression elseRealize;

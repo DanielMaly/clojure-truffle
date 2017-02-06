@@ -1,5 +1,35 @@
 package net.danielmaly.scheme.eval;
 
-public interface SchemeExpression extends SchemeNode {
-    SchemeValue eval(Environment environment) throws SchemeException;
+import com.oracle.truffle.api.frame.VirtualFrame;
+import com.oracle.truffle.api.nodes.Node;
+import com.oracle.truffle.api.nodes.NodeInfo;
+import com.oracle.truffle.api.nodes.UnexpectedResultException;
+
+@NodeInfo(language = "Scheme Language", description = "The abstract base node for all expressions")
+public abstract class SchemeExpression extends Node implements Evaluable {
+    public abstract Object execute(VirtualFrame virtualFrame);
+
+    public long executeLong(VirtualFrame virtualFrame) throws UnexpectedResultException {
+        return SchemeTypesGen.SCHEMETYPES.expectLong(this.execute(virtualFrame));
+    }
+
+    public double executeDouble(VirtualFrame virtualFrame) throws UnexpectedResultException {
+        return SchemeTypesGen.SCHEMETYPES.expectDouble(this.execute(virtualFrame));
+    }
+
+    public boolean executeBoolean(VirtualFrame virtualFrame) throws UnexpectedResultException {
+        return SchemeTypesGen.SCHEMETYPES.expectBoolean(this.execute(virtualFrame));
+    }
+
+    public SchemeString executeSchemeString(VirtualFrame virtualFrame) throws UnexpectedResultException {
+        return SchemeTypesGen.SCHEMETYPES.expectSchemeString(this.execute(virtualFrame));
+    }
+
+    public SchemeFunction executeSchemeFunction(VirtualFrame virtualFrame) throws UnexpectedResultException {
+        return SchemeTypesGen.SCHEMETYPES.expectSchemeFunction(this.execute(virtualFrame));
+    }
+
+    public ConsCell executeConsCell(VirtualFrame virtualFrame) throws UnexpectedResultException {
+        return SchemeTypesGen.SCHEMETYPES.expectConsCell(this.execute(virtualFrame));
+    }
 }

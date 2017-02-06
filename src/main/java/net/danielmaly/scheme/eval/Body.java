@@ -2,7 +2,7 @@ package net.danielmaly.scheme.eval;
 
 import java.util.List;
 
-public class Body implements SchemeExpression {
+public class Body extends SchemeExpression {
 
     private List<Define> definitions;
     private Sequence sequence;

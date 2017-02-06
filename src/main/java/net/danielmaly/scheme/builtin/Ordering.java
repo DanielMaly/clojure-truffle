@@ -33,8 +33,8 @@ public class Ordering extends NativeFunction {
     }
 
     private Boolean evaluate(SchemeNumber a, SchemeNumber b) {
-        double n1 = a.getNativeNumer().doubleValue();
-        double n2 = b.getNativeNumer().doubleValue();
+        double n1 = a.getNativeNumber().doubleValue();
+        double n2 = b.getNativeNumber().doubleValue();
         switch(direction) {
             case GREATER_THAN:
                 return n1 > n2;

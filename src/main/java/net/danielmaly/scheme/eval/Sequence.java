@@ -2,7 +2,7 @@ package net.danielmaly.scheme.eval;
 
 import java.util.List;
 
-public class Sequence implements SchemeExpression {
+public class Sequence extends SchemeExpression {
     private List<SchemeExpression> children;
 
     public Sequence(List<SchemeExpression> children) {

@@ -1,6 +1,6 @@
 package net.danielmaly.scheme.eval;
 
-public class If implements SchemeExpression {
+public class If extends SchemeExpression {
     private SchemeExpression test;
     private SchemeExpression consequent;
     private SchemeExpression alternate;

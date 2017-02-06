@@ -1,18 +1,21 @@
 package net.danielmaly.scheme.eval;
 
-public class SchemeInteger extends SchemeNumber {
-    private int value;
+import com.oracle.truffle.api.frame.VirtualFrame;
+import com.oracle.truffle.api.nodes.UnexpectedResultException;
 
-    public SchemeInteger(int value) {
+public class SchemeInteger extends SchemeNumber {
+    private long value;
+
+    public SchemeInteger(long value) {
         this.value = value;
     }
 
-    public int getValue() {
+    public long getValue() {
         return value;
     }
 
     @Override
-    public Number getNativeNumer() {
+    public Number getNativeNumber() {
         return value;
     }
 
@@ -22,7 +25,7 @@ public class SchemeInteger extends SchemeNumber {
             return new SchemeInteger(value - ((SchemeInteger) other).getValue());
         }
         else {
-            return new SchemeFloat((double) value - other.getNativeNumer().doubleValue());
+            return new SchemeFloat((double) value - other.getNativeNumber().doubleValue());
         }
     }
 
@@ -32,7 +35,7 @@ public class SchemeInteger extends SchemeNumber {
             return new SchemeInteger(value + ((SchemeInteger) other).getValue());
         }
         else {
-            return new SchemeFloat((double) value + other.getNativeNumer().doubleValue());
+            return new SchemeFloat((double) value + other.getNativeNumber().doubleValue());
         }
     }
 
@@ -42,18 +45,28 @@ public class SchemeInteger extends SchemeNumber {
             return new SchemeInteger(value * ((SchemeInteger) other).getValue());
         }
         else {
-            return new SchemeFloat((double) value * other.getNativeNumer().doubleValue());
+            return new SchemeFloat((double) value * other.getNativeNumber().doubleValue());
         }
     }
 
     @Override
     public SchemeNumber dividedBy(SchemeNumber other) {
-        double value = getValue() / other.getNativeNumer().doubleValue();
+        double value = getValue() / other.getNativeNumber().doubleValue();
         if(other instanceof SchemeInteger) {
-            return new SchemeInteger((int) value);
+            return new SchemeInteger((long) value);
         }
         else {
             return new SchemeFloat(value);
         }
+    }
+
+    @Override
+    public Object execute(VirtualFrame virtualFrame) {
+        return value;
+    }
+
+    @Override
+    public long executeLong(VirtualFrame virtualFrame) throws UnexpectedResultException {
+        return value;
     }
 }

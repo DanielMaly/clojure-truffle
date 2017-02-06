@@ -1,6 +1,6 @@
 package net.danielmaly.scheme.eval;
 
-public class Define implements SchemeExpression {
+public class Define extends SchemeExpression {
 
     private String name;
     private SchemeExpression expression;

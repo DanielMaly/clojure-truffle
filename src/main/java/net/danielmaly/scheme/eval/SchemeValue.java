@@ -1,6 +1,6 @@
 package net.danielmaly.scheme.eval;
 
-public abstract class SchemeValue implements SchemeExpression {
+public abstract class SchemeValue extends SchemeExpression {
 
     public SchemeValue eval(Environment environment) throws SchemeException {
         return this;

@@ -1,6 +1,6 @@
 package net.danielmaly.scheme.eval;
 
-public class Lambda implements SchemeExpression {
+public class Lambda extends SchemeExpression {
     private FunctionArguments arguments;
     private Body body;
 
@@ -11,6 +11,6 @@ public class Lambda implements SchemeExpression {
 
     @Override
     public SchemeValue eval(Environment environment) throws SchemeException {
-        return new Function(body, environment, arguments);
+        return new SchemeFunction(body, environment, arguments);
     }
 }

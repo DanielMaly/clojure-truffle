@@ -1,16 +1,16 @@
 package net.danielmaly.scheme.eval;
 
-public class Function extends SchemeValue {
+public class SchemeFunction extends SchemeValue {
 
     private Environment closure;
     private Body body;
     private FunctionArguments formals;
 
-    public Function() {
+    public SchemeFunction() {
 
     }
 
-    public Function(Body body, Environment environment, FunctionArguments formals) {
+    public SchemeFunction(Body body, Environment environment, FunctionArguments formals) {
         this.body = body;
         this.closure = environment;
         this.formals = formals;
@@ -36,6 +36,6 @@ public class Function extends SchemeValue {
 
     @Override
     public String toSchemeString() {
-        return "[Function]";
+        return "[SchemeFunction]";
     }
 }

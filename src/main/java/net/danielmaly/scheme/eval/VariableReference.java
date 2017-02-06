@@ -1,6 +1,6 @@
 package net.danielmaly.scheme.eval;
 
-public class VariableReference implements SchemeExpression {
+public class VariableReference extends SchemeExpression {
     private String variable;
 
     public VariableReference(String variable) {

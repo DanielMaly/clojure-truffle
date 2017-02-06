@@ -1,7 +1,7 @@
 package net.danielmaly.scheme.eval;
 
 public abstract class SchemeNumber extends SchemeValue {
-    public abstract Number getNativeNumer();
+    public abstract Number getNativeNumber();
 
     public abstract SchemeNumber minus(SchemeNumber other);
     public abstract SchemeNumber plus(SchemeNumber other);
@@ -11,6 +11,6 @@ public abstract class SchemeNumber extends SchemeValue {
 
     @Override
     public String toSchemeString() {
-        return getNativeNumer().toString();
+        return getNativeNumber().toString();
     }
 }

@@ -5,7 +5,7 @@ import net.danielmaly.scheme.eval.*;
 
 import java.util.List;
 
-public abstract class NativeFunction extends Function {
+public abstract class NativeFunction extends SchemeFunction {
 
     public NativeFunction(Environment environment, List<String> arguments) {
         FunctionArguments functionArguments = new FunctionArguments(arguments, null);

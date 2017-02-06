@@ -41,6 +41,6 @@ public class Equality extends NativeFunction {
             throw new SchemeException("Expected numeric types");
         }
 
-        return SchemeBoolean.get(((SchemeNumber) a).getNativeNumer().equals(((SchemeNumber) b).getNativeNumer()));
+        return SchemeBoolean.get(((SchemeNumber) a).getNativeNumber().equals(((SchemeNumber) b).getNativeNumber()));
     }
 }

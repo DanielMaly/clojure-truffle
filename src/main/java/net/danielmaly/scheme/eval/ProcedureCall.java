@@ -1,9 +1,8 @@
 package net.danielmaly.scheme.eval;
 
-import java.util.LinkedList;
 import java.util.List;
 
-public class ProcedureCall implements SchemeExpression {
+public class ProcedureCall extends SchemeExpression {
 
     private SchemeExpression operator;
     private List<SchemeExpression> operands;
@@ -16,10 +15,10 @@ public class ProcedureCall implements SchemeExpression {
     @Override
     public SchemeValue eval(Environment environment) throws SchemeException {
         SchemeValue operatorVal = operator.eval(environment);
-        if(!(operatorVal instanceof Function)) {
-            throw new SchemeException("Expected Function as a result of " + operatorVal);
+        if(!(operatorVal instanceof SchemeFunction)) {
+            throw new SchemeException("Expected SchemeFunction as a result of " + operatorVal);
         }
-        Function opFunc = (Function) operatorVal;
+        SchemeFunction opFunc = (SchemeFunction) operatorVal;
 
         ConsCell arguments = new ConsCell();
         ConsCell argHead = arguments;

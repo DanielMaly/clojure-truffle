@@ -20,4 +20,19 @@ public class SchemeFloat extends SchemeNumber {
     public SchemeNumber minus(SchemeNumber other) {
         return new SchemeFloat(value - other.getNativeNumer().doubleValue());
     }
+
+    @Override
+    public SchemeNumber plus(SchemeNumber other) {
+        return new SchemeFloat(value + other.getNativeNumer().doubleValue());
+    }
+
+    @Override
+    public SchemeNumber times(SchemeNumber other) {
+        return new SchemeFloat(value * other.getNativeNumer().doubleValue());
+    }
+
+    @Override
+    public SchemeNumber dividedBy(SchemeNumber other) {
+        return new SchemeFloat(value / other.getNativeNumer().doubleValue());
+    }
 }

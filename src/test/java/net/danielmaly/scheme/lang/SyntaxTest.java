@@ -7,6 +7,12 @@ public class SyntaxTest extends FileBasedTest {
 
     @Test
     public void testBottlesOfBeer() throws Exception {
-        this.assertOutputMatches("/bottles.ss", "/bottles.ss.result");
+        this.assertOutputMatches("/bottles.scm", "/bottles.scm.result");
+    }
+
+    @Test
+    public void testRec() throws Exception {
+        this.assertOutputMatches("/rec.scm", "/rec.scm.result");
+
     }
 }

@@ -15,6 +15,9 @@ public final class GlobalEnvironment extends Environment {
 
     private void setupArithmetic() {
         this.putValue("-", new Minus(this));
+        this.putValue("+", new Plus(this));
+        this.putValue("*", new Times(this));
+        this.putValue("/", new DividedBy(this));
     }
 
     private void setupEquality() {

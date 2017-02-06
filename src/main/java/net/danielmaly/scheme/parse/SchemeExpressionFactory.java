@@ -93,7 +93,11 @@ public class SchemeExpressionFactory {
     }
 
     private SchemeExpression getDecimalNumber(Tree treeNode) {
-        return new SchemeInteger(Integer.parseInt(treeNode.getChild(0).getText()));
+        try {
+            return new SchemeInteger(Integer.parseInt(treeNode.getChild(0).getText()));
+        } catch(NumberFormatException ex) {
+            return new SchemeFloat(Double.parseDouble(treeNode.getChild(0).getText()));
+        }
     }
 
     private SchemeExpression getString(Tree treeNode) {

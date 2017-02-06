@@ -8,6 +8,7 @@
   * if
   * cond
   * integer literals
+  * float literals
   * string literals
 
 ### Missing syntactic support:
@@ -22,13 +23,13 @@
   * Quotes
 
 ### Implemented builtin functions:
-  * '-'
+  * '+', '/', '*', '-'
   * '='
   * '<', '>', '<=', '>=' (numeric types only)
   * display, newline
 
 ### All supported builtin functions:
-  * '+', '/', '*'
+  * '+', '/', '*', '-'
   * '<', '>', '<=', '>='
   * '=', eqv?, eq?, equal?
   * display, newline
@@ -48,3 +49,7 @@
   * Framework for language tests
   * Framework for timed benchmarks
 
+### v0.1.1
+  * Added support for float literals
+  * Added support for '+', '*' and '/' (integral and floating-point)
+  * rec.scm tests

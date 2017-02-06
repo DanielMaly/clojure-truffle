@@ -1,6 +1,12 @@
-package net.danielmaly.scheme.eval;
+package net.danielmaly.scheme.types;
 
-public class SchemeFunction extends SchemeValue {
+import com.oracle.truffle.api.frame.VirtualFrame;
+import net.danielmaly.scheme.eval.Body;
+import net.danielmaly.scheme.eval.Environment;
+import net.danielmaly.scheme.eval.FunctionArguments;
+import net.danielmaly.scheme.eval.SchemeException;
+
+public class SchemeFunction {
 
     private Environment closure;
     private Body body;
@@ -16,7 +22,7 @@ public class SchemeFunction extends SchemeValue {
         this.formals = formals;
     }
 
-    public SchemeValue call(ConsCell args) throws SchemeException {
+    public Object call(ConsCell args) throws SchemeException {
         Environment functionEnvironment = new Environment(closure);
         this.formals.apply(functionEnvironment, args);
         return this.body.eval(functionEnvironment);
@@ -34,8 +40,4 @@ public class SchemeFunction extends SchemeValue {
         this.formals = formals;
     }
 
-    @Override
-    public String toSchemeString() {
-        return "[SchemeFunction]";
-    }
-}
+

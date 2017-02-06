@@ -2,8 +2,6 @@ package net.danielmaly.scheme.builtin;
 
 import net.danielmaly.scheme.eval.Environment;
 import net.danielmaly.scheme.eval.SchemeException;
-import net.danielmaly.scheme.eval.SchemeNumber;
-import net.danielmaly.scheme.eval.SchemeValue;
 
 import java.util.Arrays;
 

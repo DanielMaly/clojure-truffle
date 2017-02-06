@@ -1,6 +1,7 @@
 package net.danielmaly.scheme.builtin;
 
 import net.danielmaly.scheme.eval.*;
+import net.danielmaly.scheme.eval.literals.BooleanLiteral;
 
 import java.util.Arrays;
 
@@ -26,7 +27,7 @@ public class Equality extends NativeFunction {
         SchemeValue b = environment.getValue("b");
 
         if(mode.equals(Mode.ADDRESS)) {
-            return SchemeBoolean.get(a == b);
+            return BooleanLiteral.get(a == b);
         }
         else if(mode.equals(Mode.PRIMITIVE_NUMERIC)) {
             return compareNumbers(a, b);
@@ -36,11 +37,11 @@ public class Equality extends NativeFunction {
         }
     }
 
-    private SchemeBoolean compareNumbers(SchemeValue a, SchemeValue b) throws SchemeException {
+    private BooleanLiteral compareNumbers(SchemeValue a, SchemeValue b) throws SchemeException {
         if(!(Util.isNumber(a) && Util.isNumber(b))) {
             throw new SchemeException("Expected numeric types");
         }
 
-        return SchemeBoolean.get(((SchemeNumber) a).getNativeNumber().equals(((SchemeNumber) b).getNativeNumber()));
+        return BooleanLiteral.get(((SchemeNumber) a).getNativeNumber().equals(((SchemeNumber) b).getNativeNumber()));
     }
 }

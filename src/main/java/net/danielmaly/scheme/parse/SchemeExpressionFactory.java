@@ -1,6 +1,9 @@
 package net.danielmaly.scheme.parse;
 
 import net.danielmaly.scheme.eval.*;
+import net.danielmaly.scheme.eval.literals.FloatLiteral;
+import net.danielmaly.scheme.eval.literals.IntegerLiteral;
+import net.danielmaly.scheme.eval.literals.StringLiteral;
 import org.antlr.runtime.tree.Tree;
 
 import java.util.ArrayList;
@@ -94,16 +97,16 @@ public class SchemeExpressionFactory {
 
     private SchemeExpression getDecimalNumber(Tree treeNode) {
         try {
-            return new SchemeInteger(Integer.parseInt(treeNode.getChild(0).getText()));
+            return new IntegerLiteral(Integer.parseInt(treeNode.getChild(0).getText()));
         } catch(NumberFormatException ex) {
-            return new SchemeFloat(Double.parseDouble(treeNode.getChild(0).getText()));
+            return new FloatLiteral(Double.parseDouble(treeNode.getChild(0).getText()));
         }
     }
 
     private SchemeExpression getString(Tree treeNode) {
         // Strip quotes
         String text = treeNode.getChild(0).getText();
-        SchemeString string = new SchemeString(text.substring(1, text.length() - 1));
+        StringLiteral string = new StringLiteral(text.substring(1, text.length() - 1));
         return string;
     }
 

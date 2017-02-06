@@ -4,9 +4,11 @@ import com.oracle.truffle.api.frame.VirtualFrame;
 import com.oracle.truffle.api.nodes.Node;
 import com.oracle.truffle.api.nodes.NodeInfo;
 import com.oracle.truffle.api.nodes.UnexpectedResultException;
+import net.danielmaly.scheme.types.ConsCell;
+import net.danielmaly.scheme.types.SchemeFunction;
 
 @NodeInfo(language = "Scheme Language", description = "The abstract base node for all expressions")
-public abstract class SchemeExpression extends Node implements Evaluable {
+public abstract class SchemeExpression extends Node {
     public abstract Object execute(VirtualFrame virtualFrame);
 
     public long executeLong(VirtualFrame virtualFrame) throws UnexpectedResultException {
@@ -21,8 +23,8 @@ public abstract class SchemeExpression extends Node implements Evaluable {
         return SchemeTypesGen.SCHEMETYPES.expectBoolean(this.execute(virtualFrame));
     }
 
-    public SchemeString executeSchemeString(VirtualFrame virtualFrame) throws UnexpectedResultException {
-        return SchemeTypesGen.SCHEMETYPES.expectSchemeString(this.execute(virtualFrame));
+    public String executeString(VirtualFrame virtualFrame) throws UnexpectedResultException {
+        return SchemeTypesGen.SCHEMETYPES.expectString(this.execute(virtualFrame));
     }
 
     public SchemeFunction executeSchemeFunction(VirtualFrame virtualFrame) throws UnexpectedResultException {

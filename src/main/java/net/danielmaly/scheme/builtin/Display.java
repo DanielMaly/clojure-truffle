@@ -3,7 +3,6 @@ package net.danielmaly.scheme.builtin;
 import net.danielmaly.scheme.eval.Environment;
 import net.danielmaly.scheme.eval.NilValue;
 import net.danielmaly.scheme.eval.SchemeException;
-import net.danielmaly.scheme.eval.SchemeValue;
 
 import java.util.Collections;
 

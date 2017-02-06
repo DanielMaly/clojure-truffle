@@ -1,6 +1,7 @@
 package net.danielmaly.scheme.builtin;
 
 import net.danielmaly.scheme.eval.*;
+import net.danielmaly.scheme.eval.literals.BooleanLiteral;
 
 import java.util.Arrays;
 
@@ -29,7 +30,7 @@ public class Ordering extends NativeFunction {
             throw new SchemeException("Expected numeric types");
         }
 
-        return SchemeBoolean.get(evaluate((SchemeNumber) a, (SchemeNumber) b));
+        return BooleanLiteral.get(evaluate((SchemeNumber) a, (SchemeNumber) b));
     }
 
     private Boolean evaluate(SchemeNumber a, SchemeNumber b) {

@@ -1,5 +1,7 @@
 package net.danielmaly.scheme.eval;
 
+import net.danielmaly.scheme.eval.literals.BooleanLiteral;
+
 public class If extends SchemeExpression {
     private SchemeExpression test;
     private SchemeExpression consequent;
@@ -18,12 +20,12 @@ public class If extends SchemeExpression {
     @Override
     public SchemeValue eval(Environment environment) throws SchemeException {
         SchemeValue testResult = test.eval(environment);
-        if(!(testResult instanceof SchemeBoolean)) {
+        if(!(testResult instanceof BooleanLiteral)) {
             throw new SchemeException("Expected a boolean as the result of an IF test");
         }
 
-        SchemeBoolean result = (SchemeBoolean) testResult;
-        if(result.equals(SchemeBoolean.TRUE)) {
+        BooleanLiteral result = (BooleanLiteral) testResult;
+        if(result.equals(BooleanLiteral.TRUE)) {
             return this.consequent.eval(environment);
         }
         else {

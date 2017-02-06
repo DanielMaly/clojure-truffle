@@ -2,6 +2,7 @@ package net.danielmaly.scheme.builtin;
 
 
 import net.danielmaly.scheme.eval.*;
+import net.danielmaly.scheme.types.SchemeFunction;
 
 import java.util.List;
 

@@ -1,5 +1,7 @@
 package net.danielmaly.scheme.eval;
 
+import net.danielmaly.scheme.types.ConsCell;
+
 import java.util.Iterator;
 import java.util.List;
 

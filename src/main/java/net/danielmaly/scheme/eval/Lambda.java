@@ -1,5 +1,7 @@
 package net.danielmaly.scheme.eval;
 
+import net.danielmaly.scheme.types.SchemeFunction;
+
 public class Lambda extends SchemeExpression {
     private FunctionArguments arguments;
     private Body body;

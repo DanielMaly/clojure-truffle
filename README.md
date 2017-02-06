@@ -1,4 +1,6 @@
-## Current support:
+## Language support
+
+### Current support:
 
   * define
   * lambda
@@ -8,7 +10,7 @@
   * integer literals
   * string literals
 
-## Missing syntactic support:
+### Missing syntactic support:
   * AND and OR
   * CASE expressions
   * Boolean literals
@@ -19,13 +21,13 @@
   * Loops
   * Quotes
 
-## Implemented builtin functions:
+### Implemented builtin functions:
   * '-'
   * '='
   * '<', '>', '<=', '>=' (numeric types only)
   * display, newline
 
-## All supported builtin functions:
+### All supported builtin functions:
   * '+', '/', '*'
   * '<', '>', '<=', '>='
   * '=', eqv?, eq?, equal?
@@ -35,4 +37,14 @@
   * length, append, reverse
   * type predicates (boolean? number? symbol? procedure? null? zero? odd? even?)
   * apply, map
+
+
+## Version history
+
+### v0.1.0
+  * Basic support necessary to run the 99 bottles program
+  * '-'. '=', display, newline
+  * '<', '>', '<=', '>=' (numeric types only)
+  * Framework for language tests
+  * Framework for timed benchmarks
 

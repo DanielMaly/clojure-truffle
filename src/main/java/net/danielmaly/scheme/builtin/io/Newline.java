@@ -1,11 +1,13 @@
 package net.danielmaly.scheme.builtin.io;
 
+import com.oracle.truffle.api.dsl.GenerateNodeFactory;
 import com.oracle.truffle.api.dsl.Specialization;
 import com.oracle.truffle.api.nodes.NodeInfo;
 import net.danielmaly.scheme.builtin.BuiltinExpression;
 import net.danielmaly.scheme.types.NilValue;
 
 @NodeInfo(shortName = "newline")
+@GenerateNodeFactory
 public abstract class Newline extends BuiltinExpression {
 
     @Specialization

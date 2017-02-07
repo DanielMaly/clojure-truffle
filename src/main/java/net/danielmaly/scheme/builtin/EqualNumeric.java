@@ -1,9 +1,11 @@
 package net.danielmaly.scheme.builtin;
 
+import com.oracle.truffle.api.dsl.GenerateNodeFactory;
 import com.oracle.truffle.api.dsl.Specialization;
 import com.oracle.truffle.api.nodes.NodeInfo;
 
 @NodeInfo(shortName = "=")
+@GenerateNodeFactory
 public abstract class EqualNumeric extends BuiltinExpression {
 
     @Specialization

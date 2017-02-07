@@ -1,5 +1,6 @@
 package net.danielmaly.scheme.builtin;
 
+import com.oracle.truffle.api.dsl.GenerateNodeFactory;
 import com.oracle.truffle.api.dsl.NodeChild;
 import net.danielmaly.scheme.eval.SchemeExpression;
 

@@ -5,8 +5,20 @@ import com.oracle.truffle.api.dsl.NodeFactory;
 import com.oracle.truffle.api.frame.FrameDescriptor;
 import com.oracle.truffle.api.frame.MaterializedFrame;
 import com.oracle.truffle.api.frame.VirtualFrame;
+import com.oracle.truffle.api.nodes.Node;
 import net.danielmaly.scheme.builtin.BuiltinExpression;
+import net.danielmaly.scheme.builtin.EqualNumericFactory;
+import net.danielmaly.scheme.builtin.arithmetic.*;
+import net.danielmaly.scheme.builtin.io.DisplayFactory;
+import net.danielmaly.scheme.builtin.io.Newline;
+import net.danielmaly.scheme.builtin.io.NewlineFactory;
+import net.danielmaly.scheme.builtin.ordering.GreaterThanEqualFactory;
+import net.danielmaly.scheme.builtin.ordering.GreaterThanFactory;
+import net.danielmaly.scheme.builtin.ordering.LessThanEqualFactory;
+import net.danielmaly.scheme.builtin.ordering.LessThanFactory;
 import net.danielmaly.scheme.types.SchemeFunction;
+
+import java.util.List;
 
 public class SchemeContext {
     private final FrameDescriptor globalFrameDescriptor;
@@ -23,8 +35,33 @@ public class SchemeContext {
         return frame.materialize();
     }
 
-    private static void addGlobalFunctions(VirtualFrame virtualFrame) {
-        FrameDescriptor frameDescriptor = virtualFrame.getFrameDescriptor();
+    private static void addGlobalFunctions(VirtualFrame frame) {
+        FrameDescriptor fd = frame.getFrameDescriptor();
+
+        addToFrame(frame, fd, "/", DividedByFactory.getInstance());
+        addToFrame(frame, fd, "-", MinusFactory.getInstance());
+        addToFrame(frame, fd, "+", PlusFactory.getInstance());
+        addToFrame(frame, fd, "*", TimesFactory.getInstance());
+
+        addToFrame(frame, fd, "display", DisplayFactory.getInstance());
+        addToFrame(frame, fd, "newline", NewlineFactory.getInstance());
+
+        addToFrame(frame, fd, ">", GreaterThanFactory.getInstance());
+        addToFrame(frame, fd, ">=", GreaterThanEqualFactory.getInstance());
+        addToFrame(frame, fd, "<", LessThanFactory.getInstance());
+        addToFrame(frame, fd, "<=", LessThanEqualFactory.getInstance());
+
+        addToFrame(frame, fd, "=", EqualNumericFactory.getInstance());
+
+    }
+
+    private static void addToFrame(VirtualFrame frame,
+                                   FrameDescriptor frameDescriptor,
+                                   String identifier,
+                                   NodeFactory<? extends BuiltinExpression> factory) {
+
+        frame.setObject(frameDescriptor.addFrameSlot(identifier), createBuiltinFunction(factory, frameDescriptor));
+
     }
 
     /**

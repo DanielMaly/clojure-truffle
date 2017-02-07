@@ -32,7 +32,7 @@
 ### All supported builtin functions:
   * '+', '/', '*', '-', '%'
   * '<', '>', '<=', '>='
-  * '=', eqv?, eq?, equal?
+  * '=', eqv?, eq?, equal?, not
   * display, newline
   * read
   * list, cons, car, cdr

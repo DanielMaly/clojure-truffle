@@ -1,11 +1,17 @@
 package net.danielmaly.scheme.eval;
 
-import net.danielmaly.scheme.eval.literals.BooleanLiteral;
+import com.oracle.truffle.api.frame.VirtualFrame;
+import com.oracle.truffle.api.nodes.UnexpectedResultException;
+import com.oracle.truffle.api.profiles.ConditionProfile;
+import net.danielmaly.scheme.eval.literals.NilLiteral;
+import net.danielmaly.scheme.types.NilValue;
 
 public class If extends SchemeExpression {
-    private SchemeExpression test;
-    private SchemeExpression consequent;
-    private SchemeExpression alternate;
+    @Child private SchemeExpression test;
+    @Child private SchemeExpression consequent;
+    @Child private SchemeExpression alternate;
+
+    private final ConditionProfile conditionProfile = ConditionProfile.createBinaryProfile();
 
     public If(SchemeExpression test, SchemeExpression consequent, SchemeExpression alternate) {
         this.test = test;
@@ -14,22 +20,27 @@ public class If extends SchemeExpression {
     }
 
     public If(SchemeExpression test, SchemeExpression consequent) {
-        this(test, consequent, NilValue.NIL);
+        this(test, consequent, new NilLiteral());
     }
 
     @Override
-    public SchemeValue eval(Environment environment) throws SchemeException {
-        SchemeValue testResult = test.eval(environment);
-        if(!(testResult instanceof BooleanLiteral)) {
-            throw new SchemeException("Expected a boolean as the result of an IF test");
-        }
-
-        BooleanLiteral result = (BooleanLiteral) testResult;
-        if(result.equals(BooleanLiteral.TRUE)) {
-            return this.consequent.eval(environment);
-        }
-        else {
-            return this.alternate.eval(environment);
+    public Object execute(VirtualFrame virtualFrame) {
+        if (this.conditionProfile.profile(this.testResult(virtualFrame))) {
+            return this.consequent.execute(virtualFrame);
+        } else {
+            return this.alternate.execute(virtualFrame);
         }
     }
+
+
+    private boolean testResult(VirtualFrame virtualFrame) {
+        try {
+            return this.test.executeBoolean(virtualFrame);
+        } catch (UnexpectedResultException e) {
+            Object result = this.test.execute(virtualFrame);
+            return result != NilValue.NIL;
+        }
+    }
+
+
 }

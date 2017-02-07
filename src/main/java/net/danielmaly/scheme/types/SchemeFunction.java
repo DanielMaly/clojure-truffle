@@ -1,43 +1,35 @@
 package net.danielmaly.scheme.types;
 
-import com.oracle.truffle.api.frame.VirtualFrame;
-import net.danielmaly.scheme.eval.Body;
-import net.danielmaly.scheme.eval.Environment;
-import net.danielmaly.scheme.eval.FunctionArguments;
-import net.danielmaly.scheme.eval.SchemeException;
+import com.oracle.truffle.api.RootCallTarget;
+import com.oracle.truffle.api.Truffle;
+import com.oracle.truffle.api.frame.FrameDescriptor;
+import com.oracle.truffle.api.frame.FrameSlot;
+import com.oracle.truffle.api.frame.MaterializedFrame;
+import net.danielmaly.scheme.eval.*;
 
 public class SchemeFunction {
 
-    private Environment closure;
-    private Body body;
-    private FunctionArguments formals;
+    public final RootCallTarget callTarget;
+    private MaterializedFrame lexicalScope;
 
-    public SchemeFunction() {
-
+    public SchemeFunction(RootCallTarget callTarget) {
+        this.callTarget = callTarget;
     }
 
-    public SchemeFunction(Body body, Environment environment, FunctionArguments formals) {
-        this.body = body;
-        this.closure = environment;
-        this.formals = formals;
+    public MaterializedFrame getLexicalScope() {
+        return this.lexicalScope;
     }
 
-    public Object call(ConsCell args) throws SchemeException {
-        Environment functionEnvironment = new Environment(closure);
-        this.formals.apply(functionEnvironment, args);
-        return this.body.eval(functionEnvironment);
+    public void setLexicalScope(MaterializedFrame lexicalScope) {
+        this.lexicalScope = lexicalScope;
     }
 
-    public void setClosure(Environment closure) {
-        this.closure = closure;
+    public static SchemeFunction create(FrameSlot[] arguments,
+                                        SchemeExpression[] bodyNodes, FrameDescriptor frameDescriptor) {
+        return new SchemeFunction(
+                Truffle.getRuntime().createCallTarget(SchemeRootNode.create(arguments, bodyNodes, frameDescriptor))
+        );
     }
-
-    public void setBody(Body body) {
-        this.body = body;
-    }
-
-    public void setFormals(FunctionArguments formals) {
-        this.formals = formals;
-    }
+}
 
 

@@ -21,6 +21,7 @@
   * LET (let, letrec, letstar)
   * Loops
   * Quotes
+  * Dot-style definitions and arguments
 
 ### Implemented builtin functions:
   * '+', '/', '*', '-'
@@ -29,7 +30,7 @@
   * display, newline
 
 ### All supported builtin functions:
-  * '+', '/', '*', '-'
+  * '+', '/', '*', '-', '%'
   * '<', '>', '<=', '>='
   * '=', eqv?, eq?, equal?
   * display, newline
@@ -53,3 +54,7 @@
   * Added support for float literals
   * Added support for '+', '*' and '/' (integral and floating-point)
   * rec.scm tests
+
+### v1.0.0
+  * Rewrote the whole interpreter using Truffle
+  * Removed support for dot-style arguments

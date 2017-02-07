@@ -3,6 +3,7 @@ package net.danielmaly.scheme.parse;
 import net.danielmaly.scheme.eval.*;
 import net.danielmaly.scheme.eval.literals.FloatLiteral;
 import net.danielmaly.scheme.eval.literals.IntegerLiteral;
+import net.danielmaly.scheme.eval.literals.NilLiteral;
 import net.danielmaly.scheme.eval.literals.StringLiteral;
 import org.antlr.runtime.tree.Tree;
 
@@ -15,7 +16,7 @@ public class SchemeExpressionFactory {
     public SchemeExpression getExpression(Tree treeNode) {
         int t = treeNode.getType();
 
-        if(t == R5RSLexer.VARIABLE) {
+        /*if(t == R5RSLexer.VARIABLE) {
             return createVariableReference((R5RSParser.VariableNode) treeNode);
         }
 
@@ -47,7 +48,6 @@ public class SchemeExpressionFactory {
             return createCond(treeNode);
         }
 
-        /* Literals */
         if(t == R5RSLexer.STR) {
             return getString(treeNode);
         }
@@ -56,15 +56,14 @@ public class SchemeExpressionFactory {
             return getDecimalNumber(treeNode);
         }
 
-        /* Wrappers */
         if(t == R5RSLexer.COMMAND || t == R5RSLexer.LITERAL || t == R5RSLexer.SELFEVALUATING || t == R5RSLexer.TEST) {
             return getExpression(treeNode.getChild(0));
-        }
+        }*/
 
-        return NilValue.NIL;
+        return new NilLiteral();
     }
 
-    private SchemeExpression createCond(Tree treeNode) {
+   /* private SchemeExpression createCond(Tree treeNode) {
         List<CondClause> clauses = new LinkedList<>();
         SchemeExpression elseClause = null;
 
@@ -128,7 +127,7 @@ public class SchemeExpressionFactory {
             }
         }
 
-        FunctionArguments arguments = new FunctionArguments(argumentIndentifiers, afterDotIdentifier);
+        ReadFunctionArgument arguments = new ReadFunctionArgument(argumentIndentifiers, afterDotIdentifier);
         Body body = createBody(treeNode.getChild(treeNode.getChildCount() - 1));
         return new Lambda(arguments, body);
     }
@@ -151,7 +150,7 @@ public class SchemeExpressionFactory {
         //TODO: Formals
         String name = tree.getChild(0).getText();
         SchemeExpression expression = getExpression(tree.getChild(1));
-        return new Define(name, expression);
+        return Define
     }
 
     private Sequence createSequenceNode(Tree tree) {
@@ -175,5 +174,5 @@ public class SchemeExpressionFactory {
             operands.add(getExpression(tree.getChild(i)));
         }
         return new ProcedureCall(operator, operands);
-    }
+    }*/
 }

@@ -1,20 +1,30 @@
 package net.danielmaly.scheme.eval;
 
+import com.oracle.truffle.api.CompilerAsserts;
+import com.oracle.truffle.api.frame.FrameDescriptor;
+import com.oracle.truffle.api.frame.VirtualFrame;
+import com.oracle.truffle.api.nodes.ExplodeLoop;
+import com.oracle.truffle.api.nodes.RootNode;
+import net.danielmaly.scheme.types.NilValue;
+
 import java.util.List;
 
 public class Sequence extends SchemeExpression {
-    private List<SchemeExpression> children;
+    @Children private SchemeExpression[] children;
 
-    public Sequence(List<SchemeExpression> children) {
+    public Sequence(SchemeExpression[] children) {
         this.children = children;
     }
 
+
     @Override
-    public SchemeValue eval(Environment environment) throws SchemeException {
-        SchemeValue result = new NilValue();
-        for(SchemeExpression exp : children) {
-            result = exp.eval(environment);
+    @ExplodeLoop
+    public Object execute(VirtualFrame virtualFrame) {
+        int secondToLast = this.children.length - 1;
+        CompilerAsserts.compilationConstant(secondToLast);
+        for (int i=0; i<secondToLast; i++) {
+            this.children[i].execute(virtualFrame);
         }
-        return result;
+        return this.children[secondToLast].execute(virtualFrame);
     }
 }

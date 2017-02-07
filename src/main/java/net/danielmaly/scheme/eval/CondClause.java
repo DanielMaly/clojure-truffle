@@ -1,27 +1,38 @@
 package net.danielmaly.scheme.eval;
 
-import net.danielmaly.scheme.eval.literals.BooleanLiteral;
+import com.oracle.truffle.api.frame.VirtualFrame;
+import com.oracle.truffle.api.nodes.UnexpectedResultException;
+import com.oracle.truffle.api.profiles.ConditionProfile;
+import net.danielmaly.scheme.types.NilValue;
 
-public class CondClause {
-    private SchemeExpression test;
-    private SchemeExpression realize;
+public class CondClause extends SchemeExpression {
+    @Child private SchemeExpression test;
+    @Child private SchemeExpression realize;
+
+    private final ConditionProfile conditionProfile = ConditionProfile.createBinaryProfile();
 
     public CondClause(SchemeExpression test, SchemeExpression realize) {
         this.test = test;
         this.realize = realize;
     }
 
-    public boolean shouldRealize(Environment env) throws SchemeException {
-        SchemeValue testResult = test.eval(env);
-        if(!(testResult instanceof BooleanLiteral)) {
-            throw new SchemeException("Expected a boolean as the result of an IF test");
-        }
 
-        BooleanLiteral result = (BooleanLiteral) testResult;
-        return result.equals(BooleanLiteral.TRUE);
+    @Override
+    public Object execute(VirtualFrame virtualFrame) {
+        if (this.conditionProfile.profile(this.testResult(virtualFrame))) {
+            return this.realize.execute(virtualFrame);
+        } else {
+            return NilValue.FALLTHROUGH;
+        }
     }
 
-    public SchemeExpression getRealize() {
-        return realize;
+
+    private boolean testResult(VirtualFrame virtualFrame) {
+        try {
+            return this.test.executeBoolean(virtualFrame);
+        } catch (UnexpectedResultException e) {
+            Object result = this.test.execute(virtualFrame);
+            return result != NilValue.NIL;
+        }
     }
 }

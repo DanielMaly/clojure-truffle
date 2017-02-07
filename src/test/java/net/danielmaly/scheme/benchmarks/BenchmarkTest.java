@@ -2,7 +2,6 @@ package net.danielmaly.scheme.benchmarks;
 
 import bb.util.Benchmark;
 import net.danielmaly.scheme.Interpreter;
-import net.danielmaly.scheme.eval.SchemeProgram;
 
 import java.io.InputStream;
 
@@ -16,7 +15,7 @@ public class BenchmarkTest {
 
     protected Benchmark benchmark(String sourceFile, Benchmark.Params params) throws Exception {
         final InputStream sourceStream = getClass().getResourceAsStream(sourceFile);
-        final SchemeProgram program = Interpreter.constructProgram(sourceStream);
+        /*final SchemeProgram program = Interpreter.constructProgram(sourceStream);
 
         return new Benchmark(new Runnable() {
             @Override
@@ -27,6 +26,7 @@ public class BenchmarkTest {
                     e.printStackTrace();
                 }
             }
-        }, params);
+        }, params);*/
+        return null;
     }
 }

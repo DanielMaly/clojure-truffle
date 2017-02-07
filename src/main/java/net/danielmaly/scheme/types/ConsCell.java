@@ -1,7 +1,5 @@
 package net.danielmaly.scheme.types;
 
-import net.danielmaly.scheme.eval.NilValue;
-
 public class ConsCell {
     private Object car;
     private Object cdr;

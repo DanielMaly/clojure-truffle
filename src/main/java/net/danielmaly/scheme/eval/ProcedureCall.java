@@ -1,39 +1,54 @@
 package net.danielmaly.scheme.eval;
 
-import net.danielmaly.scheme.types.ConsCell;
+import com.oracle.truffle.api.CompilerAsserts;
+import com.oracle.truffle.api.Truffle;
+import com.oracle.truffle.api.dsl.UnsupportedSpecializationException;
+import com.oracle.truffle.api.frame.VirtualFrame;
+import com.oracle.truffle.api.nodes.ExplodeLoop;
+import com.oracle.truffle.api.nodes.IndirectCallNode;
+import com.oracle.truffle.api.nodes.Node;
+import com.oracle.truffle.api.nodes.UnexpectedResultException;
 import net.danielmaly.scheme.types.SchemeFunction;
 
-import java.util.List;
+import java.util.Arrays;
 
 public class ProcedureCall extends SchemeExpression {
 
-    private SchemeExpression operator;
-    private List<SchemeExpression> operands;
+    @Child protected SchemeExpression functionNode;
+    @Children protected final SchemeExpression[] argumentNodes;
+    @Child protected IndirectCallNode callNode;
 
-    public ProcedureCall(SchemeExpression operator, List<SchemeExpression> operands) {
-        this.operator = operator;
-        this.operands = operands;
+    public ProcedureCall(SchemeExpression functionNode, SchemeExpression[] argumentNodes) {
+        this.functionNode = functionNode;
+        this.argumentNodes = argumentNodes;
+        this.callNode = Truffle.getRuntime().createIndirectCallNode();
     }
 
     @Override
-    public SchemeValue eval(Environment environment) throws SchemeException {
-        SchemeValue operatorVal = operator.eval(environment);
-        if(!(operatorVal instanceof SchemeFunction)) {
-            throw new SchemeException("Expected SchemeFunction as a result of " + operatorVal);
-        }
-        SchemeFunction opFunc = (SchemeFunction) operatorVal;
+    @ExplodeLoop
+    public Object execute(VirtualFrame virtualFrame) {
+        SchemeFunction function = this.evaluateFunction(virtualFrame);
+        CompilerAsserts.compilationConstant(this.argumentNodes.length);
 
-        ConsCell arguments = new ConsCell();
-        ConsCell argHead = arguments;
-        for(SchemeExpression operand : operands) {
-            if(!arguments.getCar().equals(NilValue.NIL)) {
-                ConsCell newCell = new ConsCell();
-                arguments.setCdr(newCell);
-                arguments = newCell;
-            }
-            arguments.setCar(operand.eval(environment));
+        Object[] argumentValues = new Object[this.argumentNodes.length + 1];
+        argumentValues[0] = function.getLexicalScope();
+        for (int i=0; i<this.argumentNodes.length; i++) {
+            argumentValues[i+1] = this.argumentNodes[i].execute(virtualFrame);
         }
 
-        return opFunc.call(argHead);
+        return this.callNode.call(virtualFrame, function.callTarget, argumentValues);
+    }
+
+    private SchemeFunction evaluateFunction(VirtualFrame virtualFrame) {
+        try {
+            return this.functionNode.executeSchemeFunction(virtualFrame);
+        } catch (UnexpectedResultException e) {
+            throw new UnsupportedSpecializationException(this, new Node[] {this.functionNode}, e);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "(apply " + this.functionNode + " " + Arrays.toString(this.argumentNodes) + ")";
     }
 }

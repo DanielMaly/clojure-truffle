@@ -1,6 +1,7 @@
 package net.danielmaly.scheme;
 
-import net.danielmaly.scheme.eval.SchemeProgram;
+import com.oracle.truffle.api.frame.VirtualFrame;
+import net.danielmaly.scheme.eval.SchemeExpression;
 import net.danielmaly.scheme.parse.R5RSLexer;
 import net.danielmaly.scheme.parse.R5RSParser;
 import net.danielmaly.scheme.parse.SchemeExpressionFactory;
@@ -17,16 +18,16 @@ public class Interpreter {
     }
 
     public static void executeProgram(InputStream source) throws Exception {
-        SchemeProgram program = constructProgram(source);
-        program.execute();
+        System.out.println("Whee");
     }
 
-    public static SchemeProgram constructProgram(InputStream source) throws Exception {
+    public static SchemeExpression constructProgram(InputStream source) throws Exception {
         R5RSLexer lexer = new R5RSLexer(new ANTLRInputStream(source));
         R5RSParser parser = new R5RSParser(new CommonTokenStream(lexer));
         CommonTree tree = (CommonTree) parser.parse().getTree();
         SchemeExpressionFactory factory = new SchemeExpressionFactory();
-        SchemeProgram program = factory.getProgram(tree);
-        return program;
+        return factory.getExpression(tree);
     }
+
+
 }

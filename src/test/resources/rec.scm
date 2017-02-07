@@ -36,5 +36,5 @@
 (newline)
 (display (/ 15 4))   ; 3
 (newline)
-(display (/ 15 4.0)) ; 3.75
+(display (/ 15.0 4.0)) ; 3.75
 (newline)

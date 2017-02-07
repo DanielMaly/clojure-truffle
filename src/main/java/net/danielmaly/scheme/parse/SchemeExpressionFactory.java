@@ -131,6 +131,7 @@ public class SchemeExpressionFactory {
                 body,
                 frameDescriptors.peek()
         );
+        frameDescriptors.pop();
         return LambdaNodeGen.create(function);
     }
 

@@ -20,4 +20,9 @@ public class FloatLiteral extends SchemeExpression {
     public double executeDouble(VirtualFrame virtualFrame) throws UnexpectedResultException {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return value + "";
+    }
 }

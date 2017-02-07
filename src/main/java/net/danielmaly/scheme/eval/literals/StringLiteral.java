@@ -19,4 +19,9 @@ public class StringLiteral extends SchemeExpression {
     public String executeString(VirtualFrame virtualFrame) {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

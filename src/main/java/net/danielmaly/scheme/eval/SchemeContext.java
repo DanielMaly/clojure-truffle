@@ -22,17 +22,17 @@ import java.util.List;
 
 public class SchemeContext {
     private final FrameDescriptor globalFrameDescriptor;
-    private final MaterializedFrame globalFrame;
+    private final VirtualFrame globalFrame;
 
     public SchemeContext() {
         this.globalFrameDescriptor = new FrameDescriptor();
         this.globalFrame = this.initGlobalFrame();
     }
 
-    private MaterializedFrame initGlobalFrame() {
+    private VirtualFrame initGlobalFrame() {
         VirtualFrame frame = Truffle.getRuntime().createVirtualFrame(null, this.globalFrameDescriptor);
         addGlobalFunctions(frame);
-        return frame.materialize();
+        return frame;
     }
 
     private static void addGlobalFunctions(VirtualFrame frame) {
@@ -68,8 +68,16 @@ public class SchemeContext {
      * @return A {@link MaterializedFrame} on the heap that contains all global
      * values.
      */
-    public MaterializedFrame getGlobalFrame() {
-        return this.globalFrame;
+    public MaterializedFrame getMaterializedGlobalFrame() {
+        return this.globalFrame.materialize();
+    }
+
+    public VirtualFrame getGlobalFrame() {
+        return globalFrame;
+    }
+
+    public FrameDescriptor getGlobalFrameDescriptor() {
+        return globalFrameDescriptor;
     }
 
     public static SchemeFunction createBuiltinFunction(

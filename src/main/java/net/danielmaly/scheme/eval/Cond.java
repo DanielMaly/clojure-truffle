@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Cond extends SchemeExpression {
 
-    @Children private CondClause[] clauses;
+    @Children private final CondClause[] clauses;
     @Child private SchemeExpression elseRealize;
 
     public Cond(CondClause[] clauses, SchemeExpression elseRealize) {

@@ -9,7 +9,7 @@ import com.oracle.truffle.api.nodes.RootNode;
 
 
 public class SchemeRootNode extends RootNode {
-    @Children private SchemeExpression[] children;
+    @Children private final SchemeExpression[] children;
 
     public SchemeRootNode(SchemeExpression[] children, FrameDescriptor frameDescriptor) {
         super(SchemeLanguage.class, null, frameDescriptor);

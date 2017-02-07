@@ -58,4 +58,8 @@ public abstract class VariableReference extends SchemeExpression {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "[" + getSlot().getIdentifier().toString() + "]";
+    }
 }

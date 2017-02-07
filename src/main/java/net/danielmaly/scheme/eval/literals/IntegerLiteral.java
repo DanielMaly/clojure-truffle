@@ -20,4 +20,9 @@ public class IntegerLiteral extends SchemeExpression {
     public long executeLong(VirtualFrame virtualFrame) throws UnexpectedResultException {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return value + "";
+    }
 }

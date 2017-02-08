@@ -7,7 +7,7 @@ public class BasicBenchmarks extends BenchmarkTest {
 
     @Test
     public void benchmarkBottles() throws Exception {
-        Benchmark benchmark = benchmark("/bottles.ss");
+        Benchmark benchmark = benchmark("/bottles.scm");
         System.out.println(benchmark.toString());
     }
 }

@@ -1,7 +1,9 @@
 package net.danielmaly.scheme.benchmarks;
 
 import bb.util.Benchmark;
+import com.oracle.truffle.api.nodes.DirectCallNode;
 import net.danielmaly.scheme.Interpreter;
+import net.danielmaly.scheme.eval.SchemeContext;
 
 import java.io.InputStream;
 
@@ -15,18 +17,15 @@ public class BenchmarkTest {
 
     protected Benchmark benchmark(String sourceFile, Benchmark.Params params) throws Exception {
         final InputStream sourceStream = getClass().getResourceAsStream(sourceFile);
-        /*final SchemeProgram program = Interpreter.constructProgram(sourceStream);
+        final SchemeContext schemeContext = new SchemeContext();
+        final DirectCallNode directCallNode = Interpreter.constructFromInputStream(sourceStream, schemeContext);
 
-        return new Benchmark(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    program.clone().execute();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        return new Benchmark(() -> {
+            try {
+                Interpreter.execute(directCallNode, schemeContext);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }, params);*/
-        return null;
+        }, params);
     }
 }

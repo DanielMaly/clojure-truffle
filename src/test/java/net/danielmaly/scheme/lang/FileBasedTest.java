@@ -5,9 +5,6 @@ import org.junit.Assert;
 import sun.misc.IOUtils;
 
 import java.io.*;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 
 public class FileBasedTest {
@@ -19,7 +16,7 @@ public class FileBasedTest {
         System.setErr(new PrintStream(errContent));
 
         InputStream sourceStream = getClass().getResourceAsStream(inFileName);
-        Interpreter.executeProgram(sourceStream);
+        Interpreter.executeFromInputStream(sourceStream);
 
         InputStream referenceStream = getClass().getResourceAsStream(referenceFileName);
         byte[] bytes = IOUtils.readFully(referenceStream, -1, true);

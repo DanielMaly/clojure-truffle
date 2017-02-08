@@ -27,11 +27,10 @@ public class Interpreter {
 
     }
 
-    public static void executeProgram(InputStream source) throws Exception {
+    public static DirectCallNode constructFromInputStream(InputStream source, SchemeContext context) throws Exception {
         R5RSLexer lexer = new R5RSLexer(new ANTLRInputStream(source));
         R5RSParser parser = new R5RSParser(new CommonTokenStream(lexer));
         CommonTree tree = (CommonTree) parser.parse().getTree();
-        SchemeContext context = new SchemeContext();
 
         SchemeExpressionFactory factory = new SchemeExpressionFactory(context);
         Namespace globalNs = new Namespace(context.getGlobalFrameDescriptor());
@@ -41,6 +40,17 @@ public class Interpreter {
         Sequence sequence = factory.createSchemeProgram(tree, fileNamespace);
         SchemeFunction function = SchemeFunction.create(new FrameSlot[] {}, sequence.getExpressions(), globalNs.getFrameDescriptor());
         DirectCallNode directCallNode = Truffle.getRuntime().createDirectCallNode(function.callTarget);
+
+        return directCallNode;
+    }
+
+    public static void executeFromInputStream(InputStream source) throws Exception {
+        SchemeContext context = new SchemeContext();
+        DirectCallNode directCallNode = constructFromInputStream(source, context);
+        execute(directCallNode, context);
+    }
+
+    public static void execute(DirectCallNode directCallNode, SchemeContext context) {
         directCallNode.call(context.getGlobalFrame(), new Object[] {context.getMaterializedGlobalFrame()});
     }
 

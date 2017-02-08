@@ -3,6 +3,7 @@ package net.danielmaly.scheme.eval;
 import com.oracle.truffle.api.Truffle;
 import com.oracle.truffle.api.dsl.NodeFactory;
 import com.oracle.truffle.api.frame.FrameDescriptor;
+import com.oracle.truffle.api.frame.FrameSlotKind;
 import com.oracle.truffle.api.frame.MaterializedFrame;
 import com.oracle.truffle.api.frame.VirtualFrame;
 import com.oracle.truffle.api.nodes.Node;
@@ -60,7 +61,10 @@ public class SchemeContext {
                                    String identifier,
                                    NodeFactory<? extends BuiltinExpression> factory) {
 
-        frame.setObject(frameDescriptor.addFrameSlot(identifier), createBuiltinFunction(factory, frameDescriptor));
+        frame.setObject(
+                frameDescriptor.addFrameSlot(identifier, FrameSlotKind.Object),
+                createBuiltinFunction(factory, frameDescriptor)
+        );
 
     }
 

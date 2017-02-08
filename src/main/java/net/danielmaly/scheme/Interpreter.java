@@ -8,6 +8,7 @@ import com.oracle.truffle.api.nodes.DirectCallNode;
 import net.danielmaly.scheme.eval.SchemeContext;
 import net.danielmaly.scheme.eval.SchemeExpression;
 import net.danielmaly.scheme.eval.Sequence;
+import net.danielmaly.scheme.parse.Namespace;
 import net.danielmaly.scheme.parse.R5RSLexer;
 import net.danielmaly.scheme.parse.R5RSParser;
 import net.danielmaly.scheme.parse.SchemeExpressionFactory;
@@ -32,12 +33,11 @@ public class Interpreter {
         CommonTree tree = (CommonTree) parser.parse().getTree();
         SchemeExpressionFactory factory = new SchemeExpressionFactory();
 
-        Stack<FrameDescriptor> frameDescriptors = new Stack<>();
         SchemeContext context = new SchemeContext();
-        frameDescriptors.push(context.getGlobalFrameDescriptor());
+        Namespace globalNs = new Namespace(context.getGlobalFrameDescriptor());
 
-        Sequence sequence = factory.createSchemeProgram(tree, frameDescriptors);
-        SchemeFunction function = SchemeFunction.create(new FrameSlot[] {}, sequence.getExpressions(), frameDescriptors.peek());
+        Sequence sequence = factory.createSchemeProgram(tree, globalNs);
+        SchemeFunction function = SchemeFunction.create(new FrameSlot[] {}, sequence.getExpressions(), globalNs.getFrameDescriptor());
         DirectCallNode directCallNode = Truffle.getRuntime().createDirectCallNode(function.callTarget);
         directCallNode.call(context.getGlobalFrame(), new Object[] {context.getMaterializedGlobalFrame()});
     }

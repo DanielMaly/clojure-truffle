@@ -1,29 +1,33 @@
 package net.danielmaly.scheme.eval;
 
 import com.oracle.truffle.api.dsl.NodeField;
+import com.oracle.truffle.api.dsl.NodeFields;
 import com.oracle.truffle.api.dsl.Specialization;
 import com.oracle.truffle.api.frame.Frame;
 import com.oracle.truffle.api.frame.FrameSlot;
 import com.oracle.truffle.api.frame.FrameSlotTypeException;
 import com.oracle.truffle.api.frame.VirtualFrame;
 
-@NodeField(name = "slot", type = FrameSlot.class)
+@NodeFields({
+    @NodeField(name = "slot", type = FrameSlot.class), @NodeField(name = "depth", type = Integer.class)
+})
 public abstract class VariableReference extends SchemeExpression {
 
     public abstract FrameSlot getSlot();
+    public abstract Integer getDepth();
 
     public interface FrameGet<T> {
-        public T get(Frame frame, FrameSlot slot) throws FrameSlotTypeException;
+        T get(Frame frame, FrameSlot slot) throws FrameSlotTypeException;
     }
 
     public <T> T readUpStack(FrameGet<T> getter, Frame frame) throws FrameSlotTypeException {
-        T value = getter.get(frame, this.getSlot());
-        while (value == null) {
+        for(int i = 0; i < getDepth() - 1; i++) {
             frame = getLexicalScope(frame);
-            if (frame == null) {
-                throw new RuntimeException("Unknown variable: " + this.getSlot().getIdentifier());
-            }
-            value = getter.get(frame, this.getSlot());
+        }
+
+        T value = getter.get(frame, this.getSlot());
+        if(value == null) {
+            throw new RuntimeException("Unknown variable: " + this.getSlot().getIdentifier());
         }
         return value;
     }

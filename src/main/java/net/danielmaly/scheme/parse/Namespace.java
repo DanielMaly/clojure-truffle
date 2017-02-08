@@ -74,9 +74,9 @@ public class Namespace {
             }
             slot = current.frameDescriptor.findFrameSlot(id);
         }
-//        if (current.parent == null) {
-//            return new Pair<>(LEVEL_GLOBAL, slot);
-//        }
+        if (current.parent == null) {
+            return new Pair<>(LEVEL_GLOBAL, slot);
+        }
         return new Pair<>(depth, slot);
     }
 }

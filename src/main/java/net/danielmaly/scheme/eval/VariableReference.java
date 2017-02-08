@@ -21,7 +21,7 @@ public abstract class VariableReference extends SchemeExpression {
     }
 
     public <T> T readUpStack(FrameGet<T> getter, Frame frame) throws FrameSlotTypeException {
-        for(int i = 0; i < getDepth() - 1; i++) {
+        for(int i = 0; i < getDepth(); i++) {
             frame = getLexicalScope(frame);
         }
 

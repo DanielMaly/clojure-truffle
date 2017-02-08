@@ -1,7 +1,8 @@
-package net.danielmaly.scheme.eval;
+package net.danielmaly.scheme.eval.symbols;
 
 import com.oracle.truffle.api.CompilerDirectives;
 import com.oracle.truffle.api.frame.VirtualFrame;
+import net.danielmaly.scheme.eval.SchemeExpression;
 import net.danielmaly.scheme.types.ConsCell;
 
 import java.util.Iterator;

@@ -1,12 +1,17 @@
 package net.danielmaly.scheme.parse;
 
 import com.oracle.truffle.api.frame.FrameSlot;
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Closure;
 import com.sun.tools.javac.util.Pair;
 import net.danielmaly.scheme.eval.*;
 import net.danielmaly.scheme.eval.literals.FloatLiteral;
 import net.danielmaly.scheme.eval.literals.IntegerLiteral;
 import net.danielmaly.scheme.eval.literals.NilLiteral;
 import net.danielmaly.scheme.eval.literals.StringLiteral;
+import net.danielmaly.scheme.eval.symbols.ClosureVariableNodeGen;
+import net.danielmaly.scheme.eval.symbols.GlobalVariableNodeGen;
+import net.danielmaly.scheme.eval.symbols.LocalVariableNodeGen;
+import net.danielmaly.scheme.eval.symbols.Variable;
 import net.danielmaly.scheme.types.SchemeFunction;
 import org.antlr.runtime.tree.Tree;
 
@@ -14,6 +19,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class SchemeExpressionFactory {
+
+    private SchemeContext context;
+
+    public SchemeExpressionFactory(SchemeContext context) {
+        this.context = context;
+    }
 
     public SchemeExpression getExpression(Tree treeNode, Namespace ns) {
         int t = treeNode.getType();
@@ -149,11 +160,23 @@ public class SchemeExpressionFactory {
         return new Sequence(expressions);
     }
 
-    private VariableReference createVariableReference(R5RSParser.VariableNode tree,
-                                                      Namespace ns) {
+    private Variable createVariableReference(R5RSParser.VariableNode tree,
+                                             Namespace ns) {
         String variableName = tree.getText();
-        Pair<Integer, FrameSlot> identifier = ns.getOrCreateIdentifier(variableName);
-        return VariableReferenceNodeGen.create(identifier.snd, identifier.fst);
+        Pair<Integer, FrameSlot> identifier = ns.getIdentifier(variableName);
+        int depth = identifier.fst;
+        if(depth == Namespace.LEVEL_UNDEFINED) {
+            throw new RuntimeException("Unknown identifier " + variableName);
+        }
+        else if(depth == 0) {
+            return LocalVariableNodeGen.create(identifier.snd);
+        }
+        else if(depth == Namespace.LEVEL_GLOBAL) {
+            return GlobalVariableNodeGen.create(identifier.snd, this.context.getMaterializedGlobalFrame());
+        }
+        else {
+            return ClosureVariableNodeGen.create(identifier.snd, depth);
+        }
     }
 
 

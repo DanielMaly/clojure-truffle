@@ -31,12 +31,14 @@ public class Interpreter {
         R5RSLexer lexer = new R5RSLexer(new ANTLRInputStream(source));
         R5RSParser parser = new R5RSParser(new CommonTokenStream(lexer));
         CommonTree tree = (CommonTree) parser.parse().getTree();
-        SchemeExpressionFactory factory = new SchemeExpressionFactory();
-
         SchemeContext context = new SchemeContext();
+
+        SchemeExpressionFactory factory = new SchemeExpressionFactory(context);
         Namespace globalNs = new Namespace(context.getGlobalFrameDescriptor());
 
-        Sequence sequence = factory.createSchemeProgram(tree, globalNs);
+        Namespace fileNamespace = new Namespace(Namespace.TOP_NS, globalNs);
+
+        Sequence sequence = factory.createSchemeProgram(tree, fileNamespace);
         SchemeFunction function = SchemeFunction.create(new FrameSlot[] {}, sequence.getExpressions(), globalNs.getFrameDescriptor());
         DirectCallNode directCallNode = Truffle.getRuntime().createDirectCallNode(function.callTarget);
         directCallNode.call(context.getGlobalFrame(), new Object[] {context.getMaterializedGlobalFrame()});

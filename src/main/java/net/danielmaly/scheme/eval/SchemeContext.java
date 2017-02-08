@@ -6,28 +6,27 @@ import com.oracle.truffle.api.frame.FrameDescriptor;
 import com.oracle.truffle.api.frame.FrameSlotKind;
 import com.oracle.truffle.api.frame.MaterializedFrame;
 import com.oracle.truffle.api.frame.VirtualFrame;
-import com.oracle.truffle.api.nodes.Node;
 import net.danielmaly.scheme.builtin.BuiltinExpression;
 import net.danielmaly.scheme.builtin.EqualNumericFactory;
 import net.danielmaly.scheme.builtin.arithmetic.*;
 import net.danielmaly.scheme.builtin.io.DisplayFactory;
-import net.danielmaly.scheme.builtin.io.Newline;
 import net.danielmaly.scheme.builtin.io.NewlineFactory;
 import net.danielmaly.scheme.builtin.ordering.GreaterThanEqualFactory;
 import net.danielmaly.scheme.builtin.ordering.GreaterThanFactory;
 import net.danielmaly.scheme.builtin.ordering.LessThanEqualFactory;
 import net.danielmaly.scheme.builtin.ordering.LessThanFactory;
+import net.danielmaly.scheme.eval.symbols.ReadFunctionArgument;
 import net.danielmaly.scheme.types.SchemeFunction;
-
-import java.util.List;
 
 public class SchemeContext {
     private final FrameDescriptor globalFrameDescriptor;
     private final VirtualFrame globalFrame;
+    private final MaterializedFrame globalMaterializedFrame;
 
     public SchemeContext() {
         this.globalFrameDescriptor = new FrameDescriptor();
         this.globalFrame = this.initGlobalFrame();
+        this.globalMaterializedFrame = this.globalFrame.materialize();
     }
 
     private VirtualFrame initGlobalFrame() {
@@ -73,7 +72,7 @@ public class SchemeContext {
      * values.
      */
     public MaterializedFrame getMaterializedGlobalFrame() {
-        return this.globalFrame.materialize();
+        return this.globalMaterializedFrame;
     }
 
     public VirtualFrame getGlobalFrame() {

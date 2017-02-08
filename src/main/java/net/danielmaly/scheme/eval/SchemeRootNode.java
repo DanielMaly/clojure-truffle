@@ -6,6 +6,7 @@ import com.oracle.truffle.api.frame.FrameSlot;
 import com.oracle.truffle.api.frame.VirtualFrame;
 import com.oracle.truffle.api.nodes.ExplodeLoop;
 import com.oracle.truffle.api.nodes.RootNode;
+import net.danielmaly.scheme.eval.symbols.ReadFunctionArgument;
 
 
 public class SchemeRootNode extends RootNode {

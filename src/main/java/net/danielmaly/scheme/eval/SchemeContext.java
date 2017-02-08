@@ -7,10 +7,11 @@ import com.oracle.truffle.api.frame.FrameSlotKind;
 import com.oracle.truffle.api.frame.MaterializedFrame;
 import com.oracle.truffle.api.frame.VirtualFrame;
 import net.danielmaly.scheme.builtin.BuiltinExpression;
-import net.danielmaly.scheme.builtin.EqualNumericFactory;
+import net.danielmaly.scheme.builtin.logical.EqualNumericFactory;
 import net.danielmaly.scheme.builtin.arithmetic.*;
 import net.danielmaly.scheme.builtin.io.DisplayFactory;
 import net.danielmaly.scheme.builtin.io.NewlineFactory;
+import net.danielmaly.scheme.builtin.logical.NotFactory;
 import net.danielmaly.scheme.builtin.ordering.GreaterThanEqualFactory;
 import net.danielmaly.scheme.builtin.ordering.GreaterThanFactory;
 import net.danielmaly.scheme.builtin.ordering.LessThanEqualFactory;
@@ -52,6 +53,7 @@ public class SchemeContext {
         addToFrame(frame, fd, "<=", LessThanEqualFactory.getInstance());
 
         addToFrame(frame, fd, "=", EqualNumericFactory.getInstance());
+        addToFrame(frame, fd, "not", NotFactory.getInstance());
 
     }
 

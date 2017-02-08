@@ -25,7 +25,7 @@
 
 ### Implemented builtin functions:
   * '+', '/', '*', '-'
-  * '='
+  * '=', not
   * '<', '>', '<=', '>=' (numeric types only)
   * display, newline
 
@@ -58,3 +58,6 @@
 ### v1.0.0
   * Rewrote the whole interpreter using Truffle
   * Removed support for dot-style arguments
+
+### v1.1.0
+  * Added functions: 'not'

@@ -1,10 +1,8 @@
-package net.danielmaly.scheme.eval;
+package net.danielmaly.scheme.eval.logical;
 
 import com.oracle.truffle.api.frame.VirtualFrame;
-import com.oracle.truffle.api.profiles.ConditionProfile;
+import net.danielmaly.scheme.eval.SchemeExpression;
 import net.danielmaly.scheme.types.NilValue;
-
-import java.util.List;
 
 public class Cond extends SchemeExpression {
 

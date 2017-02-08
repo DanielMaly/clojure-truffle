@@ -1,8 +1,9 @@
-package net.danielmaly.scheme.builtin;
+package net.danielmaly.scheme.builtin.logical;
 
 import com.oracle.truffle.api.dsl.GenerateNodeFactory;
 import com.oracle.truffle.api.dsl.Specialization;
 import com.oracle.truffle.api.nodes.NodeInfo;
+import net.danielmaly.scheme.builtin.BuiltinExpression;
 
 @NodeInfo(shortName = "=")
 @GenerateNodeFactory

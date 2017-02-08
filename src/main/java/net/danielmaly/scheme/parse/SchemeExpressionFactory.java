@@ -1,7 +1,6 @@
 package net.danielmaly.scheme.parse;
 
 import com.oracle.truffle.api.frame.FrameSlot;
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Closure;
 import com.sun.tools.javac.util.Pair;
 import net.danielmaly.scheme.eval.*;
 import net.danielmaly.scheme.eval.literals.FloatLiteral;
@@ -12,6 +11,9 @@ import net.danielmaly.scheme.eval.symbols.ClosureVariableNodeGen;
 import net.danielmaly.scheme.eval.symbols.GlobalVariableNodeGen;
 import net.danielmaly.scheme.eval.symbols.LocalVariableNodeGen;
 import net.danielmaly.scheme.eval.symbols.Variable;
+import net.danielmaly.scheme.eval.logical.Cond;
+import net.danielmaly.scheme.eval.logical.CondClause;
+import net.danielmaly.scheme.eval.logical.If;
 import net.danielmaly.scheme.types.SchemeFunction;
 import org.antlr.runtime.tree.Tree;
 

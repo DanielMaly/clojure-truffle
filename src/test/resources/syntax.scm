@@ -27,3 +27,10 @@
 (display (car (cdr l4))) (newline)
 (display (reverse l3)) (newline)
 (newline)
+
+
+;;; Map and apply
+(define l5 (list 1 2 3 4))
+(define l6 (map (lambda n (+ n 1)) l5))
+(display l6) (newline)
+(newline)

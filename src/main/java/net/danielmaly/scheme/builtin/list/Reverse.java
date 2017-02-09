@@ -22,7 +22,7 @@ public abstract class Reverse extends BuiltinExpression {
             objectStack.push(list1.getCar());
         }
         if(!list1.getCdr().equals(NilValue.NIL)) {
-            throw new RuntimeException("The first argument to append is not a well-formed list");
+            throw new RuntimeException("The first argument to reverse is not a well-formed list");
         }
         ConsCell newList = new ConsCell();
         ConsCell original = newList;

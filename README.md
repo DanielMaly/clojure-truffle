@@ -30,8 +30,9 @@
   * '<', '>', '<=', '>=' (numeric types only)
   * '=', not
   * list, cons, car, cdr
-  * length, append
+  * length, append, reverse
   * display, newline
+  * map
 
 ### All supported builtin functions:
   * '+', '/', '*', '-', '%'
@@ -64,6 +65,7 @@
   * Removed support for dot-style arguments
 
 ### v1.1.0
-  * Added functions: 'not', 'cons', 'car', 'cdr', 'list'
+  * Added functions 'not', '%'
+  * Added list processing functions: 'cons', 'car', 'cdr', 'list', 'append', 'length', 'reverse', 'map'
   * Added support for boolean literals
   * Added support for 'and' and 'or' expressions

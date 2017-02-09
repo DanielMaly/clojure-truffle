@@ -21,4 +21,8 @@
 (define l3 (list 1 2 3 4))
 (display (car l3)) (newline)
 (display (car (cdr (cdr l3)))) (newline)
+(display (length l3)) (newline)
+(define l4 (list 1))
+(append l4 l3)
+(display (car (cdr l4))) (newline)
 (newline)

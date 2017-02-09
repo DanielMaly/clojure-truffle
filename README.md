@@ -15,6 +15,7 @@
 
 
 ### Missing syntactic support:
+  * Empty lists
   * CASE expressions
   * Character literals
   * List literals
@@ -27,6 +28,7 @@
 ### Implemented builtin functions:
   * '+', '/', '*', '-'
   * '=', not
+  * list, cons, car, cdr
   * '<', '>', '<=', '>=' (numeric types only)
   * display, newline
 
@@ -36,7 +38,7 @@
   * '=', eqv?, eq?, equal?, not
   * display, newline
   * read
-  * list, cons, car, cdr, length
+  * list, cons, car, cdr
   * length, append, reverse
   * type predicates (boolean? number? symbol? procedure? null? zero? odd? even?)
   * apply, map

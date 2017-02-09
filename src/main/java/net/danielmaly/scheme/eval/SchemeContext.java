@@ -44,6 +44,7 @@ public class SchemeContext {
         addToFrame(frame, fd, "-", MinusFactory.getInstance());
         addToFrame(frame, fd, "+", PlusFactory.getInstance());
         addToFrame(frame, fd, "*", TimesFactory.getInstance());
+        addToFrame(frame, fd, "%", ModuloFactory.getInstance());
 
         addToFrame(frame, fd, "display", DisplayFactory.getInstance());
         addToFrame(frame, fd, "newline", NewlineFactory.getInstance());
@@ -60,6 +61,8 @@ public class SchemeContext {
         addToFrame(frame, fd, "list", new ListFunction());
         addToFrame(frame, fd, "car", CarFactory.getInstance());
         addToFrame(frame, fd, "cdr", CdrFactory.getInstance());
+        addToFrame(frame, fd, "length", LengthFactory.getInstance());
+        addToFrame(frame, fd, "append", AppendFactory.getInstance());
 
     }
 

@@ -25,4 +25,5 @@
 (define l4 (list 1))
 (append l4 l3)
 (display (car (cdr l4))) (newline)
+(display (reverse l3)) (newline)
 (newline)

@@ -26,10 +26,11 @@
   * Dot-style definitions and arguments
 
 ### Implemented builtin functions:
-  * '+', '/', '*', '-'
+  * '+', '/', '*', '-', '%'
+  * '<', '>', '<=', '>=' (numeric types only)
   * '=', not
   * list, cons, car, cdr
-  * '<', '>', '<=', '>=' (numeric types only)
+  * length, append
   * display, newline
 
 ### All supported builtin functions:

@@ -33,4 +33,8 @@ public class ConsCell {
         this.cdr = cdr;
     }
 
+    @Override
+    public String toString() {
+        return "(cons " + car.toString() + " " + cdr.toString() + ")";
+    }
 }

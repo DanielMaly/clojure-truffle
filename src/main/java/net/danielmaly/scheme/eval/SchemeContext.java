@@ -63,6 +63,7 @@ public class SchemeContext {
         addToFrame(frame, fd, "cdr", CdrFactory.getInstance());
         addToFrame(frame, fd, "length", LengthFactory.getInstance());
         addToFrame(frame, fd, "append", AppendFactory.getInstance());
+        addToFrame(frame, fd, "reverse", ReverseFactory.getInstance());
 
     }
 

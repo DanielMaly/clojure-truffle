@@ -12,4 +12,5 @@ false
 3
 4
 1
+(cons 4 (cons 3 (cons 2 (cons 1 NIL))))
 

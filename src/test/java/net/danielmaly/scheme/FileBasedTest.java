@@ -1,4 +1,4 @@
-package net.danielmaly.scheme.lang;
+package net.danielmaly.scheme;
 
 import net.danielmaly.scheme.Interpreter;
 import org.junit.Assert;

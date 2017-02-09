@@ -1,8 +1,10 @@
 package net.danielmaly.scheme;
 
 import com.oracle.truffle.api.Truffle;
+import com.oracle.truffle.api.TruffleLanguage;
 import com.oracle.truffle.api.frame.FrameDescriptor;
 import com.oracle.truffle.api.frame.FrameSlot;
+import com.oracle.truffle.api.frame.MaterializedFrame;
 import com.oracle.truffle.api.frame.VirtualFrame;
 import com.oracle.truffle.api.nodes.DirectCallNode;
 import net.danielmaly.scheme.eval.SchemeContext;
@@ -39,9 +41,13 @@ public class Interpreter {
         Namespace globalNs = new Namespace(context.getGlobalFrameDescriptor());
 
         Namespace replNamespace = new Namespace(Namespace.TOP_NS, globalNs);
+        VirtualFrame replFrame = Truffle.getRuntime().createVirtualFrame(
+                new Object[]{context.getMaterializedGlobalFrame()}, replNamespace.getFrameDescriptor()
+        );
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("> ");
+
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             if (line.equals("\\q")) {
@@ -65,12 +71,16 @@ public class Interpreter {
                     expressions = newExpressions;
                 }
 
-                SchemeFunction function = SchemeFunction.create(new FrameSlot[]{}, expressions, globalNs.getFrameDescriptor());
+                SchemeFunction function = SchemeFunction.create(new FrameSlot[]{}, expressions, replFrame.getFrameDescriptor());
                 DirectCallNode directCallNode = Truffle.getRuntime().createDirectCallNode(function.callTarget);
-                Object value = directCallNode.call(context.getGlobalFrame(), new Object[]{context.getMaterializedGlobalFrame()});
+
+                Sequence callSequence = new Sequence(expressions);
+                Object value = callSequence.execute(replFrame);
+                //Object value = directCallNode.call(replFrame, new Object[]{context.getMaterializedGlobalFrame()});
+
                 System.out.println(value);
             } catch (Exception ex) {
-                ex.printStackTrace();
+                ex.printStackTrace(System.out);
             }
             System.out.print("> ");
         }

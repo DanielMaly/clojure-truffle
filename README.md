@@ -13,13 +13,9 @@
   * boolean literals
   * AND and OR
 
-
-### Planned syntactic support:
+### Missing syntactic support for Scheme compatibility:
   * Loops
   * Character literals
-
-
-### Missing syntactic support for Scheme compatibility:
   * Empty lists
   * CASE expressions
   * Vectors
@@ -73,3 +69,4 @@
   * Added support for 'and' and 'or' expressions
   * Added support for reading from stdin using the 'read' function
   * Added conversion functions 'string', 'string->number', 'string->boolean'
+  * Added type predicates

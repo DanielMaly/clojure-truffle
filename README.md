@@ -70,3 +70,6 @@
   * Added support for reading from stdin using the 'read' function
   * Added conversion functions 'string', 'string->number', 'string->boolean'
   * Added type predicates
+
+### v1.2.0
+  * Added REPL functionality

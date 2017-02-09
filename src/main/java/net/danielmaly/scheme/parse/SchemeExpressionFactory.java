@@ -187,6 +187,7 @@ public class SchemeExpressionFactory {
             Tree child = tree.getChild(i);
             expressions[i] = getExpression(child, ns);
         }
+
         return new Sequence(expressions);
     }
 

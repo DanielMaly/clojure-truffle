@@ -10,12 +10,12 @@
   * integer literals
   * float literals
   * string literals
+  * boolean literals
   * AND and OR
 
 
 ### Missing syntactic support:
   * CASE expressions
-  * Boolean literals
   * Character literals
   * List literals
   * Vectors
@@ -36,7 +36,7 @@
   * '=', eqv?, eq?, equal?, not
   * display, newline
   * read
-  * list, cons, car, cdr
+  * list, cons, car, cdr, length
   * length, append, reverse
   * type predicates (boolean? number? symbol? procedure? null? zero? odd? even?)
   * apply, map
@@ -61,6 +61,6 @@
   * Removed support for dot-style arguments
 
 ### v1.1.0
-  * Added functions: 'not'
+  * Added functions: 'not', 'cons', 'car', 'cdr', 'list'
   * Added support for boolean literals
   * Added support for 'and' and 'or' expressions

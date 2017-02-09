@@ -7,6 +7,7 @@ import com.oracle.truffle.api.frame.FrameSlotKind;
 import com.oracle.truffle.api.frame.MaterializedFrame;
 import com.oracle.truffle.api.frame.VirtualFrame;
 import net.danielmaly.scheme.builtin.BuiltinExpression;
+import net.danielmaly.scheme.builtin.list.*;
 import net.danielmaly.scheme.builtin.logical.EqualNumericFactory;
 import net.danielmaly.scheme.builtin.arithmetic.*;
 import net.danielmaly.scheme.builtin.io.DisplayFactory;
@@ -55,6 +56,11 @@ public class SchemeContext {
         addToFrame(frame, fd, "=", EqualNumericFactory.getInstance());
         addToFrame(frame, fd, "not", NotFactory.getInstance());
 
+        addToFrame(frame, fd, "cons", ConsFactory.getInstance());
+        addToFrame(frame, fd, "list", new ListFunction());
+        addToFrame(frame, fd, "car", CarFactory.getInstance());
+        addToFrame(frame, fd, "cdr", CdrFactory.getInstance());
+
     }
 
     private static void addToFrame(VirtualFrame frame,
@@ -65,6 +71,18 @@ public class SchemeContext {
         frame.setObject(
                 frameDescriptor.addFrameSlot(identifier, FrameSlotKind.Object),
                 createBuiltinFunction(factory, frameDescriptor)
+        );
+
+    }
+
+    private static void addToFrame(VirtualFrame frame,
+                                   FrameDescriptor frameDescriptor,
+                                   String identifier,
+                                   BuiltinExpression expression) {
+
+        frame.setObject(
+                frameDescriptor.addFrameSlot(identifier, FrameSlotKind.Object),
+                createBuiltinFunctionDirect(expression, frameDescriptor)
         );
 
     }
@@ -97,6 +115,12 @@ public class SchemeContext {
         BuiltinExpression node = factory.createNode((Object) argumentNodes);
         return new SchemeFunction(Truffle.getRuntime().createCallTarget(
                 new SchemeRootNode(new SchemeExpression[] {node}, frameDescriptor)));
+    }
+
+    public static SchemeFunction createBuiltinFunctionDirect(BuiltinExpression expression, FrameDescriptor frameDescriptor) {
+        return new SchemeFunction(Truffle.getRuntime().createCallTarget(
+                new SchemeRootNode(new SchemeExpression[] {expression}, frameDescriptor)
+        ));
     }
 
 

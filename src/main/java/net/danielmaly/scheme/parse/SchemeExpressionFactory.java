@@ -1,7 +1,6 @@
 package net.danielmaly.scheme.parse;
 
 import com.oracle.truffle.api.frame.FrameSlot;
-import com.sun.tools.javac.util.Pair;
 import net.danielmaly.scheme.eval.*;
 import net.danielmaly.scheme.eval.literals.*;
 import net.danielmaly.scheme.eval.logical.*;

@@ -73,3 +73,6 @@
 
 ### v1.2.0
   * Added REPL functionality
+
+### v1.2.1
+  * Prettified REPL output

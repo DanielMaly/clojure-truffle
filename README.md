@@ -1,3 +1,8 @@
+## Running
+
+Run mvn install, then execute the generated jar with dependencies from the target folder using Graal VM.
+Run without arguments for REPL, or with a single argument to run a file.
+
 ## Language support
 
 ### Current syntactic support:
@@ -76,3 +81,4 @@
 
 ### v1.2.1
   * Prettified REPL output
+  * Mavenized project

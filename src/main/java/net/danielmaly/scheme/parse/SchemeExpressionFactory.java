@@ -194,7 +194,7 @@ public class SchemeExpressionFactory {
     private Variable createVariableReference(R5RSParser.VariableNode tree,
                                              Namespace ns) {
         String variableName = tree.getText();
-        Pair<Integer, FrameSlot> identifier = ns.getIdentifier(variableName);
+        GenericPair<Integer, FrameSlot> identifier = ns.getIdentifier(variableName);
         int depth = identifier.fst;
         if(depth == Namespace.LEVEL_UNDEFINED) {
             throw new RuntimeException("Unknown identifier " + variableName);

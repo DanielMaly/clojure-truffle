@@ -30,6 +30,11 @@ public class SchemeFunction {
                 Truffle.getRuntime().createCallTarget(SchemeRootNode.create(arguments, bodyNodes, frameDescriptor))
         );
     }
+
+    @Override
+    public String toString() {
+        return "[Function]";
+    }
 }
 
 

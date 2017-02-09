@@ -32,7 +32,14 @@ import java.util.stream.StreamSupport;
 
 public class Interpreter {
     public static void main(String[] args) throws Exception {
-        runREPL();
+        if(args.length > 1) {
+            String fileName = args[1];
+            InputStream stream = Interpreter.class.getResourceAsStream(fileName);
+            executeFromInputStream(stream);
+        }
+        else {
+            runREPL();
+        }
     }
 
     public static void runREPL() throws IOException, RecognitionException {
@@ -54,6 +61,28 @@ public class Interpreter {
                 System.out.println("Bye");
                 System.exit(0);
             }
+
+            int openBrackets = 0;
+            String currentLine = line;
+            do {
+                for(char c : currentLine.toCharArray()) {
+                    if (c == '(') {
+                        openBrackets++;
+                    }
+                    else if(c == ')') {
+                        openBrackets--;
+                    }
+                }
+                if(openBrackets > 0) {
+                    System.out.print(';');
+                    for(int i = 0; i < openBrackets - 1; i++) {
+                        System.out.print('\t');
+                    }
+                    currentLine = scanner.nextLine();
+                    line = line + currentLine;
+                }
+            } while(openBrackets > 0);
+
             InputStream stream = new ByteArrayInputStream(line.getBytes(StandardCharsets.UTF_8));
             R5RSLexer lexer = new R5RSLexer(new ANTLRInputStream(stream));
             R5RSParser parser = new R5RSParser(new CommonTokenStream(lexer));
@@ -65,18 +94,14 @@ public class Interpreter {
 
                 if (expressions[expressions.length - 1] instanceof NilLiteral) {
                     SchemeExpression[] newExpressions = new SchemeExpression[expressions.length - 1];
-                    for (int i = 0; i < expressions.length - 1; i++) {
-                        newExpressions[i] = expressions[i];
-                    }
+                    System.arraycopy(expressions, 0, newExpressions, 0, expressions.length - 1);
                     expressions = newExpressions;
                 }
 
                 SchemeFunction function = SchemeFunction.create(new FrameSlot[]{}, expressions, replFrame.getFrameDescriptor());
-                DirectCallNode directCallNode = Truffle.getRuntime().createDirectCallNode(function.callTarget);
 
                 Sequence callSequence = new Sequence(expressions);
                 Object value = callSequence.execute(replFrame);
-                //Object value = directCallNode.call(replFrame, new Object[]{context.getMaterializedGlobalFrame()});
 
                 System.out.println(value);
             } catch (Exception ex) {

@@ -3,7 +3,7 @@ package net.danielmaly.scheme.parse;
 import com.oracle.truffle.api.frame.FrameDescriptor;
 import com.oracle.truffle.api.frame.FrameSlot;
 import com.oracle.truffle.api.frame.FrameSlotKind;
-import com.sun.tools.javac.util.Pair;
+import net.danielmaly.scheme.eval.GenericPair;
 
 public class Namespace {
     public static final int LEVEL_GLOBAL = -1;
@@ -51,18 +51,18 @@ public class Namespace {
         return this.frameDescriptor.addFrameSlot(id, FrameSlotKind.Object);
     }
 
-    public Pair<Integer, FrameSlot> getOrCreateIdentifier(String id) {
-        Pair<Integer, FrameSlot> identifier = getIdentifier(id);
+    public GenericPair<Integer, FrameSlot> getOrCreateIdentifier(String id) {
+        GenericPair<Integer, FrameSlot> identifier = getIdentifier(id);
         if(identifier.snd != null) {
             return identifier;
         }
         else {
             FrameSlot slot = this.frameDescriptor.addFrameSlot(id);
-            return new Pair<>(0, slot);
+            return new GenericPair<>(0, slot);
         }
     }
 
-    public Pair<Integer, FrameSlot> getIdentifier(String id) {
+    public GenericPair<Integer, FrameSlot> getIdentifier(String id) {
         int depth = 0;
         Namespace current = this;
         FrameSlot slot = current.frameDescriptor.findFrameSlot(id);
@@ -70,13 +70,13 @@ public class Namespace {
             depth++;
             current = current.parent;
             if (current == null) {
-                return new Pair<>(LEVEL_UNDEFINED, null);
+                return new GenericPair<>(LEVEL_UNDEFINED, null);
             }
             slot = current.frameDescriptor.findFrameSlot(id);
         }
         if (current.parent == null) {
-            return new Pair<>(LEVEL_GLOBAL, slot);
+            return new GenericPair<>(LEVEL_GLOBAL, slot);
         }
-        return new Pair<>(depth, slot);
+        return new GenericPair<>(depth, slot);
     }
 }

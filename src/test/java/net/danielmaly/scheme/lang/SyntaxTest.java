@@ -13,6 +13,10 @@ public class SyntaxTest extends FileBasedTest {
     @Test
     public void testRec() throws Exception {
         this.assertOutputMatches("/rec.scm", "/rec.scm.result");
+    }
 
+    @Test
+    public void testSyntax() throws Exception {
+        this.assertOutputMatches("/syntax.scm", "/syntax.scm.result");
     }
 }

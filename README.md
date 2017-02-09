@@ -10,9 +10,10 @@
   * integer literals
   * float literals
   * string literals
+  * AND and OR
+
 
 ### Missing syntactic support:
-  * AND and OR
   * CASE expressions
   * Boolean literals
   * Character literals
@@ -61,3 +62,5 @@
 
 ### v1.1.0
   * Added functions: 'not'
+  * Added support for boolean literals
+  * Added support for 'and' and 'or' expressions

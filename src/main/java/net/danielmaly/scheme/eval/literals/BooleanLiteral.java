@@ -8,7 +8,7 @@ public class BooleanLiteral extends SchemeExpression {
 
     private Boolean value;
 
-    private BooleanLiteral(Boolean value) {
+    public BooleanLiteral(Boolean value) {
         this.value = value;
     }
 

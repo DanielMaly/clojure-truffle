@@ -6,8 +6,11 @@ import net.danielmaly.scheme.eval.Utils;
 
 public class Or extends SchemeExpression {
 
-    @Child private SchemeExpression left;
-    @Child private SchemeExpression right;
+    @Children private final SchemeExpression[] tests;
+
+    public Or(SchemeExpression[] tests) {
+        this.tests = tests;
+    }
 
     @Override
     public Object execute(VirtualFrame virtualFrame) {
@@ -16,6 +19,11 @@ public class Or extends SchemeExpression {
 
     @Override
     public boolean executeBoolean(VirtualFrame virtualFrame) {
-        return Utils.testResult(left, virtualFrame) || Utils.testResult(right, virtualFrame);
+        for(SchemeExpression test : tests) {
+            if(Utils.testResult(test, virtualFrame)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

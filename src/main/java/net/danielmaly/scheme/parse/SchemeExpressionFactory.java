@@ -3,17 +3,12 @@ package net.danielmaly.scheme.parse;
 import com.oracle.truffle.api.frame.FrameSlot;
 import com.sun.tools.javac.util.Pair;
 import net.danielmaly.scheme.eval.*;
-import net.danielmaly.scheme.eval.literals.FloatLiteral;
-import net.danielmaly.scheme.eval.literals.IntegerLiteral;
-import net.danielmaly.scheme.eval.literals.NilLiteral;
-import net.danielmaly.scheme.eval.literals.StringLiteral;
+import net.danielmaly.scheme.eval.literals.*;
+import net.danielmaly.scheme.eval.logical.*;
 import net.danielmaly.scheme.eval.symbols.ClosureVariableNodeGen;
 import net.danielmaly.scheme.eval.symbols.GlobalVariableNodeGen;
 import net.danielmaly.scheme.eval.symbols.LocalVariableNodeGen;
 import net.danielmaly.scheme.eval.symbols.Variable;
-import net.danielmaly.scheme.eval.logical.Cond;
-import net.danielmaly.scheme.eval.logical.CondClause;
-import net.danielmaly.scheme.eval.logical.If;
 import net.danielmaly.scheme.types.SchemeFunction;
 import org.antlr.runtime.tree.Tree;
 
@@ -59,6 +54,14 @@ public class SchemeExpressionFactory {
             return createCond(treeNode, ns);
         }
 
+        if(t == R5RSLexer.AND) {
+            return createAnd(treeNode, ns);
+        }
+
+        if(t == R5RSLexer.OR) {
+            return createOr(treeNode, ns);
+        }
+
         if(t == R5RSLexer.STR) {
             return getString(treeNode);
         }
@@ -67,11 +70,36 @@ public class SchemeExpressionFactory {
             return getDecimalNumber(treeNode);
         }
 
+        if(t == R5RSLexer.BOOL) {
+            return getBooleanLiteral(treeNode);
+        }
+
         if(t == R5RSLexer.COMMAND || t == R5RSLexer.LITERAL || t == R5RSLexer.SELFEVALUATING || t == R5RSLexer.TEST) {
             return getExpression(treeNode.getChild(0), ns);
         }
 
         return new NilLiteral();
+    }
+
+    private SchemeExpression getBooleanLiteral(Tree treeNode) {
+        Tree child = treeNode.getChild(0);
+        return new BooleanLiteral(child.getText().toLowerCase().equals("#t"));
+    }
+
+    private SchemeExpression createOr(Tree treeNode, Namespace ns) {
+        SchemeExpression[] tests = new SchemeExpression[treeNode.getChildCount()];
+        for(int i = 0; i < treeNode.getChildCount(); i++) {
+            tests[i] = getExpression(treeNode.getChild(i), ns);
+        }
+        return new Or(tests);
+    }
+
+    private SchemeExpression createAnd(Tree treeNode, Namespace ns) {
+        SchemeExpression[] tests = new SchemeExpression[treeNode.getChildCount()];
+        for(int i = 0; i < treeNode.getChildCount(); i++) {
+            tests[i] = getExpression(treeNode.getChild(i), ns);
+        }
+        return new And(tests);
     }
 
     public Sequence createSchemeProgram(Tree treeNode, Namespace ns) {

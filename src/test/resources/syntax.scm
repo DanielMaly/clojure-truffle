@@ -48,3 +48,33 @@
 (display (equal? "Hello" "Hello")) (newline)
 (display (equal? "H" "A")) (newline)
 (newline)
+
+;;; Predicates
+(display (boolean? #f)) (newline)
+(display (boolean? 3)) (newline)
+(display (boolean? compTrue)) (newline)
+
+(display (number? 3)) (newline)
+(display (number? 4.33)) (newline)
+(display (number? #f)) (newline)
+(display (number? "Hello")) (newline)
+
+(define f (lambda name (begin
+    (display "Hello ")
+    (display name)
+)))
+
+(f "John") (newline)
+(display (procedure? f)) (newline)
+(display (procedure? (lambda n (+ n 1)))) (newline)
+(display (procedure? "Hello")) (newline)
+
+(display (string? "Hello")) (newline)
+(display (string? 5)) (newline)
+
+(display (zero? 5)) (newline)
+(display (zero? (- 5 5))) (newline)
+
+(define l9 (list 1 2))
+(display (null? (car l9))) (newline)
+(display (null? (cdr (cdr l9)))) (newline)

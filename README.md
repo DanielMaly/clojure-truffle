@@ -37,13 +37,14 @@
   * display, newline (stdout only)
   * read (stdin only, reads lines)
   * string, string->number, string->boolean
+  * type predicates (boolean? number? char? string? procedure? null? zero?)
   * list, cons, car, cdr
   * length, append, reverse
   * map
 
 ### Planned supported builtin functions:
   * string->list
-  * type predicates (boolean? number? char? symbol? string? procedure? null? zero?)
+  * char?
   * apply
 
 

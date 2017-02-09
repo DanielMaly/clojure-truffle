@@ -69,6 +69,13 @@ public class SchemeContext {
         addToFrame(frame, fd, "equal?", EqualFactory.getInstance());
         addToFrame(frame, fd, "not", NotFactory.getInstance());
 
+        addToFrame(frame, fd, "boolean?", IsBooleanFactory.getInstance());
+        addToFrame(frame, fd, "null?", IsNullFactory.getInstance());
+        addToFrame(frame, fd, "procedure?", IsProcedureFactory.getInstance());
+        addToFrame(frame, fd, "zero?", IsZeroFactory.getInstance());
+        addToFrame(frame, fd, "number?", IsNumberFactory.getInstance());
+        addToFrame(frame, fd, "string?", IsStringFactory.getInstance());
+
         addToFrame(frame, fd, "cons", ConsFactory.getInstance());
         addToFrame(frame, fd, "list", new ListFunction());
         addToFrame(frame, fd, "car", CarFactory.getInstance());

@@ -7,6 +7,10 @@ import com.oracle.truffle.api.frame.FrameSlotKind;
 import com.oracle.truffle.api.frame.MaterializedFrame;
 import com.oracle.truffle.api.frame.VirtualFrame;
 import net.danielmaly.scheme.builtin.BuiltinExpression;
+import net.danielmaly.scheme.builtin.conversion.StringToBooleanFactory;
+import net.danielmaly.scheme.builtin.conversion.StringToNumber;
+import net.danielmaly.scheme.builtin.conversion.StringToNumberFactory;
+import net.danielmaly.scheme.builtin.conversion.ToStringFactory;
 import net.danielmaly.scheme.builtin.io.ReadFactory;
 import net.danielmaly.scheme.builtin.list.*;
 import net.danielmaly.scheme.builtin.predicates.*;
@@ -49,6 +53,10 @@ public class SchemeContext {
         addToFrame(frame, fd, "display", DisplayFactory.getInstance());
         addToFrame(frame, fd, "newline", NewlineFactory.getInstance());
         addToFrame(frame, fd, "read", ReadFactory.getInstance());
+
+        addToFrame(frame, fd, "string", ToStringFactory.getInstance());
+        addToFrame(frame, fd, "string->number", StringToNumberFactory.getInstance());
+        addToFrame(frame, fd, "string->boolean", StringToBooleanFactory.getInstance());
 
         addToFrame(frame, fd, ">", GreaterThanFactory.getInstance());
         addToFrame(frame, fd, ">=", GreaterThanEqualFactory.getInstance());

@@ -36,12 +36,13 @@
   * '=', eqv?, eq?, equal?, not
   * display, newline (stdout only)
   * read (stdin only, reads lines)
+  * string, string->number, string->boolean
   * list, cons, car, cdr
   * length, append, reverse
   * map
 
 ### Planned supported builtin functions:
-  * string->number, string->boolean, string->list
+  * string->list
   * type predicates (boolean? number? char? symbol? string? procedure? null? zero?)
   * apply
 
@@ -70,3 +71,4 @@
   * Added support for boolean literals
   * Added support for 'and' and 'or' expressions
   * Added support for reading from stdin using the 'read' function
+  * Added conversion functions 'string', 'string->number', 'string->boolean'

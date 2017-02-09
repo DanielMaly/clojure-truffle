@@ -7,12 +7,12 @@ import com.oracle.truffle.api.frame.FrameSlotKind;
 import com.oracle.truffle.api.frame.MaterializedFrame;
 import com.oracle.truffle.api.frame.VirtualFrame;
 import net.danielmaly.scheme.builtin.BuiltinExpression;
+import net.danielmaly.scheme.builtin.io.ReadFactory;
 import net.danielmaly.scheme.builtin.list.*;
-import net.danielmaly.scheme.builtin.logical.EqualNumericFactory;
+import net.danielmaly.scheme.builtin.predicates.*;
 import net.danielmaly.scheme.builtin.arithmetic.*;
 import net.danielmaly.scheme.builtin.io.DisplayFactory;
 import net.danielmaly.scheme.builtin.io.NewlineFactory;
-import net.danielmaly.scheme.builtin.logical.NotFactory;
 import net.danielmaly.scheme.builtin.ordering.GreaterThanEqualFactory;
 import net.danielmaly.scheme.builtin.ordering.GreaterThanFactory;
 import net.danielmaly.scheme.builtin.ordering.LessThanEqualFactory;
@@ -48,6 +48,7 @@ public class SchemeContext {
 
         addToFrame(frame, fd, "display", DisplayFactory.getInstance());
         addToFrame(frame, fd, "newline", NewlineFactory.getInstance());
+        addToFrame(frame, fd, "read", ReadFactory.getInstance());
 
         addToFrame(frame, fd, ">", GreaterThanFactory.getInstance());
         addToFrame(frame, fd, ">=", GreaterThanEqualFactory.getInstance());
@@ -55,6 +56,9 @@ public class SchemeContext {
         addToFrame(frame, fd, "<=", LessThanEqualFactory.getInstance());
 
         addToFrame(frame, fd, "=", EqualNumericFactory.getInstance());
+        addToFrame(frame, fd, "eq?", EqFactory.getInstance());
+        addToFrame(frame, fd, "eqv?", EqvFactory.getInstance());
+        addToFrame(frame, fd, "equal?", EqualFactory.getInstance());
         addToFrame(frame, fd, "not", NotFactory.getInstance());
 
         addToFrame(frame, fd, "cons", ConsFactory.getInstance());

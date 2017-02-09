@@ -1,4 +1,4 @@
-package net.danielmaly.scheme.builtin.logical;
+package net.danielmaly.scheme.builtin.predicates;
 
 import com.oracle.truffle.api.dsl.GenerateNodeFactory;
 import com.oracle.truffle.api.dsl.Specialization;

@@ -29,8 +29,22 @@
 (newline)
 
 
-;;; Map and apply
+;;; Map
 (define l5 (list 1 2 3 4))
 (define l6 (map (lambda n (+ n 1)) l5))
 (display l6) (newline)
+(newline)
+
+
+;;; Equality
+(display (= 5 5)) (newline)
+(display (= 5 6)) (newline)
+(display (eqv? 5 5)) (newline)
+(display (eqv? #t #t)) (newline)
+(display (eqv? 5 6)) (newline)
+(define l7 (list 1 2 3 4))
+(display (equal? l7 l5)) (newline)
+(display (equal? l4 l5)) (newline)
+(display (equal? "Hello" "Hello")) (newline)
+(display (equal? "H" "A")) (newline)
 (newline)

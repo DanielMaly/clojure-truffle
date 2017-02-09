@@ -16,3 +16,13 @@ false
 
 (cons 2 (cons 3 (cons 4 (cons 5 NIL))))
 
+true
+false
+true
+true
+false
+true
+false
+true
+false
+

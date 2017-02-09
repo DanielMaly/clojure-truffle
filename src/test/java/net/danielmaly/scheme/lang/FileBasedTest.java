@@ -9,11 +9,21 @@ import java.io.*;
 
 public class FileBasedTest {
 
-    protected void assertOutputMatches(String inFileName, String referenceFileName) throws Exception {
+    protected void assertOutputMatches(String inFileName, String referenceFileName)
+            throws Exception {
+        assertOutputMatches(inFileName, referenceFileName, null);
+    }
+
+    protected void assertOutputMatches(String inFileName, String referenceFileName, String stdInFileName)
+            throws Exception {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         ByteArrayOutputStream errContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
+
+        if(stdInFileName != null) {
+            System.setIn(getClass().getResourceAsStream(stdInFileName));
+        }
 
         InputStream sourceStream = getClass().getResourceAsStream(inFileName);
         Interpreter.executeFromInputStream(sourceStream);

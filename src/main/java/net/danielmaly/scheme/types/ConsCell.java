@@ -1,5 +1,7 @@
 package net.danielmaly.scheme.types;
 
+import net.danielmaly.scheme.builtin.list.Cons;
+
 public class ConsCell {
     private Object car;
     private Object cdr;
@@ -36,5 +38,14 @@ public class ConsCell {
     @Override
     public String toString() {
         return "(cons " + car.toString() + " " + cdr.toString() + ")";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof ConsCell)) {
+            return false;
+        }
+        ConsCell other = (ConsCell) obj;
+        return car.equals(other.car) && cdr.equals(other.cdr);
     }
 }

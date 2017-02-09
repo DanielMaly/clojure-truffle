@@ -1,6 +1,6 @@
 ## Language support
 
-### Current support:
+### Current syntactic support:
 
   * define
   * lambda
@@ -14,36 +14,36 @@
   * AND and OR
 
 
-### Missing syntactic support:
+### Planned syntactic support:
+  * Loops
+  * Character literals
+
+
+### Missing syntactic support for Scheme compatibility:
   * Empty lists
   * CASE expressions
-  * Character literals
-  * List literals
   * Vectors
   * LET (let, letrec, letstar)
-  * Loops
-  * Quotes
+  * Quotes and list literals
   * Dot-style definitions and arguments
+  * Define-syntax
+  * Macros
+  * Possibly others
 
 ### Implemented builtin functions:
   * '+', '/', '*', '-', '%'
   * '<', '>', '<=', '>=' (numeric types only)
-  * '=', not
+  * '=', eqv?, eq?, equal?, not
+  * display, newline (stdout only)
+  * read (stdin only, reads lines)
   * list, cons, car, cdr
   * length, append, reverse
-  * display, newline
   * map
 
-### All supported builtin functions:
-  * '+', '/', '*', '-', '%'
-  * '<', '>', '<=', '>='
-  * '=', eqv?, eq?, equal?, not
-  * display, newline
-  * read
-  * list, cons, car, cdr
-  * length, append, reverse
-  * type predicates (boolean? number? symbol? procedure? null? zero? odd? even?)
-  * apply, map
+### Planned supported builtin functions:
+  * string->number, string->boolean, string->list
+  * type predicates (boolean? number? char? symbol? string? procedure? null? zero?)
+  * apply
 
 
 ## Version history
@@ -65,7 +65,8 @@
   * Removed support for dot-style arguments
 
 ### v1.1.0
-  * Added functions 'not', '%'
+  * Added basic functions 'not', '%', 'eqv?', 'eq?', 'equal?'
   * Added list processing functions: 'cons', 'car', 'cdr', 'list', 'append', 'length', 'reverse', 'map'
   * Added support for boolean literals
   * Added support for 'and' and 'or' expressions
+  * Added support for reading from stdin using the 'read' function

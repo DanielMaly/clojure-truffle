@@ -19,4 +19,9 @@ public class SyntaxTest extends FileBasedTest {
     public void testSyntax() throws Exception {
         this.assertOutputMatches("/syntax.scm", "/syntax.scm.result");
     }
+
+    @Test
+    public void testInput() throws Exception {
+        this.assertOutputMatches("/input.scm", "/input.scm.result", "/input.scm.stdin");
+    }
 }
